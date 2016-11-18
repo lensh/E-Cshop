@@ -1,0 +1,18 @@
+/*
+@功能：底部导航css
+@作者：diamondwang
+@时间：2013年11月5日
+*/
+
+.bottomnav{height: 175px; border: 1px solid #ddd; border-radius: 5px; -webkit-border-radius:5px; padding: 10px 0; background: #fefefe;}
+.bottomnav div{float: left; display: inline; width: 170px; padding-left:60px; }
+
+.bottomnav h3 b{display: inline-block; width: 28px; height: 28px; background: url("../images/icon.png") 0 -176px no-repeat; position: relative; top:8px;}
+.bottomnav h3 em{ font:bold 14px "microsoft yahei"; }
+.bottomnav ul{background: url("../images/icon.png") -230px -177px no-repeat; padding-left: 22px; margin:10px 0 0 12px;}
+.bottomnav ul li{height: 21px; line-height: 21px;}
+
+.bnav2 h3 b{background-position: -30px -176px; } 
+.bnav3 h3 b{background-position: -60px -176px; } 
+.bnav4 h3 b{background-position: -90px -176px; } 
+.bnav5 h3 b{background-position: -120px -176px; } 

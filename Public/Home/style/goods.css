@@ -1,0 +1,123 @@
+/*
+@功能：商品页面css
+@作者：diamondwang
+@时间：2013年11月8日
+*/
+
+/*左侧，相关分类和同类品牌css*/
+.related_cat ul{width:200px; padding:3px 0 5px 7px; overflow: hidden;}
+.related_cat li{float: left; display: inline; width: 100px; height: 22px; line-height: 22px;}
+
+
+.goods_content{width: 989px; overflow: hidden;}
+.summary{width: 989px; overflow: hidden;}
+.summary h3 strong{font-weight: bold; font-size: 16px; font-family: arial,"microsoft yahei"; color: #444; line-height: 25px; }
+
+/*预览图样式*/
+.preview{width: 352px; height: 450px; margin-top: 15px;}
+.midpic{width: 350px; height: 350px; border:1px solid #e4e4e4;}
+.smallpic{width: 350px; height: 54px; margin-top: 10px; position: relative;}
+.smallpic_wrap{width: 310px; height: 54px; position: absolute; top: 0; left: 24px; overflow: hidden;}
+.smallpic ul{width:1500px; height:54px; position: absolute; top: 0; left: 0;}
+.smallpic li{float:left; display: inline; width: 62px; height: 54px;}
+.smallpic li img{border:1px solid #CECFCE; padding: 1px; width: 50px; height: 50px;}
+.smallpic .zoomThumbActive img{border:2px solid #e4393c; padding: 0;}
+#backward{display: block; position: absolute; left: 0; top: 0; width: 17px; height: 54px; background: url("../images/newicon.png") -68px -139px no-repeat; margin-right: 8px; cursor: default;}
+#forward{display: block; width: 17px; height: 54px; position: absolute; top: 0; right: 0; background: url("../images/newicon.png") -51px -139px no-repeat; cursor: pointer;}
+#backward.on{background-position: -34px -139px; cursor: pointer;}
+#backward.off{background-position: -68px -139px; cursor: default;}
+#forward.on{background-position: -51px -139px; cursor: pointer;}
+#forward.off{background-position: -85px -139px; cursor: default;}
+
+/*商品基本信息*/
+.goodsinfo{width: 625px; padding-top: 5px;}
+.goodsinfo li{padding: 7px 0;}
+.goodsinfo li span{float: left; display: inline; width: 70px; text-align: right; margin-right: 3px;  color: #666;}
+.goodsinfo li.market_price em{text-decoration: line-through;}
+.goodsinfo li.shop_price strong{color: #c30; font-weight: bold; font-size: 14px;}
+.goodsinfo li a{color: #005aa0;}
+.goodsinfo li.star strong{display: inline-block; width:75px; height: 14px; margin: 1px 5px 0 0; background: url("../images/newicon.png") -109px -239px no-repeat;}
+.goodsinfo li.star4 strong{background-position: -124px -239px;}
+.goodsinfo li.star3 strong{background-position: -139px -239px;}
+.goodsinfo li.star2 strong{background-position: -154px -239px;}
+.goodsinfo li.star1 strong{background-position: -169px -239px;}
+
+/*选择购买选项*/
+.choose{width: 625px; border-top: 1px dotted #efefef; margin-top: 10px; padding-top:10px;}
+.choose li{height: 25px; line-height: 25px;} 
+.choose dt{float: left; display: inline; width: 70px; text-align: right; margin-right: 3px; color: #666; }
+.choose dd a{float: left; display: inline; padding: 1px 11px; background: #fff; border: 1px solid #ccc; text-align: center; color: #666; margin:0 5px 0 0; }
+
+.choose dd a:hover{text-decoration: none; border: 2px solid #e4393c; color:#E4393C; padding: 0px 10px;}
+.choose dd a.selected{border: 2px solid #e4393c; background: url("../images/arrow.gif") right bottom no-repeat; padding: 0 10px;}
+.choose input{display: none;}
+.choose .amount{float:left; display: inline; width: 30px; height: 16px; padding: 2px; border: 1px solid #ccc; text-align: center; margin: 0 5px; }
+
+#reduce_num{float: left; display: inline; width: 15px; height: 15px; border: 0; padding: 0; margin:0; background: url("../images/newicon.png") -216px -190px;position: relative; top:4px; }
+#add_num{float: left; display: inline; width: 15px; height: 15px; border: 0; padding: 0; margin:0;  background: url("../images/newicon.png") -232px -190px;position: relative; top:4px; }
+#reduce_num:hover{background-position: -216px -206px;}
+#add_num:hover{background-position: -232px -206px;}
+.choose input.add_btn{display: block; border: none; width: 137px; height: 38px; background: url("../images/p-btns.png") 0 0 no-repeat; cursor: pointer;}
+.choose .add_btn:hover{background: url("../images/p-btns.png") -157px 0 no-repeat ;}
+
+/*商品详情*/
+.detail{width: 989px; overflow: hidden;}
+.detail_hd{width: 988px; height: 31px;  border-right:1px solid #ccc; background:url("../images/newicon.png") 0 -286px repeat-x;}
+.detail_hd li{float: left; display: inline; height: 23px; padding: 6px 10px 0; font-size: 14px; font-weight: bolder; color: #666; border-right: 1px solid #ddd; cursor:pointer;}
+.detail_hd li.first{border-left:1px solid #ccc; }
+.detail_hd li.on{border:2px solid #BD0000; border-bottom: 0; background: #fff; color: #BD0000;}
+
+.detail_bd{width: 989px; overflow: hidden; clear: both;}
+
+.detail_bd .attr{width: 967px; padding: 10px; border:1px solid #efefef;  overflow: hidden;}
+.detail_bd .attr li{float: left; width: 320px; height: 28px; line-height: 28px; color: #666; }
+.detail_bd .desc{width: 969px; padding: 10px; text-align: center;}
+.detail_bd .after_sale{width: 989px; color: #666;}
+.detail_bd .after_sale div{width: 969px; padding: 10px; border-bottom: 1px dotted #ccc; }
+.detail_bd .after_sale div h3{color:#c30; font-weight: bolder;}
+.detail_bd .after_sale div p{ line-height: 20px; margin-bottom: 10px;}
+
+
+/*商品评论*/
+.comment_summary{border: 1px solid #e4e4e4; width: 967px; padding: 20px 10px 10px; overflow: hidden; }
+.rate{width: 200px; text-align: center;}
+.rate strong{ color: #e4393c; font-size: 24px;font-family: arial; padding-top: 20px;}
+.rate strong em{font-size: 46px; font-weight: 400; }
+.rate span{color: #999;}
+.percent{width: 200px; border-right:1px solid #e4e4e4; padding-top: 10px;}
+.percent dl{clear: both; padding: 5px 0;}
+.percent dt{float: left; width: 70px; color: #666;}
+.percent dd{float: left; width: 100px; height: 10px; background: #efefef;}
+.percent dd div{height:10px;background:-webkit-gradient(linear,0 0,0 100%,from(#ed0000),to(#a50000)); background: -moz-linear-gradient(top,#ed0000,#a50000); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed0000', endColorstr='#a50000');}
+.buyer{width: 400px; margin-left: 20px;}
+.buyer dt{color: #666;}
+.buyer dd{float: left; height: 21px; line-height: 21px; margin: 5px 5px 0 0; padding: 0 7px; background: #fdedd2;}
+.buyer dd em{color:#999;}
+
+.comment_items{width: 869px; padding: 0 0 0 120px; position: relative;}
+.comment_items .user_pic{width: 120px; position: absolute;left: 0; top:10px; text-align: center;}
+.comment_items .user_pic img{width: 50px; height: 50px; background: url("../images/bg_xiala.png") 0 0 no-repeat; padding: 8px;}
+.comment_items .user_pic a{ color: #005aa0; }
+.item{padding: 10px 15px 5px; width: 837px; border: 1px solid #d0e4c2; background: #fcfffa; overflow: hidden;}
+.cornor{width: 14px; height: 26px; background: url("../images/newicon201301028.png") -259px -47px no-repeat; position: absolute; left: 108px; top: 10px;}
+.item .title{ border-bottom: 1px solid #d0e4c2; height: 20px; line-height: 20px; margin-bottom: 10px;}
+.item .title span{float: right; color: #9C9A9C;}
+
+.item .star, .comment_form .star{display: inline-block; width:75px; height: 14px; margin: 1px 5px 0 0; background: url("../images/newicon.png") -109px -239px no-repeat;}
+.item .star4, .comment_form .star4{background-position: -124px -239px;}
+.item .star3, .comment_form .star3{background-position: -139px -239px;}
+.item .star2, .comment_form .star2{background-position: -154px -239px;}
+.item .star1, .comment_form .star1{background-position: -169px -239px;}
+
+.comment_content dl{padding: 4px 0;}
+.comment_content dt{float: left; display: inline; width: 62px; color: #9C9A9C; text-align: right;}
+.comment_content dd{color: #666;}
+.btns{clear: both;}
+.btns a{ float: right; display: inline; margin-left: 10px; height: 20px; line-height: 20px; padding: 0 10px; border:1px solid #d5d5d5; background: #fafafa;}
+
+
+.comment_form{width: 837px; border:1px solid #ccc; background: #FFFDEE; padding: 15px; margin-left: 120px;}
+.comment_form li{padding: 7px 0;}
+.comment_form li label{float: left;display: inline; width: 65px; text-align: right; position: relative; top:2px;}
+.comment_form textarea{width: 600px; height: 120px;}
+.comment_form .comment_btn{padding: 0 10px; height: 30px; line-height: 30px;}

@@ -1,0 +1,44 @@
+/*
+@功能：通用css
+@作者：diamondwang
+@时间：2013年11月7日
+*/
+
+/* 面包屑导航css 适用于商品列表页和商品详情页 */
+.breadcrumb{height: 30px; line-height: 30px; border-bottom: 1px solid #ddd; }
+.breadcrumb h2{padding-left: 0px;} 
+
+/*leftbar css  适用于商品列表页和商品详情页 */
+.leftbar{width: 211px;}
+.leftbar h2{height:39px; line-height: 39px; background: #f3f3f3; border: 1px solid #ddd; border-bottom: 0; border-radius: 5px 5px 0 0; -webkit-border-radius:5px 5px 0 0; }
+.leftbar h2 strong{font:bold 14px "microsoft yahei"; line-height: 38px; padding-left: 10px; }
+.leftbar h2 a{float: right; padding-right: 10px;color: #005EA7;}
+.leftbar_wrap{width:209px;border:1px solid #ddd; border-top: 0;}
+
+
+/*新品推荐css*/
+.newgoods ul{width:199px; padding: 5px;}
+.newgoods li{width: 199px; text-align: center; border-bottom: 1px dotted #ddd; padding-bottom: 5px;}
+.newgoods li.last{border-bottom: 0;}
+
+.newgoods dl img{width: 100px; height: 100px;}
+.newgoods dl dd{line-height: 18px;}
+.newgoods dl strong{color: #d00000; font-weight: bold;}
+
+
+
+/*最近浏览商品*/
+.viewd dl{width: 199px; text-align: center; border-bottom: 1px dotted #ddd; padding: 5px 0; margin: 0 5px; min-height: 50px;}
+.viewd dl.last{border-bottom: 0;}
+.viewd dl dt{float: left; width:50px; padding-left: 10px;}
+.viewd dl dd{float:left; width: 125px; text-align: left; padding: 10px 0 0 5px;}
+.viewd dl img{width:50px; height: 50px;}
+
+/*分页效果*/
+.page{width: 987px; text-align: right; height: 30px; padding: 5px 0;}
+.page a{padding: 4px 10px 5px; color: #005aa0; border:1px solid #ccc; font-size: 14px; background: #fff; border-radius: 3px;}
+.page a:hover, .page a.cur{background:#005aa0; color: #fff; text-decoration: none; }
+.page .page_num{display: inline-block; width: 36px; height: 21px; border-width: 1px; border-style: solid; border-color:#aaa #ddd #ddd #aaa; text-align: center;}
+
+.page .skipsearch{display: inline-block; width: 53px; height: 25px; line-height: 25px; padding:0; border:0; background: url("../images/20130415i.png") -126px -52px; color: #333; text-align: center;}
+.page .skipsearch:hover{background:transparent url("../images/20130415i.png") -126px -52px; color:#333;}

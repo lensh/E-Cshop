@@ -1,0 +1,50 @@
+/*
+@功能：登录页面及用户注册页面css
+@作者：diamondwang
+@时间：2013年11月11日
+*/
+
+/*登录部分css*/
+.login_hd{width: 990px; height: 33px;  background: url("../images/tit_regist.jpg") 0 -34px repeat-x; overflow: hidden;}
+.login_hd h2{ float: left; display: inline; height: 33px; line-height: 34px; font-weight: bolder; font-size: 14px; padding-left: 10px; background: url("../images/tit_regist.jpg") 0 0 no-repeat;}
+.login_hd b{float: right; display: inline; width: 10px; height: 33px; background:url("../images/tit_regist.jpg") right -68px  no-repeat;}
+.login_bd{width: 958px; overflow: auto; padding: 30px 0 30px 30px; border: 1px solid #D1D1D1; border-top: 0;}
+.login_form{width: 540px; color: #666; border-right: 1px solid #eee;}
+.login_form li{padding: 10px 0;}
+.login_form label{float: left; display: inline; width: 60px; text-align: right; position: relative; top: 7px; }
+.login_form .txt{width: 295px; height: 20px; padding: 5px; border: 1px solid #ccc;}
+.login_form .checkcode input{width: 100px; height: 20px; padding: 5px; border: 1px solid #ccc;}
+.login_form .checkcode img{width: 150px; height: 36px; vertical-align: top;}
+.login_form  a{color: #005aa0;}
+.login_form .chb{position: relative; top:2px; left: 2px;}
+
+.login_btn{width: 307px; height: 34px; border: 0; background: url("../images/login_img.png") 0 0 no-repeat; cursor: pointer;}
+.login_btn:hover{background-position: 0 -34px;}
+
+.coagent dd{ float: left; display: inline; padding-right: 10px; }
+.coagent dl{line-height: 20px;}
+.coagent span{display: inline-block; width: 16px; height: 16px; background: url("../images/icon_cologin.png") 0 0 no-repeat; position: relative; top:3px; margin-right: 2px;}
+.qq span{background-position: 0 -20px;}
+.yi span{background-position: -20px -40px;}
+.renren span{background-position: -40px 0;}
+.qihu span{background-position: -40px -60px;}
+.baidu span{background-position: 0 -40px;}
+.douban span{background-position: -20px -60px;}
+.fetion span{background-position: 0 -60px;}
+
+.guide{ width: 350px; height:250px; padding-left:50px; }
+.guide h3{font-weight: bold;}
+.guide p{color: #666; margin:20px 0; line-height: 20px; }
+.reg_btn{margin-left: 100px; display: block; width: 140px; height: 32px; line-height: 32px; background:#7cbe56; color: #fff; font-size: 14px; text-align: center; border-radius: 3px;}
+.reg_btn:hover{background-color: #89c964; color: #fff; text-decoration: none;}
+
+/*注册部分css*/
+.regist .login_form{width: 630px; border: 0; }
+.regist .login_btn{ background: url("../images/regist_img.png") 0 0 no-repeat;}
+.regist .login_btn:hover{background-position: 0 -34px;}
+.regist .login_form p{color: #aaa; margin-left: 60px; margin-top: 5px;}
+.mobile{width:260px; padding: 10px 20px; border: 1px solid #e5e5e5;}
+
+.mobile h3{width: 260px;  height: 85px; padding-bottom: 25px; background: url("../images/reg_mobile.png") center center no-repeat;  text-indent: -9999px; border-bottom: 2px solid #ededed;}
+.mobile p{text-align: center; line-height: 25px; color: #999;}
+.mobile p strong{color:#e4393c; font-weight: bolder; font-family: Verdana,Arial; font-size: 16px;}

@@ -1,0 +1,13 @@
+/*
+@功能：订单提交成功页面css
+@作者：diamondwang
+@时间：2013年11月12日
+*/
+.success_hd{height: 36px; line-height: 36px;  background: url("../images/sort_bg.png") 0 0 repeat-x;border: 1px solid #E7E3E7; border-top: 2px solid #CE0000; border-bottom: 0;}
+.success_hd h2{padding-left: 10px; font-weight: 700; font-size: 16px; font-family: "microsoft yahei"; color: #444;}
+
+.success_bd{width: 968px; border:1px solid #E7E3E7; border-top: 0; padding: 30px 10px;}
+.success_bd p{font-size: 16px; text-align: center; font-weight: bolder; color: #8CBD75;}
+.success_bd p span{display: inline-block; width: 36px; height: 36px; background: url("../images/bg_icons.png") 0 -304px; margin-right: 5px; position: relative; top:10px;}
+.success_bd p.message{width: 968px;  border-top: 1px dotted #eee; padding-top:20px; margin-top: 20px; font-size: 12px; font-weight: normal; color: #666; }
+.success_bd p.message a{color: #005aa0;}

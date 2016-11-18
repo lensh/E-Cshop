@@ -1,0 +1,28 @@
+/*
+@功能：收货地址页面css
+@作者：diamondwang
+@时间：2013年11月15日
+*/
+
+.address_hd{width: 988px; border: 1px solid #e6e6e6; overflow: hidden;}
+.address_hd h3{height: 33px; line-height: 33px; border-bottom: 2px solid #c30; font-size: 14px; color:#cc0000; margin-bottom: 8px; font-weight: bold; padding-left: 20px;}
+.address_hd dl{width:948px; clear: both; margin: 0 20px 5px; border-bottom: 1px dotted #eee; padding-bottom: 10px;}
+.address_hd dl.last{ border-bottom: 0;}
+.address_hd dt{line-height: 25px;}
+.address_hd dd{line-height: 25px; padding-right: 7px; color: #999;}
+.address_hd dd a{color: #005ea7;}
+
+
+.address_bd{border:1px solid #e6e6e6;}
+.address_bd h4{ height: 30px; line-height: 30px; font-weight: bold; padding-left: 20px;}
+.address_bd form{ padding-left: 20px;}
+.address_bd li{padding: 5px 0;}
+.address_bd label {float: left; display: inline; width: 70px; position: relative; top:5px;}
+.address_bd label span{color: #c30; margin-right: 4px;}
+.address_bd form li{padding: 5px 0;}
+.address_bd .txt{ width: 250px; height: 26px; padding:0 5px;  border: 1px solid #ccc; }
+.address_bd input.address{width: 450px;}
+
+.address_bd select{height: 24px; padding-top: 3px;}
+.address_bd .check{position: relative; top:2px; margin-right: 2px;}
+.address_bd .btn{width: 60px; height: 25px;}

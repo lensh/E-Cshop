@@ -1,0 +1,17 @@
+/*
+@功能：用户中心公共css
+@作者：diamondwang
+@时间：2013年11月15日
+*/
+
+.crumb{height: 30px;}
+.crumb h2 strong{font-size: 16px; font-weight: bolder;}
+.menu{width: 210px;}
+.menu h3{width: 200px; height: 32px; line-height: 32px; font-weight: bold; font-size: 14px; color: #fff; padding-left:10px;  background: #ccc; border-top: 2px solid #b5b5b5;}
+.menu_wrap{width:208px; border:1px solid #e6e6e6; border-top: 0; }
+.menu_wrap dt{background: #f1f1f1; height: 28px; line-height: 28px; font-weight: bolder; padding-left: 10px; margin-bottom: 1px; position: relative; cursor: pointer;}
+.menu_wrap dt b{display: block; width: 9px; height: 5px; overflow: hidden; background: url("../images/jdleft.png") -64px 0 no-repeat; position: absolute; left:180px; top:12px;}
+.menu_wrap dt b.off{background-position: -64px -6px;}
+.menu_wrap dd{line-height: 25px; padding-left: 10px;} 
+.menu_wrap dd.cur{font-weight: bold;}
+.menu_wrap dd b{font-family: Arial; color: #aaa; font-size: 14px; margin-right: 5px;}

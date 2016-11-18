@@ -1,0 +1,46 @@
+/*
+@功能：购物车页面css
+@作者：diamondwang
+@时间：2013年11月11日
+*/
+
+.mycart{overflow: auto;}
+.mycart h2{width: 190px; height: 50px; background: url("../images/cart_001.gif") 0 0 no-repeat;}
+.mycart h2 span{display: none;}
+.mycart table{width: 100%; border: 1px solid #E7E3E7; border-top: 2px solid #CE0000; background: #FFFDEE; color: #666;}
+.mycart thead{height: 36px; line-height: 36px;  background: url("../images/sort_bg.png") 0 0 repeat-x;}
+.mycart th{text-align: center; font-weight: bold;}
+.mycart tbody td{border-bottom: 1px solid #E7E3E7;}
+.mycart td{text-align: center;}
+.mycart .col1{width: 40%;}
+.mycart .col2{width: 20%;}
+.mycart .col3{width: 10%;}
+.mycart .col4{width: 10%;}
+.mycart .col5{width: 10%;}
+.mycart .col6{width: 10%;}
+.mycart tbody img{width: 80px; height: 80px;border: 1px solid #eee; vertical-align: middle; float: left; display: inline; margin-right: 10px;}
+.mycart td.col1{text-align: left; padding: 10px 0 10px 10px;}
+.mycart td.col1 strong{display: inline-block; float: left; width: 280px; margin-top: 25px; }
+.mycart td.col2{text-align: left; padding-left: 60px;}
+
+.mycart td.col4{padding-left: 10px;}
+.mycart .amount{float:left; display: inline; width: 30px; height: 16px; padding: 2px; border: 1px solid #ccc; text-align: center; margin: 0 5px; }
+
+.reduce_num{float: left; display: inline; width: 15px; height: 15px; border: 0; padding: 0; margin:0; background: url("../images/newicon.png") -216px -190px;position: relative; top:4px; }
+.add_num{float: left; display: inline; width: 15px; height: 15px; border: 0; padding: 0; margin:0;  background: url("../images/newicon.png") -232px -190px;position: relative; top:4px; }
+.reduce_num:hover{background-position: -216px -206px;}
+.add_num:hover{background-position: -232px -206px;}
+
+.mycart td.col5{color:#e4393c; font-weight: bolder; font-family: Verdana,Arial;}
+.mycart tfoot tr{height: 36px; line-height: 36px;background: url("../images/sort_bg.png") 0 0 repeat-x;}
+
+.mycart .col6 a{color: #005aa0;}
+
+.mycart tfoot td{text-align: right; padding-right: 30px; }
+.mycart tfoot td strong{color:#e4393c; font-weight: bolder; font-family: Verdana,Arial;}
+
+.cart_btn{height: 36px;}
+.cart_btn .checkout{width: 135px; height: 36px; line-height: 36px; text-align: center; font-size: 18px; color: #fff; font-weight: bold; float: right; display: inline-block; background: url("../images/btn_check.jpg") 0 0 no-repeat;}
+.cart_btn .checkout:hover{ text-decoration: none; background-position: 0 -36px; color:#fff;}
+.cart_btn .continue{width: 94px; height: 36px; float: left; display: inline; line-height: 36px; text-align: center; background: url("../images/btn_continue.png") 0 0 no-repeat;}
+.cart_btn .continue:hover{text-decoration: none; background-position: 0 -36px;}

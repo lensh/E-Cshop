@@ -1,0 +1,73 @@
+/*
+@功能：填写并核对订单页面css
+@作者：diamondwang
+@时间：2013年11月12日
+*/
+.fillin_hd{height: 36px; line-height: 36px;  background: url("../images/sort_bg.png") 0 0 repeat-x;border: 1px solid #E7E3E7; border-top: 2px solid #CE0000; border-bottom: 0;}
+.fillin_hd h2{padding-left: 10px; font-weight: 700; font-size: 16px; font-family: "microsoft yahei"; color: #444;}
+
+.fillin_bd{width: 958px; border: 1px solid #E7E3E7; border-width: 0 1px; padding: 0 15px;color: #666;}
+.address,.delivery,.pay,.receipt{width:958px; padding: 10px 0; border-bottom: 1px dotted #ddd;}
+.goods{width:958px; padding: 10px 0;}
+.fillin_bd h3{font-size: 14px; font-weight:bold; height: 36px; line-height: 36px; color: #333;}
+.fillin_bd p{line-height: 20px;}
+.fillin_bd h3 a{font-size: 12px; font-weight: 100; color: #005aa0;}
+.address li{padding: 4px 0;}
+.address li a{color: #005aa0;}
+.address label {float: left; display: inline; width: 70px; position: relative; top:5px;}
+.address label span{color: #c30; margin-right: 4px;}
+.address form li{padding: 5px 0;}
+.address .txt{ width: 250px; height: 18px; padding: 3px; border: 1px solid #ccc; }
+.address input.address{width: 450px;}
+.address li.cur{background: #fff4d3;}
+.confirm_btn{display: inline-block; height: 30px; margin-top: 10px;background: url("../images/btn_fillin.png") 0 0 no-repeat; padding-left: 30px; cursor: pointer;}
+.confirm_btn span{display: inline-block; height: 30px; line-height: 30px; background: url("../images/btn_fillin.png") right -30px no-repeat; padding-right: 30px; color: #fff; font-size: 14px; font-weight: bolder;}
+
+
+.confirm_btn:hover{background-position: 0 -60px; }
+.confirm_btn:hover span{background-position: 0 -90px;}
+.delivery_select table{width: 100%;}
+.delivery_select table td{padding: 4px 0;}
+.delivery_select .col1{width: 35%;}
+.delivery_select .col2{width: 15%;}
+.delivery_select .col3{width: 50%;}
+.delivery_select .cur{background: #fff4d3;}
+
+.pay_select td{padding: 4px 0;}
+.pay_select .col1{width: 20%;}
+.pay_select .col2{width: 80%;}
+.pay_select table{width: 100%;}
+.pay_select .cur{background: #fff4d3;}
+
+.receipt_select li{padding: 4px 0;}
+.receipt_select .txt{width: 250px; height: 18px; padding: 3px; border: 1px solid #ccc;}
+
+/*radio效果修正*/
+input[type='radio']{position: relative; top:2px; margin-right: 2px;}
+
+/*商品信息css*/
+.goods table{width: 100%;}
+.goods thead{background: #ddd; height: 35px; line-height: 35px; }
+.goods thead th{text-align: center;font-weight: 500;}
+.goods tbody td{text-align: center; border-bottom: 1px dotted #E7E3E7;}
+.goods .last td{border-bottom: 0;}
+.goods .col1{width: 50%;}
+.goods .col2{width: 20%;}
+.goods .col3{width: 10%;}
+.goods .col4{width: 10%;}
+.goods .col5{width: 10%;}
+.goods tbody img{width: 80px; height: 80px;border: 1px solid #eee; vertical-align: middle; float: left; display: inline; margin-right: 10px;}
+.goods td.col1{text-align: left; padding: 10px 0 10px 10px;}
+.goods td.col1 strong{display: inline-block; float: left; width: 280px; margin-top: 25px; }
+.goods td.col2{text-align: left; padding-left: 60px;}
+.goods tfoot td{text-align: right;padding-top: 10px;}
+.goods tfoot li{line-height: 25px; clear: both;}
+.goods tfoot li span{width: 100px; }
+.goods tfoot li em{display: inline-block; width: 50px; text-align: right;}
+
+.fillin_ft{width: 988px; height: 50px; background: #f5f5f5;  border:1px solid #E7E3E7; border-top: 0;  text-align: right;}
+.fillin_ft p{font-size: 16px; font-weight:bold; color: #666; float: right; display: inline; line-height: 50px;}
+.fillin_ft p strong{color:#e4393c; font-family: Verdana,Arial;}
+.fillin_ft a{float: right; display: inline; width: 135px; height: 36px; background: url("../images/order_btn.jpg") 0 0 no-repeat; vertical-align: middle; margin: 7px 10px 0;}
+.fillin_ft a span{display: none;}
+.fillin_ft a:hover{background-position: 0 -36px;}

@@ -1,0 +1,15 @@
+/*
+@功能：账户信息css
+@作者：diamondwang
+@时间：2013年11月15日
+*/
+
+
+.user_hd{width: 988px; border: 1px solid #e6e6e6; overflow: hidden; border-bottom: 0;}
+.user_hd h3{height: 33px; line-height: 33px; border-bottom: 2px solid #c30; font-size: 14px; color:#cc0000; font-weight: bold; padding-left: 20px;}
+
+.user_bd form li{padding: 10px 0;}
+.user_bd form li label{width: 70px; float: left; display: inline; text-align: right; color: #666; position: relative; top:5px;}
+.user_bd form li strong{font-weight: 600; color: #333; position: relative; top:5px;	}
+.user_bd form .txt{width: 250px; border-width: 1px; border-style: solid; border-color:#aaa #ddd #ddd #aaa; padding: 5px; height: 26px; padding:0 5px; }
+.user_bd form .sbtn{width: 60px; height: 25px;}

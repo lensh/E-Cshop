@@ -1,0 +1,77 @@
+/*
+@功能：首页css
+@作者：diamondwang
+@时间：2013年11月7日
+*/
+
+
+
+/*左侧内容css*/
+.list_left{width: 211px;}
+
+/*分类信息css*/
+.catlist{width: 211px;}
+.catlist h2{height: 30px; line-height: 30px; background: url("../images/bg_tit_home.gif") 0 0 no-repeat; font-weight: bold; font-size: 14px; color: #fff; padding-left: 7px;}
+.catlist_wrap{width: 209px; border:1px solid #118DCB; background: #fffff5; border-top: 0;}
+.child{width: 207px; padding:0 1px; clear: both;}
+.child h3{width: 200px; padding-left:5px; height: 21px; line-height: 21px; background: url("../images/bg_hotsale.gif") 0 -655px repeat-x; border:1px solid #efefef; cursor: pointer; font-size: 14px; font-weight: bold;}
+.child h3 b{width: 14px; height: 14px; float: right; display: inline; background: url("../images/bg_hotsale.gif") right -480px no-repeat; margin: 3px 5px 0 0; overflow: hidden;}
+.child .on b{background-position: right -466px;}
+.child ul{width:200px; padding:3px 0 5px 7px;overflow: auto;}
+.child ul li{float: left; display: inline; width: 100px; height: 22px; line-height: 22px;}
+
+
+/*热销排行榜*/
+
+
+/*右边内容*/
+/*顶部热卖推荐*/
+.list_bd{width: 989px;}
+.list_top{width: 989px; height: 155px; background: url("../images/bg_hotsale.gif") 0 -156px repeat-x; }
+.hotsale{width: 770px; height: 129px; padding:16px 0 10px 30px; background: url("../images/bg_hotsale.gif") 0 0 no-repeat;position: relative; top:-1px; left:-1px; overflow: hidden; z-index: 10;}
+.promote{width: 189px; height: 139px; padding: 16px 0 0 0; background:  url("../images/bg_hotsale.gif") right -311px no-repeat;}
+.hotsale h2{width: 770px; height: 26px;}
+.hotsale h2 strong{display: inline-block; width: 60px; height: 16px; margin-left: 20px; background: url("../images/bg_hotsale.gif") 0 -597px no-repeat;}
+.hotsale li{float: left;width: 250px;}
+.hotsale li dt{float: left; margin-right: 5px;}
+.hotsale li dt img{width: 100px; height: 100px;}
+.hotsale li dd{padding-top:6px;}
+.hotsale .name{}
+.hotsale .name a{color:#005aa0;}
+.hotsale .price{color: #999;}
+.hotsale .price strong{color: #c00; font-weight: bold; }
+.hotsale .buy span{display: inline-block; width: 72px; height: 25px; line-height: 25px; text-align: center; color: #fff; background: #E4393C; border-radius: 3px; -webkit-border-radius:3px; cursor:pointer;}
+
+.promote h2{width: 189px; height: 26px;}
+.promote h2 strong{display: inline-block; width: 60px; height: 16px; margin-left: 15px; background: url("../images/bg_hotsale.gif") 0 -614px no-repeat;}
+.promote li{line-height: 20px; padding-left: 15px;}
+.promote li b{font-family: Arial; font-size: 14px; margin-right: 4px; position: relative; top:-3px;}
+
+
+/*商品筛选*/
+.filter{width:989px;}
+.filter h2{width:989px; height: 28px; line-height: 28px; background: url("../images/bg_hotsale.gif") 0 -552px repeat-x; border-top:2px solid #EED97C; }
+.filter h2 strong{color: #C30; font-size: 14px; font-weight: bold; padding-left: 10px;}
+.filter h2 a{float: right; display: inline; margin-right: 7px; color:#005aa0;}
+.filter dl{width: 917px; border-bottom: 1px dotted #E7CDAE; padding: 8px 0 8px 70px; position: relative; clear:both; overflow: auto;}
+.filter dl.last{border-bottom: none;}
+.filter dl dt{position: absolute; left:0px; top:8px; font-weight: bold; width: 70px; text-align: right;  height: 22px; line-height: 22px; color:#666;}
+.filter dl dd{width:170px; float: left; display: inline; height: 20px; line-height: 20px;}
+.filter dl dd a{color:#005aa0;}
+.filter dl dd.cur a,.filter dl dd a:hover{background: #4598D2; color:#fff; text-decoration: none;}
+
+/*排序*/
+.sort{width:987px; height: 36px; line-height: 36px; border: 1px solid #E7E3E7; border-top: 2px solid #CE0000; background: url("../images/sort_bg.png") 0 0 repeat-x;}
+.sort dt{float: left; display: inline; padding-left: 10px; }
+.sort dd{float: left; padding: 0 10px; height: 24px; line-height: 24px; margin:5px 5px 0 0; border:1px solid #CECBCE; background: url("../images/sort_bg.png") 0 -80px repeat-x; cursor:pointer;}
+.sort dd a{display: block; color: #666;}
+.sort dd.cur{border:1px solid #990000; background: #cc0000;}
+.sort dd.cur a{color:#fff; font-weight: bold;}
+
+/*商品列表*/
+.goodslist{width: 989px; overflow: auto;}
+.goodslist li{float:left; display: inline; width: 225px; text-align: center; padding: 10px;}
+.goodslist li img{width: 160px; height: 160px;}
+.goodslist dd{padding: 5px 0;}
+.goodslist strong{color: #c30; font-weight: bolder; }
+.goodslist em{color:#005aa0;}
