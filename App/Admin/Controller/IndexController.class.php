@@ -1,8 +1,9 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
-
-class IndexController extends Controller {
+/**
+ * 后台首页控制器
+ */
+class IndexController extends BaseController{
 
 	public function index(){
 		$this->display();

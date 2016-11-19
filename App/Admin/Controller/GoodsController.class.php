@@ -1,8 +1,9 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
-
-class GoodsController extends Controller {
+/**
+ * 商品控制器
+ */
+class GoodsController extends BaseController{
 
     /**
      * 发布商品信息
