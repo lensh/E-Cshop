@@ -1,0 +1,64 @@
+<layout name="Index/header_footer" />
+<div class="main-div">
+    <form name="main_form" method="POST" action="__SELF__" enctype="multipart/form-data" >
+    	<input type="hidden" name="<?php echo $config['pk']; ?>" value="<?php echo "<?php echo \$data['{$config['pk']}']; ?>"; ?>" />
+<?php foreach ($config['fields'] as $k => $v):if($v['type'] == 'file'):
+    			foreach ($v['save_fields'] as $k1 => $v1): ?>
+		<input type="hidden" name="old_<?php echo $v1; ?>" value="<?php echo "<?php echo \$data['{$v1}']; ?>"; ?>" />
+<?php endforeach; ?>
+<?php endif;endforeach; ?>
+        <table cellspacing="1" cellpadding="3" width="100%">
+<?php if($config['digui'] == 1): ?>
+			<tr>
+				<td class="label">上级权限：</td>
+				<td>
+					<select name="parent_id">
+						<option value="0">顶级权限</option>
+						<?php echo "<?php foreach (\$parentData as \$k => \$v): ?>"; ?> 
+						<?php echo "<?php if(\$v['{$config['pk']}'] == \$data['{$config['pk']}'] || in_array(\$v['{$config['pk']}'], \$children)) continue ; ?>"; ?> 
+						<option <?php echo "<?php if(\$v['{$config['pk']}'] == \$data['parent_id']): ?>"; ?>selected="selected"<?php echo "<?php endif; ?>"; ?> value="<?php echo "<?php echo \$v['{$config['pk']}']; ?>"; ?>"><?php echo "<?php echo str_repeat('-', 8*\$v['level']).\$v['{$config['diguiName']}']; ?>"; ?></option>
+						<?php echo "<?php endforeach; ?>"; ?>
+					</select>
+				</td>
+			</tr>
+<?php endif; ?>
+<?php foreach ($config['fields'] as $k => $v):if($v['type']=='null' || ($config['digui'] == 1 && 'parent_id' == $k)) continue; ?>
+            <tr>
+                <td class="label"><?php echo $v['text']; ?>：</td>
+                <td>
+<?php if($v['type'] == 'text'): ?>
+                    <input <?php if((strpos($k, 'time') !== FALSE) || (strpos($k, 'date') !== FALSE)) echo 'id="'.$k.'"'; ?> type="text" name="<?php echo $k; ?>" value="<?php echo "<?php echo \$data['$k']; ?>"; ?>" />
+<?php elseif($v['type'] == 'password'): ?>
+                    <input type="password" size="25" name="<?php echo $k; ?>" />
+<?php elseif ($v['type'] == 'file'): ?>
+                	<input type="file" name="<?php echo $k; ?>" /><br /> 
+                	<?php echo "<?php showImage(\$data['$k'], 100); ?>"; ?>
+<?php elseif ($v['type'] == 'html'): ?>
+                	<textarea id="<?php echo $k; ?>" name="<?php echo $k; ?>"><?php echo "<?php echo \$data['$k']; ?>"; ?></textarea>
+<?php elseif ($v['type'] == 'radio'): $_i = 0; foreach ($v['values'] as $k1 => $v1): ?>
+                	<input type="radio" name="<?php echo $k; ?>" value="<?php echo $k1; ?>" <?php echo "<?php if(\$data['$k'] == '$k1') echo 'checked=\"checked\"'; ?>"; ?> /><?php echo $v1; ?> 
+<?php $_i++;endforeach;endif; ?>
+                </td>
+            </tr>
+<?php endforeach; ?>
+            <tr>
+                <td colspan="99" align="center">
+                    <input type="submit" class="button" value=" 确定 " />
+                    <input type="reset" class="button" value=" 重置 " />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script>
+<?php foreach ($config['fields'] as $k => $v):if((strpos($k, 'time') !== FALSE) || (strpos($k, 'date') !== FALSE)): ?>
+$("#<?php echo $k; ?>").datepicker(); 
+<?php endif;endforeach; ?>
+<?php foreach ($config['fields'] as $k => $v):if($v['type'] == 'html'): ?>
+UE.getEditor('<?php echo $k; ?>', {
+	"initialFrameWidth" : "100%",   // 宽
+	"initialFrameHeight" : 80,      // 高
+	"maximumWords" : 10000            // 最大可以输入的字符数量
+});
+<?php endif;endforeach; ?>
+</script>

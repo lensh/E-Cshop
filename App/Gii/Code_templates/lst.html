@@ -1,0 +1,70 @@
+<layout name="Index/header_footer" />
+<?php if($config['search']): ?>
+<!-- 搜索 -->
+<div class="form-div search_form_div">
+    <form method="GET" name="search_form">
+<?php foreach ($config['search'] as $k => $v): ?>
+		<p>
+			<?php echo $v[4]; ?>：
+<?php if($v[1] == 'normal'): ?>
+	   		<input type="text" name="<?php echo $v[0]; ?>" size="30" value="<?php echo "<?php echo I('get.{$v[0]}'); ?>"; ?>" />
+<?php elseif(strpos($v[1], 'between') === 0):
+$_arr = explode(',', $v[2]);?>
+	   		从 <input id="<?php echo $_arr[0]; ?>" type="text" name="<?php echo $_arr[0]; ?>" size="15" value="<?php echo "<?php echo I('get.{$_arr[0]}'); ?>"; ?>" /> 
+		    到 <input id="<?php echo $_arr[1]; ?>" type="text" name="<?php echo $_arr[1]; ?>" size="15" value="<?php echo "<?php echo I('get.{$_arr[1]}'); ?>"; ?>" />
+<?php elseif($v[1] == 'in'): ?>
+			<input type="radio" value="-1" name="<?php echo $v[0]; ?>" <?php echo "<?php if(I('get.{$v[0]}', -1) == -1) echo 'checked=\"checked\"'; ?>"; ?> /> 全部 
+<?php $_arr = explode(',', $v[2]);
+foreach ($_arr as $v1): $_v2 = explode('-', $v1); ?>
+			<input type="radio" value="<?php echo $_v2[0]; ?>" name="<?php echo $v[0]; ?>" <?php echo "<?php if(I('get.{$v[0]}', -1) == '{$_v2[0]}') echo 'checked=\"checked\"'; ?>"; ?> /> <?php echo $_v2[1]; ?> 
+<?php endforeach; ?>
+<?php endif; ?>
+		</p>
+<?php endforeach; ?>
+		<p><input type="submit" value=" 搜索 " class="button" /></p>
+    </form>
+</div>
+<?php endif; ?>
+<!-- 列表 -->
+<div class="list-div" id="listDiv">
+	<table cellpadding="3" cellspacing="1">
+    	<tr>
+<?php foreach ($config['fields'] as $k => $v): ?>
+            <th <?php if($k == 'order_num' || (strpos($v['Type'], 'enum') !== FALSE)) echo 'width="40"'; ?><?php if(strpos($v['Type'], 'time') !== FALSE) echo ' width="120"'; ?>><?php echo $v['text']; ?></th>
+<?php endforeach; ?>
+			<th width="60">操作</th>
+        </tr>
+		<?php echo '<?php foreach ($data as $k => $v): ?>'; ?>            
+			<tr class="tron">
+<?php foreach ($config['fields'] as $k => $v): ?>
+<?php if(preg_match('/(image|logo|face|img|pic)/', $v['Field'])): ?>
+				<td><?php echo "<?php showImage(\$v['$k']); ?>"; ?></td>
+<?php else: ?>
+				<td><?php if($config['digui']==1 && $config['diguiName']==$k) echo "<?php echo str_repeat('-', 8*\$v['level']); ?>"; ?><?php echo "<?php echo \$v['$k']; ?>"; ?></td>
+<?php endif; ?>
+<?php endforeach; ?>
+		        <td align="center">
+		        	<a href="<?php echo '<?php echo U(\'edit?'.$config['pk'].'=\'.$v[\''.$config['pk'].'\'].\'&p=\'.I(\'get.p\')); ?>'; ?>" title="编辑">编辑</a> |
+	                <a href="<?php echo '<?php echo U(\'delete?'.$config['pk'].'=\'.$v[\''.$config['pk'].'\'].\'&p=\'.I(\'get.p\')); ?>'; ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
+		        </td>
+	        </tr>
+        <?php echo '<?php endforeach; ?>'; ?> 
+<?php if($config['digui'] == 0): ?>
+		<?php echo "<?php if(preg_match('/\d/', \$page)): ?> "; ?> 
+        <tr><td align="right" nowrap="true" colspan="99" height="30"><?php echo '<?php echo $page; ?>'; ?></td></tr> 
+        <?php echo "<?php endif; ?>"; ?> 
+<?php endif; ?>
+	</table>
+</div>
+<script>
+<?php 
+foreach ($config['search'] as $k => $v){
+	if($v[1] == 'betweenTime')
+	{
+		$_arr = explode(',', $v[2]);
+		echo "$('#{$_arr[0]}').datepicker(); ";
+		echo "$('#{$_arr[1]}').datepicker(); ";
+	}
+}
+?>
+</script>
