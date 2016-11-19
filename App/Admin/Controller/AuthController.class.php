@@ -4,6 +4,7 @@ class AuthController extends BaseController
 {
     public function add()
     {
+        /*
     	if(IS_POST)
     	{
     		$model = D('Admin/Auth');
@@ -22,10 +23,12 @@ class AuthController extends BaseController
 		$this->assign('parentData', $parentData);
 
 		$this->setPageBtn('添加权限', '权限列表', U('lst?p='.I('get.p')));
+        */
 		$this->display();
     }
     public function edit()
     {
+        /*
     	$id = I('get.id');
     	if(IS_POST)
     	{
@@ -52,6 +55,7 @@ class AuthController extends BaseController
 		));
 
 		$this->setPageBtn('修改权限', '权限列表', U('lst?p='.I('get.p')));
+        */
 		$this->display();
     }
     public function delete()
@@ -69,6 +73,7 @@ class AuthController extends BaseController
     }
     public function lst()
     {
+        /*
     	$model = D('Admin/Auth');
 		$data = $model->getTree();
     	$this->assign(array(
@@ -76,6 +81,7 @@ class AuthController extends BaseController
     	));
 
 		$this->setPageBtn('权限列表', '添加权限', U('add'));
+        */
     	$this->display();
     }
 }

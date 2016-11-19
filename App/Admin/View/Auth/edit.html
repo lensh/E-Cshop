@@ -1,57 +1,29 @@
-<layout name="Index/header_footer" />
-<div class="main-div">
-    <form name="main_form" method="POST" action="__SELF__" enctype="multipart/form-data" >
-    	<input type="hidden" name="id" value="<?php echo $data['id']; ?>" />
-        <table cellspacing="1" cellpadding="3" width="100%">
-			<tr>
-				<td class="label">上级权限：</td>
-				<td>
-					<select name="parent_id">
-						<option value="0">顶级权限</option>
-						<?php foreach ($parentData as $k => $v): ?> 
-						<?php if($v['id'] == $data['id'] || in_array($v['id'], $children)) continue ; ?> 
-						<option <?php if($v['id'] == $data['parent_id']): ?>selected="selected"<?php endif; ?> value="<?php echo $v['id']; ?>"><?php echo str_repeat('-', 8*$v['level']).$v['auth_name']; ?></option>
-						<?php endforeach; ?>					</select>
-				</td>
-			</tr>
-            <tr>
-                <td class="label">权限名称：</td>
-                <td>
-                    <input  type="text" name="auth_name" value="<?php echo $data['auth_name']; ?>" />
-                </td>
-            </tr>
-            <tr>
-                <td class="label">模块名称：</td>
-                <td>
-                    <input  type="text" name="module_name" value="<?php echo $data['module_name']; ?>" />
-                </td>
-            </tr>
-            <tr>
-                <td class="label">控制器名称：</td>
-                <td>
-                    <input  type="text" name="controller_name" value="<?php echo $data['controller_name']; ?>" />
-                </td>
-            </tr>
-            <tr>
-                <td class="label">方法名称：</td>
-                <td>
-                    <input  type="text" name="action_name" value="<?php echo $data['action_name']; ?>" />
-                </td>
-            </tr>
-            <tr>
-                <td class="label">上级权限的ID，0：代表顶级权限：</td>
-                <td>
-                    <input  type="text" name="pid" value="<?php echo $data['pid']; ?>" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="99" align="center">
-                    <input type="submit" class="button" value=" 确定 " />
-                    <input type="reset" class="button" value=" 重置 " />
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
-<script>
-</script>
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+        <title>管理中心 - 编辑权限</title>
+</block>
+<!--具体操作-->
+<block name="action">
+        <span id="search_id"> - 编辑权限</span>
+</block>
+<!-- 列表 -->
+<block name="main">
+    <div class="main-div">
+        <form style="margin:5px"
+        method="POST" action="__SELF__" enctype="multipart/form-data">
+        <p>上级权限：<select name="parent_id">
+                            <option value="0">顶级权限</option>
+                            <?php foreach ($parentData as $k => $v): ?>                     <option value="<?php echo $v['id']; ?>"><?php echo str_repeat('-', 8*$v['level']).$v['auth_name']; ?></option>
+                            <?php endforeach; ?>                    
+                    </select>
+        </p>
+        <p>权限名称：<input  type="text" name="auth_name" value="" /></p>
+        <p>模块名称：<input  type="text" name="module_name" value="" /></p>
+        <p>控制器名称：<input  type="text" name="controller_name" value="" /></p>
+        <p>方法名称：<input  type="text" name="action_name" value="" /></p>
+        <p>上级权限的ID，0：代表顶级权限：<input  type="text" name="pid" value="0" /></p>
+        <input type="submit" class="btn btn-primary" value=" 确定 " />   
+        </form>
+    </div>
+</block>
