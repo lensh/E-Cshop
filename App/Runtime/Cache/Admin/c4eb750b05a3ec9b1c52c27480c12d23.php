@@ -3,12 +3,12 @@
 <head>
 <title>管理中心 - 添加新商品 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="/Shop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
-<link href="/Shop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
-<link href="/Shop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" charset="utf-8" src="/Shop/Public/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="/Shop/Public/ueditor/ueditor.all.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/Shop/Public/ueditor/lang/zh-cn/zh-cn.js"></script>
+<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="/E-Cshop/Public/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/E-Cshop/Public/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/E-Cshop/Public/ueditor/lang/zh-cn/zh-cn.js"></script>
 <style type="text/css">
 h1{font-size: 14px}
 a{color:#9cf !important}
@@ -28,7 +28,7 @@ a{color:#9cf !important}
         </p>
     </div>
     <div id="tabbody-div">
-      <form method="POST" action="/Shop/Goods/add.html" enctype="multipart/form-data">
+      <form method="POST" action="/E-Cshop/Goods/add.html" enctype="multipart/form-data">
         商品名称:<input type="text" name="goods_name" /><br />
         商品价格:<input type="text" name="price" /><br />
         商品logo:<input type="file" name="logo" /><br />

@@ -20,6 +20,10 @@ class LoginController extends Controller {
 				$this->error($model->getError());
 			}
 		}
+		if(session('id')){  //如果已经登陆
+			$this->redirect('Admin/Index/index');
+			return;
+		}
 		$this->display();
 	}
 

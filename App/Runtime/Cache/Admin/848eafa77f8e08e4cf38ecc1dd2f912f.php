@@ -133,8 +133,8 @@
 <div id="menu-div">
     <ul>
         <li class="fix-spacel">&nbsp;</li>
-        <li><a href="__GROUP__/Index/main" target="main-frame">起始页</a></li>
-        <li><a href="__GROUP__/Goods/goodsList" target="main-frame">商品列表</a></li>
+        <li><a href="<?php echo U('main');?>" target="main-frame">起始页</a></li>
+        <li><a href="<?php echo U('Goods/lst');?>" target="main-frame">商品列表</a></li>
         <li><a href="__GROUP__/Order/orderList" target="main-frame">订单列表</a></li>
         <li><a href="__GROUP__/Comment/commentList" target="main-frame">用户评论</a></li>
         <li><a href="__GROUP__/User/userList" target="main-frame">会员列表</a></li>
