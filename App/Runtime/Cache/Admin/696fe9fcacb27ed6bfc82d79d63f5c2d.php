@@ -4,8 +4,8 @@
 <title>管理中心</title>
 <meta name="robots" content="noindex, nofollow">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="/Shop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
-<link href="/Shop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h1>

@@ -3,14 +3,14 @@
 <head>
 <title>管理中心 - 商品列表 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="/Shop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
-<link href="/Shop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
-<link href="/Shop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="/Shop/Public/datepicker/jquery-ui-1.9.2.custom.min.css">
+<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/E-Cshop/Public/datepicker/jquery-ui-1.9.2.custom.min.css">
 <script type="text/javascript" language="javascript" 
-src="/Shop/Public/datepicker/jquery-1.7.2.min.js"></script>
+src="/E-Cshop/Public/datepicker/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" language="javascript" 
-src="/Shop/Public/datepicker/jquery-ui-1.9.2.custom.min.js"></script>
+src="/E-Cshop/Public/datepicker/jquery-ui-1.9.2.custom.min.js"></script>
 <style type="text/css">
     h1{font-size: 14px}
     input{margin: 5px !important}
@@ -70,7 +70,7 @@ src="/Shop/Public/datepicker/jquery-ui-1.9.2.custom.min.js"></script>
                 <td><?php echo ($v["id"]); ?></td>
                 <td><?php echo date('Y-m-d H:i:s', $v['addtime']); ?></td>
                 <td><?php echo ($v["goods_name"]); ?></td>
-                <td><img src="/Shop/PUBLIC/Uploads<?php echo substr($v['sm_logo'],16);?>"></td>
+                <td><img src="/E-Cshop/PUBLIC/Uploads<?php echo substr($v['sm_logo'],16);?>"></td>
                 <td><?php echo ($v["price"]); ?></td>
                 <td><?php echo ($v["goods_desc"]); ?></td>
                 <td><?php echo $v['is_on_sale'] == 1 ? '上架' : '下架'; ?></td>
