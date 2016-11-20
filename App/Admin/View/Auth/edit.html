@@ -16,7 +16,8 @@
         <input type="hidden" value="{$data['id']}" name="id"/>
         <p>上级权限：<select name="pid">
                          <?php if($data_p['id']){?>
-                            <option value="{$data_p['id']}">{$data_p['auth_name']}
+                            <option value="<?php echo $data_p['id'];?>">
+                            <?php echo $data_p['auth_name'];?>
                             </option>
                             <option value="0">顶级权限</option>
                          <?php } else{?>

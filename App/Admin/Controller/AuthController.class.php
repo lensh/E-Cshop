@@ -14,28 +14,26 @@ class AuthController extends BaseController {
         ));
         $this->display();
     }
+
+    /**
+     * 新增权限
+     * @return [type] [description]
+     */
     public function add()
     {
-        /*
-    	if(IS_POST)
-    	{
-    		$model = D('Admin/Auth');
-    		if($model->create(I('post.'), 1))
-    		{
-    			if($id = $model->add())
-    			{
+    	if(IS_POST){
+    		$model = D('Auth');
+    		if($model->create(I('post.'), 1)){
+    			if($id = $model->add()){
     				$this->success('添加成功！', U('lst?p='.I('get.p')));
     				exit;
     			}
     		}
     		$this->error($model->getError());
     	}
-		$parentModel = D('Admin/Auth');
+		$parentModel = D('Auth');
 		$parentData = $parentModel->getTree();
 		$this->assign('parentData', $parentData);
-
-		$this->setPageBtn('添加权限', '权限列表', U('lst?p='.I('get.p')));
-        */
 		$this->display();
     }
 
@@ -47,6 +45,7 @@ class AuthController extends BaseController {
     	$id = I('get.id');
     	if(IS_POST){    //修改权限
     		$model = D('Auth');
+                        var_dump(I('post.'));exit;
     		if($model->create(I('post.'), 2)){          
     			if($model->save()!== FALSE){
     				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
@@ -60,7 +59,7 @@ class AuthController extends BaseController {
     	$this->assign('data', $data);  //当前权限的信息
         $model_p= M('Auth');
         $data_p = $model_p->field('auth_name,id')->find($data['pid']);
-        $this->assign('data_p',$data_p); 
+        $this->assign('data_p',$data_p);   //父权限的信息
 		$parentModel = D('Auth');
 		$parentData = $parentModel->getTree();
 		$children = $parentModel->getChildren($id);
@@ -70,6 +69,11 @@ class AuthController extends BaseController {
 		));
 		$this->display();
     }
+
+    /**
+     * 删除权限
+     * @return [type] [description]
+     */
     public function delete()
     {
     	$model = D('Admin/Auth');
