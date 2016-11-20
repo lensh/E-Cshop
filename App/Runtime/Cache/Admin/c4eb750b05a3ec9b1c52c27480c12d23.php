@@ -1,17 +1,15 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
 	<!--标题-->
 	
         <title>管理中心 - 添加新商品 </title>
-
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
 	<link href="/E-Cshop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
 	<link href="/E-Cshop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	
+	<script type="text/javascript" src="/E-Cshop/Public/bootstrap/js/jquery.min.js"></script>
 	<!--其它样式-->
 	
 <script type="text/javascript" charset="utf-8" src="/E-Cshop/Public/ueditor/ueditor.config.js"></script>
@@ -24,7 +22,6 @@
         'maximumWords':200
     });
 </script>
-
 
 </head>
 <body>

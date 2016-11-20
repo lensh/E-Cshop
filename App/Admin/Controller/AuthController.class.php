@@ -1,7 +1,19 @@
 <?php
 namespace Admin\Controller;
-class AuthController extends BaseController 
-{
+class AuthController extends BaseController {
+
+    /**
+     * 显示权限列表
+     * @return void
+     */
+    public function lst(){
+        $model = D('Auth');
+        $data = $model->getTree();
+        $this->assign(array(
+            'data' => $data,
+        ));
+        $this->display();
+    }
     public function add()
     {
         /*
@@ -26,19 +38,19 @@ class AuthController extends BaseController
         */
 		$this->display();
     }
-    public function edit()
-    {
-        /*
+
+    /**
+     * 编辑权限
+     * @return [type] [description]
+     */
+    public function edit(){
     	$id = I('get.id');
-    	if(IS_POST)
-    	{
-    		$model = D('Admin/Auth');
-    		if($model->create(I('post.'), 2))
-    		{
-    			if($model->save() !== FALSE)
-    			{
+    	if(IS_POST){    //修改权限
+    		$model = D('Auth');
+    		if($model->create(I('post.'), 2)){
+    			if($model->save() !== FALSE){
     				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
-    				exit;
+    				return;
     			}
     		}
     		$this->error($model->getError());
@@ -46,16 +58,13 @@ class AuthController extends BaseController
     	$model = M('Auth');
     	$data = $model->find($id);
     	$this->assign('data', $data);
-		$parentModel = D('Admin/Auth');
+		$parentModel = D('Auth');
 		$parentData = $parentModel->getTree();
 		$children = $parentModel->getChildren($id);
 		$this->assign(array(
 			'parentData' => $parentData,
 			'children' => $children,
 		));
-
-		$this->setPageBtn('修改权限', '权限列表', U('lst?p='.I('get.p')));
-        */
 		$this->display();
     }
     public function delete()
@@ -70,18 +79,5 @@ class AuthController extends BaseController
     	{
     		$this->error($model->getError());
     	}
-    }
-    public function lst()
-    {
-        /*
-    	$model = D('Admin/Auth');
-		$data = $model->getTree();
-    	$this->assign(array(
-    		'data' => $data,
-    	));
-
-		$this->setPageBtn('权限列表', '添加权限', U('add'));
-        */
-    	$this->display();
     }
 }
