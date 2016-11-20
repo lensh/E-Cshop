@@ -30,6 +30,7 @@
 
     <!--具体操作-->
     
+        <span class="action-span"><a href="<?php echo U('lst');?>">返回</a></span>
         <span id="search_id"> - 添加新商品 </span>
 
 
