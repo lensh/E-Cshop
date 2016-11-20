@@ -45,7 +45,6 @@ class AuthController extends BaseController {
     	$id = I('get.id');
     	if(IS_POST){    //修改权限
     		$model = D('Auth');
-                        var_dump(I('post.'));exit;
     		if($model->create(I('post.'), 2)){          
     			if($model->save()!== FALSE){
     				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
