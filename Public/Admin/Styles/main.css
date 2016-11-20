@@ -47,28 +47,28 @@ h1 .action-span {
 }
 
 h1 .action-span a {
-  color: #666;
-  font-size: 12px;
-  font-weight: 400;
+  color: #666 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
   text-decoration: none;
-  display:block;
-  padding:2px 5px 2px 23px;
-  *padding:4px 5px 2px 23px;
-  border:1px solid #278296;
-  border-right:2px solid #278296;
-  border-bottom:2px solid #278296;
-  background:#DDEEF2 url(__PUBLIC__/Admin/images/icon_add.gif) no-repeat 3px center;
-  *background:#DDEEF2 url(__PUBLIC__/Admin/images/icon_add.gif) no-repeat 3px 3px;
+  height: 20px !important;
+  line-height: 20px !important;
+  display:block !important;
+  padding:2px 5px 2px 23px !important;
+  border:1px solid #278296 !important;
+  border-right:2px solid #278296 !important;
+  border-bottom:2px solid #278296 !important;
+  background:url(../Images/icon_add.gif) no-repeat 3px 3px !important;
 }
 
 h1 .action-span a:hover {
-  border:1px solid #5FA6B6;
-  border-right:2px solid #5FA6B6;
-  border-bottom:2px solid #5FA6B6;
-  background:#FFF url(__PUBLIC__/Admin/images/icon_add.gif) no-repeat 3px center;
-  *background:#FFF url(__PUBLIC__/Admin/images/icon_add.gif) no-repeat 3px 3px;
-  color:#666;
-  text-decoration:none;
+  border:1px solid #5FA6B6 !important;
+  border-right:2px solid #5FA6B6 !important;
+  border-bottom:2px solid #5FA6B6 !important;
+  background:#FFF url(../Images/icon_add.gif) no-repeat 3px center !important;
+  *background:#FFF url(../Images/icon_add.gif) no-repeat 3px 3px !important;
+  color:#666 !important;
+  text-decoration:none !important;
 }
 
 h1 .action-span1 {
@@ -131,7 +131,7 @@ h1 .action-span1 {
 .list-div th {
   line-height: 24px;
   padding-left:15px;
-  background: #BBDDE5 url("__PUBLIC__/Admin/images/th_bg.gif") repeat-x;
+  background: #BBDDE5 url("../Images/th_bg.gif") repeat-x;
   white-space: nowrap;
 }
 
@@ -304,7 +304,7 @@ input.button {
   padding: 2px 8px 0px;
   margin: 2px 2px;
   border: 1px solid #2D5082;
-  background: url(__PUBLIC__/Admin/images/button_bg.gif) repeat-x;
+  background: url(../Images/button_bg.gif) repeat-x;
 }
 
 input.capital {
@@ -336,7 +336,7 @@ ul.msg-link {
 }
 
 ul.msg-link li {
-  background: url(__PUBLIC__/Admin/images/arrow.gif) no-repeat 0px 6px;
+  background: url(../Images/arrow.gif) no-repeat 0px 6px;
   padding-left:   18px;
   margin-left:  0;
 }
@@ -460,7 +460,7 @@ div#popMsg {
   line-height: 23px;
   color: #fff;
   font-size: 12px;
-  background: #D8D9DF url(__PUBLIC__/Admin/images/icon_title.gif) no-repeat 10px center;
+  background: #D8D9DF url(../Images/icon_title.gif) no-repeat 10px center;
   height: 23px;
   padding-left: 28px;
   margin: 0;
@@ -515,7 +515,7 @@ div#popMsg {
   bottom: 3px;
   width: 14px;
   height: 14px;
-  background:url(__PUBLIC__/Admin/images/btn_drop.gif) no-repeat center;
+  background:url(../Images/btn_drop.gif) no-repeat center;
 }
 
 .todolist-box .button
@@ -561,18 +561,18 @@ div#popMsg {
 }
 
 .step1 {
-  background:#FFF url(__PUBLIC__/Admin/images/stepnum.gif) no-repeat 20px 20px;
-  *background:#FFF url(__PUBLIC__/Admin/images/stepnum.gif) no-repeat 20px 17px;
+  background:#FFF url(../Images/stepnum.gif) no-repeat 20px 20px;
+  *background:#FFF url(../Images/stepnum.gif) no-repeat 20px 17px;
 }
 
 .step2 {
-  background:#FFF url(__PUBLIC__/Admin/images/stepnum.gif) no-repeat 20px -80px;
-  *background:#FFF url(__PUBLIC__/Admin/images/stepnum.gif) no-repeat 20px -83px;
+  background:#FFF url(../Images/stepnum.gif) no-repeat 20px -80px;
+  *background:#FFF url(../Images/stepnum.gif) no-repeat 20px -83px;
 }
 
 .step3 {
-  background:#FFF url(__PUBLIC__/Admin/images/stepnum.gif) no-repeat 20px -180px;
-  *background:#FFF url(__PUBLIC__/Admin/images/stepnum.gif) no-repeat 20px -183px;
+  background:#FFF url(../Images/stepnum.gif) no-repeat 20px -180px;
+  *background:#FFF url(../Images/stepnum.gif) no-repeat 20px -183px;
 }
 
 .step1 em, .step2 em, .step3 em{
@@ -704,13 +704,13 @@ em, cite, th {
   display:block;
   padding-left:50px;
   line-height:30px;
-  background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat -260px -50px;
+  background:url(../Images/filecheck.gif) no-repeat -260px -50px;
   font-weight:700;
   font-size:14px;
   color:#2366A8;
 }
 .left .ofolder{
-  background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat -260px -100px;
+  background:url(../Images/filecheck.gif) no-repeat -260px -100px;
   color:#2366A8;
   font-size:14px;
 }
@@ -719,34 +719,34 @@ em, cite, th {
 }
 .files{
   padding:1px 0 1px 50px;
-  background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat -260px -150px;
+  background:url(../Images/filecheck.gif) no-repeat -260px -150px;
 }
 .del{
   padding-left:18px;
-  background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat 0 -285px;
-  *background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat 0 -286px;
+  background:url(../Images/filecheck.gif) no-repeat 0 -285px;
+  *background:url(../Images/filecheck.gif) no-repeat 0 -286px;
   color:#E8594D;
 }
 .edited{
   padding-left:18px;
-  background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat -100px -385px;
-  *background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat -100px -386px;
+  background:url(../Images/filecheck.gif) no-repeat -100px -385px;
+  *background:url(../Images/filecheck.gif) no-repeat -100px -386px;
   color:#E8594D;
 }
 .unknown{
   padding-left:18px;
-  background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat -50px -435px;
-  *background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat -50px -436px;
+  background:url(../Images/filecheck.gif) no-repeat -50px -435px;
+  *background:url(../Images/filecheck.gif) no-repeat -50px -436px;
   color:#6189B8;
 }
 .correct{
   padding-left:18px;
-  background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat 0 -485px;
-  *background:url(__PUBLIC__/Admin/images/filecheck.gif) no-repeat 0 -486px;
+  background:url(../Images/filecheck.gif) no-repeat 0 -485px;
+  *background:url(../Images/filecheck.gif) no-repeat 0 -486px;
   color:#70B759;
 }
 .tb2 th, .tb2 td {
-  background:transparent url(__PUBLIC__/Admin/images/bg_repx.gif) repeat-x scroll 0 bottom;
+  background:transparent url(../Images/bg_repx.gif) repeat-x scroll 0 bottom;
   padding:5px 5px 5px 0;
   text-align:left;
 }

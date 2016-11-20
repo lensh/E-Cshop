@@ -127,7 +127,6 @@ body {
             商品管理
                 <ul>
                     <li class="menu-item"><a href="<?php echo U('Goods/lst');?>" target="main-frame">商品列表</a></li>
-                    <li class="menu-item"><a href="<?php echo U('Goods/add');?>" target="main-frame">添加商品</a></li>
                     <li class="menu-item"><a href="categoryList.html" target="main-frame">商品分类</a></li>
                     <li class="menu-item"><a href="brandList.html" target="main-frame">商品品牌</a></li>
                     <li class="menu-item"><a href="goodsTrash.html" target="main-frame">商品回收站</a></li>
@@ -148,8 +147,8 @@ body {
             权限管理
                 <ul>
                     <li class="menu-item"><a href="<?php echo U('Auth/lst');?>" target="main-frame">权限列表</a></li>
-                    <li class="menu-item"><a href="<?php echo U('Auth/edit');?>" target="main-frame">修改权限</a></li>
-                    <li class="menu-item"><a href="<?php echo U('Auth/add');?>" target="main-frame">新增权限</a></li>
+                    <li class="menu-item"><a href="<?php echo U('Role/lst');?>" target="main-frame">角色列表</a></li>
+                    <li class="menu-item"><a href="<?php echo U('Admin/lst');?>" target="main-frame">管理员列表</a></li>
                 </ul>
             </li>
         </ul>

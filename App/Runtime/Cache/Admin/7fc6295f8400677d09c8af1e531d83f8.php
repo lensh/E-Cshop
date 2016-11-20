@@ -36,6 +36,7 @@
 
     <!--具体操作-->
     
+        <span class="action-span"><a href="<?php echo U('add');?>">添加商品</a></span>
         <span id="search_id"> - 商品列表</span>
 
 
