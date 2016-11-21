@@ -30,8 +30,8 @@
 
     <div class="main-div">
         <form method="POST" action="/E-Cshop/Role/add.html">
-            角色名称：<input  type="text" name="role_name" value=""/>
-            <input type="submit" class="btn btn-primary" value="确定"/>
+            <p>角色名称：<input  type="text" name="role_name"/></p>
+            <p><input type="submit" class="btn btn-primary" value="确定"/></p>
         </form>
     </div>
 

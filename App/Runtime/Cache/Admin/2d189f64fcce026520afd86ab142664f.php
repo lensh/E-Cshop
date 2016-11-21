@@ -15,7 +15,6 @@
     <style type="text/css">
       td{text-align: center;}
       a{color: #9cf !important}
-      input{margin: 5px !important}
     </style>
 
 </head>

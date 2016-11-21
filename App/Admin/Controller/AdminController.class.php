@@ -4,7 +4,7 @@ namespace Admin\Controller;
  * 管理员控制器
  */
 class AdminController extends BaseController{
-    
+
     /**
      * 添加管理员
      */
@@ -50,13 +50,14 @@ class AdminController extends BaseController{
     		$this->error($model->getError());
     	}
     }
+
+    /**
+     * 管理员列表
+     */
     public function lst(){
-    	$model = D('Admin');
-    	$data = $model->search();
-    	$this->assign(array(
-    		'data' => $data['data'],
-    		'page' => $data['page'],
-    	));
+    	$model = M('Admin');
+    	$data = $model->select();
+    	$this->assign('data',$data);
     	$this->display();
     }
 }

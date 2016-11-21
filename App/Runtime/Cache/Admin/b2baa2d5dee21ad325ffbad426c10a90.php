@@ -148,7 +148,7 @@ body {
                 <ul>
                     <li class="menu-item"><a href="<?php echo U('Auth/lst');?>" target="main-frame">权限列表</a></li>
                     <li class="menu-item"><a href="<?php echo U('Role/lst');?>" target="main-frame">角色列表</a></li>
-                    <li class="menu-item"><a href="<?php echo U('Admin/lst');?>" target="main-frame">管理员列表</a></li>
+                    <li class="menu-item"><a href="<?php echo U('Admin/Admin/lst');?>" target="main-frame">管理员列表</a></li>
                 </ul>
             </li>
         </ul>
