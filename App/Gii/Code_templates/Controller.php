@@ -1,16 +1,10 @@
 namespace <?php echo $config['moduleName']; ?>\Controller;
-use \Admin\Controller\IndexController;
-class <?php echo $tpName; ?>Controller extends IndexController 
-{
-    public function add()
-    {
-    	if(IS_POST)
-    	{
+class <?php echo $tpName; ?>Controller extends BaseController{
+    public function add(){
+    	if(IS_POST){
     		$model = D('<?php echo $config['moduleName']; ?>/<?php echo $tpName; ?>');
-    		if($model->create(I('post.'), 1))
-    		{
-    			if($id = $model->add())
-    			{
+    		if($model->create(I('post.'), 1)){
+    			if($id = $model->add()){
     				$this->success('添加成功！', U('lst?p='.I('get.p')));
     				exit;
     			}
@@ -25,16 +19,12 @@ class <?php echo $tpName; ?>Controller extends IndexController
 
 		$this->display();
     }
-    public function edit()
-    {
+    public function edit(){
     	$<?php echo $config['pk']; ?> = I('get.<?php echo $config['pk']; ?>');
-    	if(IS_POST)
-    	{
+    	if(IS_POST){
     		$model = D('<?php echo $config['moduleName']; ?>/<?php echo $tpName; ?>');
-    		if($model->create(I('post.'), 2))
-    		{
-    			if($model->save() !== FALSE)
-    			{
+    		if($model->create(I('post.'), 2)){
+    			if($model->save() !== FALSE){
     				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
     				exit;
     			}
@@ -56,21 +46,17 @@ class <?php echo $tpName; ?>Controller extends IndexController
 
 		$this->display();
     }
-    public function delete()
-    {
+    public function delete(){
     	$model = D('<?php echo $config['moduleName']; ?>/<?php echo $tpName; ?>');
-    	if($model->delete(I('get.id', 0)) !== FALSE)
-    	{
+    	if($model->delete(I('get.id', 0)) !== FALSE){
     		$this->success('删除成功！', U('lst', array('p' => I('get.p', 1))));
     		exit;
     	}
-    	else 
-    	{
+    	else {
     		$this->error($model->getError());
     	}
     }
-    public function lst()
-    {
+    public function lst(){
     	$model = D('<?php echo $config['moduleName']; ?>/<?php echo $tpName; ?>');
 <?php if($config['digui'] == 1): ?>
 		$data = $model->getTree();
@@ -84,7 +70,6 @@ class <?php echo $tpName; ?>Controller extends IndexController
     		'page' => $data['page'],
     	));
 <?php endif; ?>
-
     	$this->display();
     }
 }

@@ -1,0 +1,20 @@
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+        <title>管理中心 - 编辑角色</title>
+</block>
+<!--具体操作-->
+<block name="action">
+        <span class="action-span"><a href="{:U('lst')}">返回</a></span>
+        <span id="search_id"> - 编辑角色</span>
+</block>
+<!-- 列表 -->
+<block name="main">
+    <div class="main-div">
+        <form method="POST" action="__SELF__">
+        	<input type="hidden" name="id" value="{$data['id']}?>" />
+            角色名称：<input  type="text" name="role_name" value="{$data['role_name']}"/>
+            <input type="submit" class="btn btn-primary" value="确定"/>
+        </form>
+    </div>
+</block>

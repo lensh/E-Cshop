@@ -12,7 +12,7 @@ class LoginController extends Controller {
 	 */
 	public function login(){
 		if(IS_POST){
-			$model=D('Admin');
+			$model=D('Login');
 			if($model->login(I('post.'))){
 				$this->redirect('Admin/Index/index');
 			}else{

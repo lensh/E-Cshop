@@ -18,25 +18,17 @@
     		<input type="hidden" name="old_<?php echo $v1; ?>" value="<?php echo "<?php echo \$data['{$v1}']; ?>"; ?>" />
     <?php endforeach; ?>
     <?php endif;endforeach; ?>
-            <table cellspacing="1" cellpadding="3" width="100%">
     <?php if($config['digui'] == 1): ?>
-    			<tr>
-    				<td class="label">上级权限：</td>
-    				<td>
-    					<select name="pid">
+    			上级权限：<select name="pid">
     						<option value="0">顶级权限</option>
     						<?php echo "<?php foreach (\$parentData as \$k => \$v): ?>"; ?> 
     						<?php echo "<?php if(\$v['{$config['pk']}'] == \$data['{$config['pk']}'] || in_array(\$v['{$config['pk']}'], \$children)) continue ; ?>"; ?> 
     						<option <?php echo "<?php if(\$v['{$config['pk']}'] == \$data['pid']): ?>"; ?>selected="selected"<?php echo "<?php endif; ?>"; ?> value="<?php echo "<?php echo \$v['{$config['pk']}']; ?>"; ?>"><?php echo "<?php echo str_repeat('-', 8*\$v['level']).\$v['{$config['diguiName']}']; ?>"; ?></option>
     						<?php echo "<?php endforeach; ?>"; ?>
     					</select>
-    				</td>
-    			</tr>
     <?php endif; ?>
     <?php foreach ($config['fields'] as $k => $v):if($v['type']=='null' || ($config['digui'] == 1 && 'pid' == $k)) continue; ?>
-                <tr>
-                    <td class="label"><?php echo $v['text']; ?>：</td>
-                    <td>
+             <?php echo $v['text']; ?>：
     <?php if($v['type'] == 'text'): ?>
                         <input <?php if((strpos($k, 'time') !== FALSE) || (strpos($k, 'date') !== FALSE)) echo 'id="'.$k.'"'; ?> type="text" name="<?php echo $k; ?>" value="<?php echo "<?php echo \$data['$k']; ?>"; ?>" />
     <?php elseif($v['type'] == 'password'): ?>
@@ -49,15 +41,8 @@
     <?php elseif ($v['type'] == 'radio'): $_i = 0; foreach ($v['values'] as $k1 => $v1): ?>
                     	<input type="radio" name="<?php echo $k; ?>" value="<?php echo $k1; ?>" <?php echo "<?php if(\$data['$k'] == '$k1') echo 'checked=\"checked\"'; ?>"; ?> /><?php echo $v1; ?> 
     <?php $_i++;endforeach;endif; ?>
-                    </td>
-                </tr>
     <?php endforeach; ?>
-                <tr>
-                    <td colspan="99" align="center">
-                        <input type="submit" class="btn btn-primary" value="确定"/>
-                    </td>
-                </tr>
-            </table>
+                <input type="submit" class="btn btn-primary" value="确定"/>
         </form>
     </div>
 </block>
