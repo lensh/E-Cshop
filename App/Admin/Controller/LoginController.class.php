@@ -12,12 +12,16 @@ class LoginController extends Controller {
 	 */
 	public function login(){
 		if(IS_POST){
-			$model=D('Login');
-			if($model->login(I('post.'))){
-				$this->redirect('Admin/Index/index');
-			}else{
-				//调用控制器的error方法
-				$this->error($model->getError());
+			$model=D('Admin');
+			// 动态验证，由于模型里有两个规则，所以需要使用create的第二个参数
+			// 7我们自己规定，代表登录说明这个表单是登录的表单
+			if($model->validate($model->rules)->create('',7)){
+				if($model->login(I('post.'))){
+					$this->redirect('Admin/Index/index');
+				}else{
+					//调用控制器的error方法
+					$this->error($model->getError());
+				}	
 			}
 		}
 		if(session('id')){  //如果已经登陆
