@@ -23,7 +23,6 @@ class <?php echo $tpName; ?>Controller extends IndexController
 		$this->assign('parentData', $parentData);
 <?php endif; ?>
 
-		$this->setPageBtn('添加<?php echo $config['tableCnName']; ?>', '<?php echo $config['tableCnName']; ?>列表', U('lst?p='.I('get.p')));
 		$this->display();
     }
     public function edit()
@@ -55,7 +54,6 @@ class <?php echo $tpName; ?>Controller extends IndexController
 		));
 <?php endif; ?>
 
-		$this->setPageBtn('修改<?php echo $config['tableCnName']; ?>', '<?php echo $config['tableCnName']; ?>列表', U('lst?p='.I('get.p')));
 		$this->display();
     }
     public function delete()
@@ -87,7 +85,6 @@ class <?php echo $tpName; ?>Controller extends IndexController
     	));
 <?php endif; ?>
 
-		$this->setPageBtn('<?php echo $config['tableCnName']; ?>列表', '添加<?php echo $config['tableCnName']; ?>', U('add'));
     	$this->display();
     }
 }

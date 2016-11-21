@@ -73,16 +73,13 @@ class AuthController extends BaseController {
      * 删除权限
      * @return [type] [description]
      */
-    public function delete()
-    {
-    	$model = D('Admin/Auth');
-    	if($model->delete(I('get.id', 0)) !== FALSE)
-    	{
+    public function delete(){
+    	$model = D('Auth');
+    	if($model->delete(I('get.id', 0)) !== FALSE){
     		$this->success('删除成功！', U('lst', array('p' => I('get.p', 1))));
     		exit;
     	}
-    	else 
-    	{
+    	else {
     		$this->error($model->getError());
     	}
     }

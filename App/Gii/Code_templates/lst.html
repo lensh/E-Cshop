@@ -1,4 +1,23 @@
-<layout name="Index/header_footer" />
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+	<title>管理中心 - 权限列表 </title>
+</block>
+<!--其它样式-->
+<block name="asset">
+    <style type="text/css">
+      td{text-align: center;}
+    </style>
+</block>
+
+<!--具体操作-->
+<block name="action">
+		<span class="action-span"><a href="{:U('add')}">添加权限</a></span>
+		<span id="search_id"> - 权限列表 </span>
+</block>
+
+<!-- 列表 -->
+<block name="main">
 <?php if($config['search']): ?>
 <!-- 搜索 -->
 <div class="form-div search_form_div">
@@ -56,15 +75,4 @@ foreach ($_arr as $v1): $_v2 = explode('-', $v1); ?>
 <?php endif; ?>
 	</table>
 </div>
-<script>
-<?php 
-foreach ($config['search'] as $k => $v){
-	if($v[1] == 'betweenTime')
-	{
-		$_arr = explode(',', $v[2]);
-		echo "$('#{$_arr[0]}').datepicker(); ";
-		echo "$('#{$_arr[1]}').datepicker(); ";
-	}
-}
-?>
-</script>
+</block>
