@@ -23,10 +23,10 @@
 <div class="list-div" id="listDiv">
 	<table cellpadding="3" cellspacing="1">
     	<tr>
-    	    <th>id</th>
-    	    <th>管理员名称</th>
-    	    <th>管理员密码</th>
-    	    <th>是否启用(1为启用,0为禁用)</th>
+    	    <th>ID</th>
+            <th>账号</th>
+            <th>密码</th>
+            <th>是否启用 1：启用0：禁用</th>
 			<th width="60">操作</th>
         </tr>
 		<?php foreach ($data as $k => $v): ?>            
@@ -40,7 +40,7 @@
 	                <a href="<?php echo U('Admin/Admin/delete?id='.$v['id'].'&p='.I('get.p')); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
 		        </td>
 	        </tr>
-        <?php endforeach;?> 
+        <?php endforeach; ?> 
 	</table>
 </div>
 </block>

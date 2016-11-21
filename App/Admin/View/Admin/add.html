@@ -1,7 +1,7 @@
 <extend name="Common:common"/>
 <!--标题-->
 <block name="title">
-        <title>管理中心 - 新增管理员</title>
+        <title>管理中心 - 新增管理员 </title>
 </block>
 <!--具体操作-->
 <block name="action">
@@ -11,11 +11,13 @@
 
 <block name="main">
     <div class="main-div">
-        <form method="POST" action="__SELF__">
-             <p>管理员名称：<input  type="text" name="username"/></p>
-             <p>管理员密码：<input  type="password" name="password"/></p>
-             <p>是否启用：<input  type="text" name="is_use" placeholder="1为启用,0为禁用"/></p>
-             <input type="submit" class="btn btn-primary" value="确定"/>
+        <form method="POST" action="__SELF__" enctype="multipart/form-data">
+                账号：<input  type="text" name="username" value="" />
+                密码：<input type="password" size="25" name="password" />
+                是否启用 1：启用0：禁用：
+                <input type="radio" name="is_use" value="1" checked="checked" />启用 
+                <input type="radio" name="is_use" value="0"  />禁用 
+                <input type="submit" class="btn btn-primary" value="确定"/>
         </form>
     </div>
 </block>

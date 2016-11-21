@@ -6,9 +6,9 @@
         <title>管理中心 - 编辑商品 </title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="/E-Cshop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
 	<link href="/E-Cshop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
+	<link href="/E-Cshop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="/E-Cshop/Public/bootstrap/js/jquery.min.js"></script>
 	<!--其它样式-->
 	
@@ -30,6 +30,7 @@
 
     <!--具体操作-->
     
+        <span class="action-span"><a href="<?php echo U('lst');?>">返回</a></span>
         <span id="search_id"> - 编辑商品 </span>
 
 
