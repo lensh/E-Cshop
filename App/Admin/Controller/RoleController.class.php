@@ -10,15 +10,17 @@ class RoleController extends BaseController{
      */
     public function add(){
     	if(IS_POST){
-    		$model = D('Role');
-    		if($model->create(I('post.'), 1)){
-    			if($id = $model->add()){
-    				$this->success('添加成功！', U('lst?p='.I('get.p')));
-    				exit;
-    			}
-    		}
-    		$this->error($model->getError());
+    		$role = D('Role');
+            if($role->addRole(I('post.'))){
+                $this->success('添加成功！', U('lst?p='.I('get.p')));
+            }else{
+                $this->error($role->getError());
+            }	
+            return;
     	}
+        $auth=D('Auth');
+        $data=$auth->getTree();   //获取权限列表
+        $this->assign('data',$data);
 		$this->display();
     }
 
@@ -61,11 +63,17 @@ class RoleController extends BaseController{
      * 角色列表
      */
     public function lst(){
-    	$model = M('Role');
-    	$data = $model->select();
+    	$role = D('Role');
+    	$data = $role->search(); //查找所有角色名称
+        var_dump($data);
+        $this->display();
+        /*
+        exit;
+        $data_auth=$model;
     	$this->assign(array(
     		'data' => $data,
     	));
     	$this->display();
+        */
     }
 }

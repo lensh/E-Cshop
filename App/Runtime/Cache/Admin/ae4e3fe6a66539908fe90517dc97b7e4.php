@@ -29,8 +29,15 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form method="POST" action="/E-Cshop/Role/add.html">
+        <form method="POST" style="margin:5px" action="/E-Cshop/Role/add.html">
             <p>角色名称：<input  type="text" name="role_name"/></p>
+            <p>选择该角色拥有的所有权限:
+            	<div class="alert alert-info">
+	            <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$obj): $mod = ($i % 2 );++$i; echo str_repeat('-',$obj['level']*8);?>
+					<input type="checkbox" name="auth_id[]" style="margin:5px" 
+					value="<?php echo ($obj["id"]); ?>"><?php echo ($obj["auth_name"]); ?><br/><?php endforeach; endif; else: echo "" ;endif; ?>
+				</div>
+            </p>
             <p><input type="submit" class="btn btn-primary" value="确定"/></p>
         </form>
     </div>

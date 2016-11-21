@@ -11,8 +11,17 @@
 
 <block name="main">
     <div class="main-div">
-        <form method="POST" action="__SELF__">
+        <form method="POST" style="margin:5px" action="__SELF__">
             <p>角色名称：<input  type="text" name="role_name"/></p>
+            <p>选择该角色拥有的所有权限:
+            	<div class="alert alert-info">
+	            <volist name="data" id="obj">
+	                {:str_repeat('-',$obj['level']*8)}
+					<input type="checkbox" name="auth_id[]" style="margin:5px" 
+					value="{$obj.id}">{$obj.auth_name}<br/>
+				</volist>
+				</div>
+            </p>
             <p><input type="submit" class="btn btn-primary" value="确定"/></p>
         </form>
     </div>

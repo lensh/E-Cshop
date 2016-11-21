@@ -19,7 +19,7 @@
 
     <!--具体操作-->
     
-        <span class="action-span"><a href="<?php echo U('lst');?>">返回</a></span>
+        <span class="action-span"><a href="<?php echo U('Admin/Admin/lst');?>">返回</a></span>
         <span id="search_id"> - 新增权限</span>
 
 
