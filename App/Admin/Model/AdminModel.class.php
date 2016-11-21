@@ -7,7 +7,7 @@ use Think\Model;
 class AdminModel extends Model 
 {
 	/*插入或更新时限制的字段*/
-	protected $insertFields = array('username','password','is_use');
+	protected $insertFields = array('username','password','is_use'); 
 	protected $updateFields = array('id','username','password','is_use');
 
 	/*自动验证*/

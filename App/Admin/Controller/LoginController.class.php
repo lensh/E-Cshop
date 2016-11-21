@@ -15,6 +15,7 @@ class LoginController extends Controller {
 			$model=D('Admin');
 			// 动态验证，由于模型里有两个规则，所以需要使用create的第二个参数
 			// 7我们自己规定，代表登录说明这个表单是登录的表单
+			// 不加7，那么模型里的$insertFields会生效
 			if($model->validate($model->rules)->create('',7)){
 				if($model->login(I('post.'))){
 					$this->redirect('Admin/Index/index');

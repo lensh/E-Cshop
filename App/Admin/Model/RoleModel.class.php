@@ -47,16 +47,33 @@ class RoleModel extends Model
 			'role_name'=>$data['role_name'],
 			'auth_id'=>$auth_ids
 		);
-		if($this->create($roleData,2)){
+		if($this->create($roleData,1)){
 			return $this->add($roleData)?1:0;
 		}else{
 			return 0;
 		}
 	}
 
-	// 修改前
-	protected function _before_update(&$data, $option)
-	{
+	/**
+	 * 编辑角色
+	 * @return
+	 */
+	public function updateRole($data){
+		if(empty($data['auth_id'])){
+			$this->error='权限不能为空';
+			return 0;
+		}	
+		$auth_ids=implode(',', $data['auth_id']);
+		$roleData=array(
+			'id'=>$data['id'],
+			'role_name'=>$data['role_name'],
+			'auth_id'=>$auth_ids
+		);
+		if($this->create($roleData,2)){
+			return $this->save($roleData)?1:0;
+		}else{
+			return 0;
+		}	
 	}
 
 	// 删除前

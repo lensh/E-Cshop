@@ -31,17 +31,18 @@ class RoleController extends BaseController{
     	$id = I('get.id');
     	if(IS_POST){
     		$model = D('Role');
-    		if($model->create(I('post.'), 2)){
-    			if($model->save() !== FALSE){
-    				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
-    				exit;
-    			}
+    		if($model->updateRole(I('post.'))){
+    			$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
+    			return;
     		}
     		$this->error($model->getError());
     	}
     	$model = M('Role');
-    	$data = $model->find($id);
-    	$this->assign('data', $data);
+    	$data = $model->find($id);   //角色的信息
+        $auth=D('Auth');
+        $data1=$auth->getTree();   //获取所有权限列表
+        $this->assign('data',$data);
+    	$this->assign('data1',$data1);
 		$this->display();
     }
 

@@ -13,7 +13,7 @@
     <div class="main-div">
         <form method="POST" style="margin:5px" action="__SELF__">
             <p>角色名称：<input  type="text" name="role_name"/></p>
-            <p>选择该角色拥有的所有权限:
+            <p>为该角色分配权限:
             	<div class="alert alert-info">
 	            <volist name="data" id="obj">
 	                {:str_repeat('-',$obj['level']*8)}
