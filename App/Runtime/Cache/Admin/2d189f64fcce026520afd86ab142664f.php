@@ -37,25 +37,22 @@
 <div class="list-div" id="listDiv">
 	<table cellpadding="3" cellspacing="1">
     	<tr>
-    		<th>ID</th>
+    		<th>角色ID</th>
             <th>角色名称</th>
             <th>拥有的权限</th>
 			<th width="60">操作</th>
         </tr>
 		<?php foreach ($data as $k => $v): ?>            
 			<tr class="tron">
-			    <td><?php echo $v['id']; ?></td>
+			    <td><?php echo $k; ?></td>
 				<td><?php echo $v['role_name']; ?></td>
-				<td>无</td>
+				<td><?php echo $v['auth_name']; ?></td>
 		        <td align="center">
-		        	<a href="<?php echo U('edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> |
-	                <a href="<?php echo U('delete?id='.$v['id'].'&p='.I('get.p')); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
+		        	<a href="<?php echo U('edit?id='.$k); ?>" title="编辑">编辑</a> |
+	                <a href="<?php echo U('delete?id='.$k); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
 		        </td>
 	        </tr>
-        <?php endforeach; ?> 
-		<?php if(preg_match('/\d/', $page)): ?>  
-        <tr><td align="right" nowrap="true" colspan="99" height="30"><?php echo $page; ?></td></tr> 
-        <?php endif; ?> 
+        <?php endforeach;?> 
 	</table>
 </div>
 
