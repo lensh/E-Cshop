@@ -3,7 +3,7 @@
 <head>
 	<!--标题-->
 	
-        <title>管理中心 - 新增权限 </title>
+        <title>管理中心 - 添加角色</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
     <!--具体操作-->
     
         <span class="action-span"><a href="<?php echo U('lst');?>">返回</a></span>
-        <span id="search_id"> - 新增权限</span>
+        <span id="search_id"> - 添加角色</span>
 
 
     <div style="clear:both"></div>
@@ -29,10 +29,9 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form method="POST" action="/E-Cshop/Role/add.html" enctype="multipart/form-data">
-                角色名称：
-                            <input  type="text" name="role_name" value="" />
-                        <input type="submit" class="btn btn-primary" value="确定"/>
+        <form method="POST" action="/E-Cshop/Role/add.html">
+            角色名称：<input  type="text" name="role_name" value=""/>
+            <input type="submit" class="btn btn-primary" value="确定"/>
         </form>
     </div>
 
