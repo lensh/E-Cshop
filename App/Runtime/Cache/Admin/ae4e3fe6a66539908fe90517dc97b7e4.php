@@ -29,20 +29,10 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form name="main_form" method="POST" action="/E-Cshop/Role/add.html" enctype="multipart/form-data">
-            <table cellspacing="1" cellpadding="3" width="100%">
-                        <tr>
-                    <td class="label">角色名称：</td>
-                    <td>
+        <form method="POST" action="/E-Cshop/Role/add.html" enctype="multipart/form-data">
+                角色名称：
                             <input  type="text" name="role_name" value="" />
-                        </td>
-                </tr>
-                    <tr>
-                    <td colspan="99" align="center">
                         <input type="submit" class="btn btn-primary" value="确定"/>
-                    </td>
-                </tr>
-            </table>
         </form>
     </div>
 
