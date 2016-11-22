@@ -9,6 +9,22 @@
       td{text-align: center;}
       a{color: #9cf !important}
     </style>
+    <script type="text/javascript">
+    $(function(){
+    	$('.is_use').click(function(){
+    		var _this=this;
+    		var adminID=$(_this).attr('adminID');
+    		if(adminID==1){
+    			alert('root用户不能禁用');
+    			return;
+    		}
+    		$.get("{:U('Admin/Admin/setUnuse/id/"+adminID+"')}",function(res){
+    			if(res==0) $(_this).html('已禁用');
+    			else $(_this).html('已启用');
+    		})
+    	})
+    });
+    </script>
 </block>
 
 <!--具体操作-->
@@ -27,7 +43,7 @@
             <th>账号</th>
             <th>密码</th>
             <th>所属角色</th>
-            <th>是否启用 1：启用0：禁用</th>
+            <th>状态</th>
 			<th width="60">操作</th>
         </tr>
 		  <volist name="data" id="v">      
@@ -36,7 +52,7 @@
 				<td>{$v['username']}</td>
 				<td>{$v['password']}</td>
 				<td>{$v['role_names']}</td>
-				<td>{$v['is_use']}</td>
+				<td adminID="{$v['id']}" class="is_use" style="color:#9cf">{$v['is_use']==1?'已启用':'已禁用'}</td>
 		        <td align="center">
 		        	<a href="<?php echo U('Admin/Admin/edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> 
 		        <?php if($v['id']>1) {?>|

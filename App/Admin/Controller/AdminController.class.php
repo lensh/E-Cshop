@@ -76,4 +76,21 @@ class AdminController extends BaseController{
     	$this->assign('data',$data);
     	$this->display();
     }
+
+    /**
+     * 设置禁用
+     */
+    public function setUnuse(){
+        header("Pragma:no-cache");
+        $adminId=I('get.id');
+        $admin=M('Admin');
+        $info=$admin->field('is_use')->find($adminId);
+        if($info['is_use']==1){ //如果是启用
+            $admin->where(array('id'=>$adminId))->setField('is_use',0);
+            echo 0;
+        }elseif($info['is_use']==0){
+            $admin->where(array('id'=>$adminId))->setField('is_use',1);
+            echo 1;
+        }
+    }
 }
