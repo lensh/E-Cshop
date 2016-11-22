@@ -46,7 +46,7 @@
             </p>
         </div>
         <div id="tabbody-div">
-            <form method="POST" action="/E-Cshop/Goods/edit/id/1/p/1.html" enctype="multipart/form-data">
+            <form method="POST" action="/E-Cshop/Goods/edit/id/2/p/1.html" enctype="multipart/form-data">
              <input type="hidden" name="id" value="<?php echo ($data['id']); ?>">
             商品名称:<input type="text" name="goods_name" value="<?php echo ($data["goods_name"]); ?>"/><br />
             商品价格:<input type="text" name="price" value="<?php echo ($data["price"]); ?>" /><br />

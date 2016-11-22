@@ -28,24 +28,6 @@ class RoleModel extends Model
             $data[$k]['auth_names']=substr($auth_names,1);
         }
         return $data;
-		/*  用这种方法也可以，但效率更低
-		$results=array();
-		if(empty($results)){
-    		$roles=$this->select();   //角色的信息	
-			foreach ($roles as $role) {
-				$admin=M('Auth');
-				$map['id']=array('in',$role['auth_id']);
-				$auth_names_array=$admin->field('auth_name')->where($map)->select();
-				$auth_names='';
-				foreach ($auth_names_array as $k) {
-				    $auth_names.=','.$k['auth_name'];
-				}
-				$results[$role['id']]['role_name']=$role['role_name'];
-				$results[$role['id']]['auth_name']=substr($auth_names,1);
-			}
-			return $results;
-		}
-		*/
 	}
 
     /**
