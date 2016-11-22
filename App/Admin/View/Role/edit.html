@@ -58,7 +58,7 @@
                     {:str_repeat('-',$obj['level']*8)}
                     <input type="checkbox" name="auth_id[]" style="margin:5px" 
                     value="{$obj.id}" level="{$obj.level}"
-                    <?php if(strpos($data['auth_id'],$obj['id'])!==false) 
+                    <?php if(strpos(','.$data['auth_id'].',',','.$obj['id'].',')!==false) 
                     echo "checked"
                     ?>
                     >{$obj.auth_name}<br/>
