@@ -76,13 +76,21 @@ class RoleModel extends Model
 		}	
 	}
 
-	// 删除前
-	protected function _before_delete($option)
-	{
-		if(is_array($option['where']['id']))
-		{
-			$this->error = '不支持批量删除';
-			return FALSE;
+	/**
+	 * 删除角色
+	 * @param  id
+	 * @return int
+	 */
+	public function deleteRole($id){
+		$admin=M('Admin');
+		$role_ids=$admin->field('role_id')->select();
+		foreach ($role_ids as $k => $v) {
+			//如果有管理员属于该角色，则返回0
+			if(strpos($v['role_id'],$id)!==false){
+				$this->error='有管理员属于该角色，无法删除';
+				return 0;
+			}
 		}
+		return $this->delete($id);
 	}
 }

@@ -23,10 +23,10 @@
                 // 循环每一个前面的复选框判断是不是上级的
                 $(allprev).each(function(k,v){
                     // 判断是不是上级的权限
-                    if($(v).attr("level") < tmplevel){
+                    if($(v).attr("level") < cur_level){
                         $(v).get(0).checked=$(_this).get(0).checked;
                         tmplevel--; // 再向上提一级               
-                    }else return false; 
+                    }
                 });
                 // 所有子权限也选中
                 // 先取出这个复选框所有前面的复选框
@@ -37,9 +37,9 @@
                     if($(v).attr("level") > cur_level){
                          $(v).get(0).checked=$(_this).get(0).checked;
                          tmplevel++;
-                    } 
+                    }else{return false}
                     // 遇到一个平级的权限就停止循环后面的不用再判断了
-                    else return false;   
+                     
                         
                 });
             });   
@@ -52,12 +52,16 @@
         <form method="POST" style="margin:5px" action="__SELF__">
         	<input type="hidden" name="id" value="{$data['id']}" />
             <p>角色名称：<input  type="text" name="role_name" value="{$data['role_name']}"/></p>
-            <p>重新为该角色分配权限：
+            <p>为该角色修改分配的权限：
                 <div class="alert alert-info">
                 <volist name="data1" id="obj">
                     {:str_repeat('-',$obj['level']*8)}
                     <input type="checkbox" name="auth_id[]" style="margin:5px" 
-                    value="{$obj.id}" level="{$obj.level}">{$obj.auth_name}<br/>
+                    value="{$obj.id}" level="{$obj.level}"
+                    <?php if(strpos($data['auth_id'],$obj['id'])!==false) 
+                    echo "checked"
+                    ?>
+                    >{$obj.auth_name}<br/>
                 </volist>
                 </div>
             </p>
