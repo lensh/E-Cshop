@@ -52,7 +52,7 @@
 				<td>{$v['username']}</td>
 				<td>{$v['password']}</td>
 				<td>{$v['role_names']}</td>
-				<td adminID="{$v['id']}" class="is_use" style="color:#9cf">{$v['is_use']==1?'已启用':'已禁用'}</td>
+				<td adminID="{$v['id']}" class="is_use" style="color:#9cf;cursor:pointer">{$v['is_use']==1?'已启用':'已禁用'}</td>
 		        <td align="center">
 		        	<a href="<?php echo U('Admin/Admin/edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> 
 		        <?php if($v['id']>1) {?>|
