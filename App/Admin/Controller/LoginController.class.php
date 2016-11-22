@@ -33,6 +33,15 @@ class LoginController extends Controller {
 		$this->display();
 	}
 
+    /**
+     * 登出
+     * @return void
+     */
+    public function logout(){
+        session(null);
+        $this->redirect('Login/login');
+    }
+
 	/**
 	 * 生成图片验证码
 	 * @return [type] [description]

@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/E-Cshop/Public/Admin/Js/jquery.min.js"></script>
 </head>
 <body style="background: #278296;color:white">
-<form method="post" action="/E-Cshop/Admin/Login/login" onsubmit="return validate()">
+<form method="post" action="/E-Cshop/Login/login.html" onsubmit="return validate()">
     <table cellspacing="0" cellpadding="0" style="margin-top:100px" align="center">
         <tr>
             <td>
@@ -36,9 +36,9 @@
                     </tr>
                     <tr>
                         <td colspan="2" align="right">
+                        <a onclick="$(this).prev().trigger('click')" style="cursor:pointer">看不清?</a>
                         <img src="<?php echo U('chkcode');?>" style="cursor:pointer"
                         onclick="this.src='<?php echo U('chkcode')?>#'+Math.random()"/>
-                        <a onclick="$(this).prev().trigger('click')" style="cursor:pointer">看不清?换一张</a>
                         </td>
                     </tr>
                     <tr>
