@@ -86,7 +86,7 @@ class RoleModel extends Model
 		$role_ids=$admin->field('role_id')->select();
 		foreach ($role_ids as $k => $v) {
 			//如果有管理员属于该角色，则返回0
-			if(strpos($v['role_id'],$id)!==false){
+			if(strpos(','.$v['role_id'].',',','.$id.',')!==false){
 				$this->error='有管理员属于该角色，无法删除';
 				return 0;
 			}

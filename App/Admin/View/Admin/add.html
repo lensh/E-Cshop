@@ -11,10 +11,19 @@
 
 <block name="main">
     <div class="main-div">
-        <form method="POST" action="__SELF__" style="margin-left:5px">
+        <form method="POST" action="__SELF__" style="margin:5px">
                 <p>账号：<input type="text" name="username" /> </p>
-                 <p>密码：<input type="password" size="25" name="password" /> </p>
-                是否启用 1：启用0：禁用：
+                <p>密码：<input type="password" size="25" name="password" /></p>
+                <p>确认密码：<input type="password" size="25" name="cpassword"/></p>
+                <p>为该管理员分配角色：
+                  <div class="alert alert-info">
+                    <volist name="roleData" id="v">
+                        <input type="checkbox" name="role_id[]" style="margin:10px" 
+                        value="{$v.id}">{$v.role_name}<br/>
+                    </volist>
+                    </div>
+                </p>
+                是否启用(1启用,0禁用)：
                  <input type="radio" name="is_use" value="1" checked="checked" />启用 
                 <input type="radio" name="is_use" value="0"  />禁用 
                  <p><input type="submit" class="btn btn-primary" value="确定"/> </p>

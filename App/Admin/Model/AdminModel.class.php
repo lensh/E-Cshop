@@ -7,15 +7,19 @@ use Think\Model;
 class AdminModel extends Model 
 {
 	/*插入或更新时限制的字段*/
-	protected $insertFields = array('username','password','is_use'); 
-	protected $updateFields = array('id','username','password','is_use');
+	protected $insertFields = array('username','password','cpassword','is_use'); 
+	protected $updateFields = array('id','username','password','cpassword','is_use');
 
 	/*自动验证*/
 	protected $_validate = array(
+		//第四个参数是验证条件，1为必须验证，0为存在就验证，2为值不为空才验证
+		//第六个参数是验证时间，1为新增时验证，2为修改时验证，3为都验证
 		array('username', 'require', '账号不能为空！', 1, 'regex', 3),
 		array('username', '1,30', '账号的值最长不能超过 30 个字符！', 1, 'length', 3),
-		array('password', 'require', '密码不能为空！', 1, 'regex', 3),
+		array('username', '', '该账号已存在！', 1, 'unique', 3),
+		array('password', 'require', '密码不能为空！', 1, 'regex',3),
 		array('password', '1,32', '密码的值最长不能超过 32 个字符！', 1, 'length', 3),
+		array('cpassword', 'password', '两次密码输入不一致！', 1, 'confirm', 3),
 		array('is_use', 'number', '是否启用 1：启用0：禁用必须是一个整数！', 2, 'regex', 3),
 	);
 
@@ -27,15 +31,62 @@ class AdminModel extends Model
 		array('captcha', 'check_verify', '验证码不正确!', 1, 'callback')
 	);
 	
-	/**
-	 * 钩子函数，删除前
-	 * @param  [type] $option [description]
-	 * @return [type]         [description]
-	 */
-	protected function _before_delete($option){
-		if(is_array($option['where']['id'])){
-			$this->error = '不支持批量删除';
-			return FALSE;
+    /**
+     * 添加管理员
+     * @return [type] [description]
+     */
+	public function addAdmin($data){
+		if(empty($data['role_id'])){
+			$this->error='必须分配角色';
+			return 0;
+		}else{
+			$arr=array(
+				'username'=>$data['username'],
+				'password'=>md5($data['password'].C('md5_key')),
+				'role_id'=>implode(',', $data['role_id']),
+				'is_use'=>$data['is_use']
+			);
+			return $this->add($arr);
+		}
+	}
+
+    /**
+     * 查找管理员的信息
+     * @return array
+     */
+    public function searchAdmin(){
+    	$data = $this->select();  //管理员的信息
+        $role=M('Role');   
+        $roleData=$role->field('id,role_name')->select(); //查找所有角色信息
+        foreach ($data as $k=>$v) {
+            $role_names='';
+            foreach ($roleData as $key => $value) {
+                if(strpos(','.$v['role_id'].',',','.$value['id'].',')!==false){
+                    $role_names.=','.$value['role_name'];
+                }       
+            }  
+            $data[$k]['role_names']=substr($role_names,1);
+        }
+        return $data;
+    }
+
+    /**
+     * 修改管理员的信息
+     * @return [type] [description]
+     */
+	public function updateAdmin(&$data){
+		if(empty($data['role_id'])){
+			$this->error='必须分配角色';
+			return 0;
+		}else{
+			$arr=array(
+				'id'=>$data['id'],
+				'username'=>$data['username'],
+				'password'=>md5($data['password'].C('md5_key')),
+				'role_id'=>implode(',', $data['role_id']),
+				'is_use'=>$data['is_use']
+			);
+			return $this->save($arr);
 		}
 	}
 
@@ -46,7 +97,7 @@ class AdminModel extends Model
     public function login($data){
     	//取到用户名和密码
     	$username=$data['username']; 
-    	$password=$data['password'];
+    	$password=md5($data['password'].C('md5_key'));
     	//取记录
     	$user=$this->where($map)->find(); 
     	if($user){  //验证用户名是否存在

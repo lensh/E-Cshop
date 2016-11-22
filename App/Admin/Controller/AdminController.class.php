@@ -12,13 +12,16 @@ class AdminController extends BaseController{
     	if(IS_POST){
     		$model = D('Admin');
     		if($model->create(I('post.'), 1)){
-    			if($id = $model->add()){
+    			if($model->addAdmin(I('post.'))){
     				$this->success('添加成功！', U('Admin/Admin/lst?p='.I('get.p')));
-    				exit;
+    				return;
     			}
     		}
     		$this->error($model->getError());
     	}
+        $role=M('Role');   
+        $roleData=$role->field('id,role_name')->select(); //查找所有角色信息
+        $this->assign('roleData',$roleData);
 		$this->display();
     }
 
@@ -30,16 +33,18 @@ class AdminController extends BaseController{
     	if(IS_POST){
     		$model = D('Admin');
     		if($model->create(I('post.'), 2)){
-    			if($model->save() !== FALSE){
+    			if($model->updateAdmin(I('post.'))){
     				$this->success('修改成功！', U('Admin/Admin/lst', array('p' => I('get.p', 1))));
-    				exit;
+    				return;
     			}
     		}
     		$this->error($model->getError());
     	}
     	$model = M('Admin');
-    	$data = $model->find($id);
-    	$this->assign('data', $data);
+    	$data = $model->find($id); //查找当前管理员的信息
+        $role=M('Role');   
+        $roleData=$role->field('id,role_name')->select(); //查找所有角色信息
+        $this->assign(array('data'=>$data,'roleData'=>$roleData));
 		$this->display();
     }
 
@@ -61,8 +66,8 @@ class AdminController extends BaseController{
      * 管理员列表
      */
     public function lst(){
-    	$model = M('Admin');
-    	$data = $model->select();
+        $admin=D('Admin');
+        $data=$admin->searchAdmin();
     	$this->assign('data',$data);
     	$this->display();
     }
