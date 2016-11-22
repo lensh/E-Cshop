@@ -11,13 +11,11 @@ class BaseController extends Controller {
         if(!session('id')){
             redirect("Admin/Login/login");
         }
-        /*
         //权限认证
         if(!$this->checkAuth()){
         	$this->error('您无权限访问');
         };
-        */
-        $this->getChildren();
+        $this->showMenu();
 	}
 
 	/**
@@ -61,7 +59,7 @@ class BaseController extends Controller {
     /**
      * 菜单左侧显示权限
      */
-    protected function getChildren(){
+    protected function showMenu(){
         $auth_ids_arr=$this->getAuthIdsByAdminId();
         $auth_ids=implode(',', $auth_ids_arr);
         $btn=array();
