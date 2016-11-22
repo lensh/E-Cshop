@@ -30,7 +30,7 @@
 
     <div class="main-div">
         <form style="margin:5px" method="POST"
-         action="/E-Cshop/Auth/edit/id/3/p/1.html" enctype="multipart/form-data">
+         action="/E-Cshop/Auth/edit/id/3.html" enctype="multipart/form-data">
         <input type="hidden" value="<?php echo ($data['id']); ?>" name="id"/>
         <p>上级权限：<select name="pid">
                          <?php if($data_p['id']){?>

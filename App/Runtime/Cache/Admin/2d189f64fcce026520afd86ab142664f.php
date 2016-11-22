@@ -42,17 +42,15 @@
             <th>拥有的权限</th>
 			<th width="60">操作</th>
         </tr>
-		<?php foreach ($data as $k => $v): ?>            
-			<tr class="tron">
-			    <td><?php echo $k; ?></td>
-				<td><?php echo $v['role_name']; ?></td>
-				<td><?php echo $v['auth_names']; ?></td>
+		<?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr class="tron">
+			    <td><?php echo ($v['id']); ?></td>
+				<td><?php echo ($v['role_name']); ?></td>
+				<td><?php echo ($v['auth_names']); ?></td>
 		        <td align="center">
-		        	<a href="<?php echo U('edit?id='.$k); ?>" title="编辑">编辑</a> |
-	                <a href="<?php echo U('delete?id='.$k); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
+		        	<a href="<?php echo U('edit?id='.$v['id']); ?>" title="编辑">编辑</a> |
+	                <a href="<?php echo U('delete?id='.$v['id']); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
 		        </td>
-	        </tr>
-        <?php endforeach;?> 
+	        </tr><?php endforeach; endif; else: echo "" ;endif; ?>  
 	</table>
 </div>
 
