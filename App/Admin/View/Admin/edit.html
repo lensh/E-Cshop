@@ -21,7 +21,7 @@
                 <volist name="roleData" id="v">
                     <input type="checkbox" name="role_id[]" style="margin:10px" 
                     value="{$v.id}"
-                    <?php if(strpos($data['role_id'],$v['id'])!==false) 
+                    <?php if(strpos(','.$data['role_id'].',',','.$v['id'].',')!==false) 
                     echo "checked"
                     ?>
                     >{$v.role_name}<br/>
