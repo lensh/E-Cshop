@@ -18,7 +18,6 @@
     <script type="text/javascript">
         $(function(){
             $("input[type=submit]").click(function(){
-                //获取下拉项的等级属性值
                 var p_level=$("#sl").find("option:selected").attr("level");
                 var pid=$('#sl').val();
                 var auth_level=(parseInt(p_level)==0&&parseInt(pid)==0)?0:parseInt(p_level)+1;

@@ -40,6 +40,15 @@ class AuthModel extends Model{
 	}
 
 	/**
+	 * 获取带等级的权限
+	 * @return array 权限数组
+	 */
+	public function getTree(){
+		$data=$this->select();
+		return $this->_reSort($data);
+	}
+	
+	/**
 	 * 无限极分类,获取每个权限是第几个等级
 	 * @param  array    $data       数组数据
 	 * @param  int 		$parent_id  父级id
