@@ -113,9 +113,9 @@ class GoodsModel extends Model {
 		}
 		/************ 翻页 *************/
 		// 总的记录数
-		$count = $this->where($where)->count();
+		$count = $this->field('id')->where($where)->count();
 		// 生成翻页对象
-		$page = new \Think\Page($count,10);
+		$page = new \Think\Page($count,5);
 		// 获取翻页字符串
 		$pageString = $page->show();
 		// 取出当前页的数据
