@@ -14,8 +14,8 @@
         <form method="POST" style="margin-left:5px" action="__SELF__">
         <input type="hidden" name="id" value="{$data['id']}" />
         <p>账号：<input type="text" name="username" value="{$data['username']}"/></p>
-        <p>密码：<input type="password" size="25" name="password" value="{$data['password']}"/></p>
-        <p>确认密码：<input type="password" size="25" name="cpassword" value="{$data['password']}"/></p>
+        <p>密码：<input type="password" size="25" name="password"/></p>
+        <p>确认密码：<input type="password" size="25" name="cpassword"/></p>
         <p>为该管理员重新分配角色：
             <div class="alert alert-info">
                 <volist name="roleData" id="v">
