@@ -18,15 +18,17 @@
     <style type="text/css">
     input{margin: 5px !important}
     td{text-align: center;}
-    a{color:#9cf !important}
+    a.action{color:#9cf !important}
     a.num,span.current{margin: 5px;border: 1px solid #ccc;padding:0 5px;color: white;
         width: 20px !important;height: 20px !important;text-decoration: none !important;}
     span.current{background: #9cf;border: 1px solid #9cf;}
     a.prev,a.next{text-decoration: none !important;color:#9cf !important}
     </style>
     <script type="text/javascript">
+      $(function(){
         $('#start_addtime').datepicker({dateFormat:"yy-mm-dd"});
         $('#end_addtime').datepicker({dateFormat:"yy-mm-dd"});
+      });
     </script>
 
 </head>
@@ -93,8 +95,8 @@
                     <td><?php echo $v['is_on_sale'] == 1 ? '上架' : '下架'; ?></td>
                     <td><?php echo $v['is_delete'] == 1 ? '已删除' : '未删除'; ?></td>
                     <td>
-                    <a href="<?php echo U('edit',array('id'=>$v['id'],'p'=>I('get.p',1)));?>">修改</a>
-                    <a onclick="return confirm('确定要删除吗?')" href="<?php echo U('delete',array('id'=>$v['id'],'p'=>I('get.p',1)));?>">删除</a>
+                    <a href="<?php echo U('edit',array('id'=>$v['id'],'p'=>I('get.p',1)));?>" class="action">修改</a>
+                    <a onclick="return confirm('确定要删除吗?')" href="<?php echo U('delete',array('id'=>$v['id'],'p'=>I('get.p',1)));?>" class="action">删除</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
