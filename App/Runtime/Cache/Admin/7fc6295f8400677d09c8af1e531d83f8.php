@@ -9,7 +9,10 @@
 	<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
 	<link href="/E-Cshop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
 	<link href="/E-Cshop/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="/E-Cshop/Public/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/E-Cshop/Public/bootstrap/js/jquery.min.js">
+	</script>
+	<script type="text/javascript" src="/E-Cshop/Public/bootstrap/js/bootstrap.min.js">
+	</script>
 	<!--其它样式-->
 	
     <link rel="stylesheet" type="text/css" href="/E-Cshop/Public/datepicker/jquery-ui-1.9.2.custom.min.css">

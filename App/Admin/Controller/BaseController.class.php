@@ -2,7 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 /**
- * 基础控制器，负责验证用户有没有登陆
+ * 基础控制器，负责验证用户有没有登陆以及显示左侧菜单的权限
  */
 class BaseController extends Controller {
 
@@ -12,9 +12,9 @@ class BaseController extends Controller {
             redirect("Admin/Login/login");
         }
         //权限认证
-        if(!$this->checkAuth()){
-        	$this->error('您无权限访问');
-        };
+        //if(!$this->checkAuth()){
+        	//$this->error('您无权限访问');
+        //};
         $this->showMenu();
 	}
 
