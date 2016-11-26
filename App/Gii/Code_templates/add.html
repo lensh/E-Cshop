@@ -1,12 +1,12 @@
 <extend name="Common:common"/>
 <!--标题-->
 <block name="title">
-        <title>管理中心 - 新增{$config['tableCnName']}</title>
+        <title>管理中心 - 新增<?= $config['tableCnName']?></title>
 </block>
 <!--具体操作-->
 <block name="action">
         <span class="action-span"><a href="{:U('lst')}">返回</a></span>
-        <span id="search_id"> - 新增{$config['tableCnName']}</span>
+        <span id="search_id"> - 新增<?= $config['tableCnName']?></span>
 </block>
 
 <block name="main">
