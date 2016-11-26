@@ -1,17 +1,17 @@
 <extend name="Common:common"/>
 <!--标题-->
 <block name="title">
-        <title>管理中心 - 新增权限 </title>
+        <title>管理中心 - 新增{$config['tableCnName']}</title>
 </block>
 <!--具体操作-->
 <block name="action">
         <span class="action-span"><a href="{:U('lst')}">返回</a></span>
-        <span id="search_id"> - 新增权限</span>
+        <span id="search_id"> - 新增{$config['tableCnName']}</span>
 </block>
 
 <block name="main">
     <div class="main-div">
-        <form method="POST" action="__SELF__" enctype="multipart/form-data">
+        <form method="POST" action="__SELF__" style="margin:5px">
                 所在的类型的id：
                           <p><input  type="text" name="type_id" value=""/>
                       </p>
@@ -19,8 +19,8 @@
                           <p><input  type="text" name="attr_name" value=""/>
                       </p>
                 属性的类型0：唯一 1：可选：
-                          <p><input  type="text" name="attr_type" value=""/>
-                      </p>
+                        	<p><input type="radio" name="attr_type" value="0" checked="checked" />唯一  </p>
+                        	<p><input type="radio" name="attr_type" value="1"  />可选  </p>
                 属性的可选值，多个可选值用，隔开：
                           <p><input  type="text" name="attr_option_values" value=""/>
                       </p>

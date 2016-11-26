@@ -33,20 +33,16 @@ return array(
 		),
 		'attr_type' => array(
 			'text' => '属性的类型0：唯一 1：可选',
-			'type' => 'text',
-			'default' => '',
+			'type' => 'radio',
+			'values' =>array(
+				'0'=>'唯一',
+				'1'=>'可选'
+				)
 		),
 		'attr_option_values' => array(
 			'text' => '属性的可选值，多个可选值用，隔开',
 			'type' => 'text',
 			'default' => '',
 		),
-	),
-	/**************** 搜索字段的配置 **********************/
-	'search' => array(
-		array('type_id', 'normal', '', 'eq', '所在的类型的id'),
-		array('attr_name', 'normal', '', 'like', '属性名'),
-		array('attr_type', 'normal', '', 'eq', '属性的类型0：唯一 1：可选'),
-		array('attr_option_values', 'normal', '', 'like', '属性的可选值，多个可选值用，隔开'),
-	),
+	)
 );

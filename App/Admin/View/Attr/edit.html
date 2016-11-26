@@ -1,17 +1,17 @@
 <extend name="Common:common"/>
 <!--标题-->
 <block name="title">
-        <title>管理中心 - 编辑权限</title>
+        <title>管理中心 - 编辑{$config['tableCnName']}</title>
 </block>
 <!--具体操作-->
 <block name="action">
         <span class="action-span"><a href="{:U('lst')}">返回</a></span>
-        <span id="search_id"> - 编辑权限</span>
+        <span id="search_id"> - 编辑{$config['tableCnName']}</span>
 </block>
 <!-- 列表 -->
 <block name="main">
     <div class="main-div">
-        <form method="POST" style="margin-left:5px" action="__SELF__" enctype="multipart/form-data" >
+        <form method="POST" style="margin:5px" action="__SELF__">
         <input type="hidden" name="id" value="<?php echo $data['id']; ?>" />
                          所在的类型的id：
                     <p><input  type="text" name="type_id" value="<?php echo $data['type_id']; ?>" />
@@ -20,8 +20,10 @@
                     <p><input  type="text" name="attr_name" value="<?php echo $data['attr_name']; ?>" />
                  </p>
                      属性的类型0：唯一 1：可选：
-                    <p><input  type="text" name="attr_type" value="<?php echo $data['attr_type']; ?>" />
-                 </p>
+                     <p><input type="radio" name="attr_type" value="0" <?php if($data['attr_type'] == '0') echo 'checked="checked"'; ?> />唯一 
+                  </p>
+                     <p><input type="radio" name="attr_type" value="1" <?php if($data['attr_type'] == '1') echo 'checked="checked"'; ?> />可选 
+                  </p>
                      属性的可选值，多个可选值用，隔开：
                     <p><input  type="text" name="attr_option_values" value="<?php echo $data['attr_option_values']; ?>" />
                  </p>

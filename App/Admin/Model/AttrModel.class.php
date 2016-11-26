@@ -17,14 +17,6 @@ class AttrModel extends Model {
 	public function search($pageSize = 20){
 		/**************************************** 搜索 ****************************************/
 		$where = array();
-		if($type_id = I('get.type_id'))
-			$where['type_id'] = array('eq', $type_id);
-		if($attr_name = I('get.attr_name'))
-			$where['attr_name'] = array('like', "%$attr_name%");
-		if($attr_type = I('get.attr_type'))
-			$where['attr_type'] = array('eq', $attr_type);
-		if($attr_option_values = I('get.attr_option_values'))
-			$where['attr_option_values'] = array('like', "%$attr_option_values%");
 		/************************************* 翻页 ****************************************/
 		$count = $this->alias('a')->where($where)->count();
 		$page = new \Think\Page($count, $pageSize);
