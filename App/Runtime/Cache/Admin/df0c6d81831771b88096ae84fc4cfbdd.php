@@ -32,7 +32,7 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form method="POST" style="margin-left:5px" action="/E-Cshop/Admin/Admin/edit/id/2.html">
+        <form method="POST" style="margin-left:5px" action="/E-Cshop/Admin/Admin/edit/id/1.html">
         <input type="hidden" name="id" value="<?php echo ($data['id']); ?>" />
         <p>账号：<input type="text" name="username" value="<?php echo ($data['username']); ?>"/></p>
         <p>密码：<input type="password" size="25" name="password"/></p>

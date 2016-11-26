@@ -1,0 +1,30 @@
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+        <title>管理中心 - 新增权限 </title>
+</block>
+<!--具体操作-->
+<block name="action">
+        <span class="action-span"><a href="{:U('lst')}">返回</a></span>
+        <span id="search_id"> - 新增权限</span>
+</block>
+
+<block name="main">
+    <div class="main-div">
+        <form method="POST" action="__SELF__" enctype="multipart/form-data">
+                所在的类型的id：
+                          <p><input  type="text" name="type_id" value=""/>
+                      </p>
+                属性名：
+                          <p><input  type="text" name="attr_name" value=""/>
+                      </p>
+                属性的类型0：唯一 1：可选：
+                          <p><input  type="text" name="attr_type" value=""/>
+                      </p>
+                属性的可选值，多个可选值用，隔开：
+                          <p><input  type="text" name="attr_option_values" value=""/>
+                      </p>
+                        <p> <input type="submit" class="btn btn-primary" value="确定"/> </p>
+        </form>
+    </div>
+</block>

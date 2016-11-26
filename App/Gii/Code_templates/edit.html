@@ -11,7 +11,7 @@
 <!-- 列表 -->
 <block name="main">
     <div class="main-div">
-        <form method="POST" style="margin-left:5px" action="__SELF__" enctype="multipart/form-data" >
+        <form method="POST" style="margin:5px" action="__SELF__">
         <input type="hidden" name="<?php echo $config['pk']; ?>" value="<?php echo "<?php echo \$data['{$config['pk']}']; ?>"; ?>" />
     <?php foreach ($config['fields'] as $k => $v):if($v['type'] == 'file'):
         			foreach ($v['save_fields'] as $k1 => $v1): ?>

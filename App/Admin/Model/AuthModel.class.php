@@ -56,7 +56,7 @@ class AuthModel extends Model{
 	 * @param  boolean  $isClear    是否清空
 	 * @return array
 	 */
-	private function _reSort($data, $parent_id=0, $level=0, $isClear=TRUE){
+	public function _reSort($data, $parent_id=0, $level=0, $isClear=TRUE){
 		static $ret = array();
 		if($isClear)
 			$ret = array();

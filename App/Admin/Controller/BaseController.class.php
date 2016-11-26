@@ -12,9 +12,9 @@ class BaseController extends Controller {
             redirect("Admin/Login/login");
         }
         //权限认证
-        //if(!$this->checkAuth()){
-        	//$this->error('您无权限访问');
-        //};
+        if(!$this->checkAuth()){
+        	$this->error('您无权限访问');
+        };
         $this->showMenu();
 	}
 

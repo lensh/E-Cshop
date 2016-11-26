@@ -16,7 +16,6 @@ class <?php echo $tpName; ?>Controller extends BaseController{
 		$parentData = $parentModel->getTree();
 		$this->assign('parentData', $parentData);
 <?php endif; ?>
-
 		$this->display();
     }
     public function edit(){
@@ -43,7 +42,6 @@ class <?php echo $tpName; ?>Controller extends BaseController{
 			'children' => $children,
 		));
 <?php endif; ?>
-
 		$this->display();
     }
     public function delete(){

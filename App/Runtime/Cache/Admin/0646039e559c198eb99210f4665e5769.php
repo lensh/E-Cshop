@@ -69,7 +69,7 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form method="POST" style="margin:5px" action="/E-Cshop/Role/edit/id/1.html">
+        <form method="POST" style="margin:5px" action="/E-Cshop/Role/edit/id/3.html">
         	<input type="hidden" name="id" value="<?php echo ($data['id']); ?>" />
             <p>角色名称：<input  type="text" name="role_name" value="<?php echo ($data['role_name']); ?>"/></p>
             <p>为该角色修改分配的权限：

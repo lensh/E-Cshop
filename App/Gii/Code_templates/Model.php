@@ -1,13 +1,11 @@
 namespace <?php echo $config['moduleName']; ?>\Model;
 use Think\Model;
-class <?php echo $tpName; ?>Model extends Model 
-{
+class <?php echo $tpName; ?>Model extends Model {
 	protected $insertFields = <?php echo $config['insertFields']; ?>;
 	protected $updateFields = <?php echo $config['updateFields']; ?>;
 	protected $_validate = array(<?php echo $config['validate']; ?>);
 <?php if($config['digui'] == 0): ?>
-	public function search($pageSize = 20)
-	{
+	public function search($pageSize = 20){
 		/**************************************** 搜索 ****************************************/
 		$where = array();
 <?php foreach ($config['search'] as $k => $v): ?>
@@ -45,28 +43,24 @@ class <?php echo $tpName; ?>Model extends Model
 		return $data;
 	}
 	// 添加前
-	protected function _before_insert(&$data, $option)
-	{
+	protected function _before_insert(&$data, $option){
 <?php foreach ($config['_before_insert'] as $k => $v): ?>
 		$data['<?php echo $k; ?>'] = <?php echo rtrim($v, ';'); ?>;
 <?php endforeach; ?>
 <?php foreach ($config['fields'] as $k => $v):if($v['type'] == 'file'): ?>
-		if(isset($_FILES['<?php echo $k; ?>']) && $_FILES['<?php echo $k; ?>']['error'] == 0)
-		{
+		if(isset($_FILES['<?php echo $k; ?>']) && $_FILES['<?php echo $k; ?>']['error'] == 0){
 			$ret = uploadOne('<?php echo $k; ?>', '<?php echo $config['moduleName']; ?>', array(
 <?php foreach ($v['thumbs'] as $k1 => $v1): ?>
 				array(<?php echo $v1[0]; ?>, <?php echo $v1[1]; ?>, <?php echo $v1[2]; ?>),
 <?php endforeach; ?>
 			));
-			if($ret['ok'] == 1)
-			{
+			if($ret['ok'] == 1){
 				$data['<?php echo $v['save_fields'][0]; ?>'] = $ret['images'][0];
 <?php unset($v['save_fields'][0]);foreach ($v['save_fields'] as $k1 => $v1): ?>
 				$data['<?php echo $v1; ?>'] = $ret['images'][<?php echo $k1; ?>];
 <?php endforeach; ?>
 			}
-			else 
-			{
+			else {
 				$this->error = $ret['error'];
 				return FALSE;
 			}
@@ -74,25 +68,21 @@ class <?php echo $tpName; ?>Model extends Model
 <?php endif;endforeach; ?>
 	}
 	// 修改前
-	protected function _before_update(&$data, $option)
-	{
+	protected function _before_update(&$data, $option){
 <?php foreach ($config['fields'] as $k => $v):if($v['type'] == 'file'): ?>
-		if(isset($_FILES['<?php echo $k; ?>']) && $_FILES['<?php echo $k; ?>']['error'] == 0)
-		{
+		if(isset($_FILES['<?php echo $k; ?>']) && $_FILES['<?php echo $k; ?>']['error'] == 0){
 			$ret = uploadOne('<?php echo $k; ?>', '<?php echo $config['moduleName']; ?>', array(
 <?php foreach ($v['thumbs'] as $k1 => $v1): ?>
 				array(<?php echo $v1[0]; ?>, <?php echo $v1[1]; ?>, <?php echo $v1[2]; ?>),
 <?php endforeach; ?>
 			));
-			if($ret['ok'] == 1)
-			{
+			if($ret['ok'] == 1){
 				$data['<?php echo $v['save_fields'][0]; ?>'] = $ret['images'][0];
 <?php foreach ($v['save_fields'] as $k1 => $v1):if($k1==0) continue; ?>
 				$data['<?php echo $v1; ?>'] = $ret['images'][<?php echo $k1; ?>];
 <?php endforeach; ?>
 			}
-			else 
-			{
+			else {
 				$this->error = $ret['error'];
 				return FALSE;
 			}
@@ -105,17 +95,14 @@ class <?php echo $tpName; ?>Model extends Model
 <?php endif;endforeach; ?>
 	}
 	// 删除前
-	protected function _before_delete($option)
-	{
-		if(is_array($option['where']['<?php echo $config['pk']; ?>']))
-		{
+	protected function _before_delete($option){
+		if(is_array($option['where']['<?php echo $config['pk']; ?>'])){
 			$this->error = '不支持批量删除';
 			return FALSE;
 		}
 <?php if($config['digui'] == 1): ?>
 		$_count = $this->where('parent_id='.$option['where']['<?php echo $config['pk']; ?>'])->count();
-		if($_count >= 1)
-		{
+		if($_count >= 1){
 			$this->error = '有子级数据，无法删除';
 			return FALSE;
 		}
@@ -128,20 +115,16 @@ class <?php echo $tpName; ?>Model extends Model
 <?php endif; ?>
 <?php if($config['digui'] == 1): ?>
 	/************************************* 递归相关方法 *************************************/
-	public function getTree()
-	{
+	public function getTree(){
 		$data = $this->select();
 		return $this->_reSort($data);
 	}
-	private function _reSort($data, $parent_id=0, $level=0, $isClear=TRUE)
-	{
+	private function _reSort($data, $parent_id=0, $level=0, $isClear=TRUE){
 		static $ret = array();
 		if($isClear)
 			$ret = array();
-		foreach ($data as $k => $v)
-		{
-			if($v['parent_id'] == $parent_id)
-			{
+		foreach ($data as $k => $v){
+			if($v['parent_id'] == $parent_id){
 				$v['level'] = $level;
 				$ret[] = $v;
 				$this->_reSort($data, $v['<?php echo $config['pk']; ?>'], $level+1, FALSE);
@@ -149,18 +132,15 @@ class <?php echo $tpName; ?>Model extends Model
 		}
 		return $ret;
 	}
-	public function getChildren($<?php echo $config['pk']; ?>)
-	{
+	public function getChildren($<?php echo $config['pk']; ?>){
 		$data = $this->select();
 		return $this->_children($data, $<?php echo $config['pk']; ?>);
 	}
-	private function _children($data, $parent_id=0, $isClear=TRUE)
-	{
+	private function _children($data, $parent_id=0, $isClear=TRUE){
 		static $ret = array();
 		if($isClear)
 			$ret = array();
-		foreach ($data as $k => $v)
-		{
+		foreach ($data as $k => $v){
 			if($v['parent_id'] == $parent_id)
 			{
 				$ret[] = $v['<?php echo $config['pk']; ?>'];
@@ -172,13 +152,11 @@ class <?php echo $tpName; ?>Model extends Model
 <?php endif; ?>
 	/************************************ 其他方法 ********************************************/
 <?php if($config['digui'] == 1): ?>
-	public function _before_delete($option)
-	{
+	public function _before_delete($option){
 		// 先找出所有的子分类
 		$children = $this->getChildren($option['where']['<?php echo $config['pk']; ?>']);
 		// 如果有子分类都删除掉
-		if($children)
-		{
+		if($children){
 			$children = implode(',', $children);
 			$this->execute("DELETE FROM <?php echo $config['tableName']; ?> WHERE <?php echo $config['pk']; ?> IN($children)");
 		}
