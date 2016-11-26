@@ -114,4 +114,27 @@ class AuthModel extends Model{
 			$this->execute("DELETE FROM e-cshop_auth WHERE id IN($children)");
 		}
 	}
+
+	/**
+	 * 新增权限,管理员自动获得该权限
+	 * @param  [type] $option [description]
+	 * @return [type]         [description]
+	 */
+	public function addAuth($data){
+		if($this->create($data,1)){
+    		if($id=$this->add()){
+    			$map=array('role_name'=>'超级管理员');
+    			$roleModel=M('Role');
+    			$role=$roleModel->field('id,auth_id')->where($map)->find();
+    			$auth_ids=$role['auth_id'].','.$id;
+                $save=$roleModel->where(array('id'=>$role['id']))->save(
+                	array('auth_id'=>$auth_ids));
+                return $save;
+    		}else{
+    			return 0;
+    		}
+    	}else{
+    		return 0;
+    	}
+	}
 }

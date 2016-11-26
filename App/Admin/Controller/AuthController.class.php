@@ -11,19 +11,8 @@ class AuthController extends BaseController {
         $data = $model->getTree();
         $this->assign(array(
             'data' => $data,
-            //'page'=> $data['page']
         ));
         $this->display();
-       /*这种方法显示上有问题
-        $model = D('Auth');
-        $data = $model->getAuth();
-        $this->assign(array(
-            'data' => $data['data'],
-            'page'=> $data['page']
-        ));
-        $this->display();
-        这种方法显示上有问题
-        */
     }
 
     /**
@@ -34,13 +23,11 @@ class AuthController extends BaseController {
     {
     	if(IS_AJAX){
     		$model = D('Auth');
-    		if($model->create(I('post.'), 1)){
-    			echo $model->add()?1:0;
-                return;
-    		}
+            echo $model->addAuth(I('post.'))?1:0;
+            return;
     	}
-		$parentModel = M('Auth');
-		$parentData = $parentModel->field('id,auth_name,auth_level')->select();
+		$parentModel = D('Auth');
+		$parentData = $parentModel->getTree();
 		$this->assign('parentData', $parentData);
 		$this->display();
     }
