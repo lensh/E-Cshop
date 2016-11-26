@@ -12,8 +12,8 @@ class AttrController extends BaseController{
     		$model = D('Attr');
     		if($model->create(I('post.'), 1)){
     			if($id = $model->add()){
-    				$this->success('添加成功！', U('lst?p='.I('get.p')));
-    				exit;
+    				$this->success('添加成功！', U('lst?p='.I('get.p').'&type_id='.I('get.type_id')));
+    				return;
     			}
     		}
     		$this->error($model->getError());
@@ -37,8 +37,8 @@ class AttrController extends BaseController{
     		$model = D('Attr');
     		if($model->create(I('post.'), 2)){
     			if($model->save() !== FALSE){
-    				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
-    				exit;
+    				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1),'type_id'=>I('get.type_id'))));
+    				return;
     			}
     		}
     		$this->error($model->getError());
@@ -63,7 +63,7 @@ class AttrController extends BaseController{
     public function delete(){
     	$model = D('Attr');
     	if($model->delete(I('get.id', 0)) !== FALSE){
-    		$this->success('删除成功！', U('lst', array('p' => I('get.p', 1))));
+    		$this->success('删除成功！', U('lst', array('p' => I('get.p', 1),'type_id'=>I('get.type_id'))));
     		exit;
     	}
     	else {

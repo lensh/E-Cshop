@@ -32,7 +32,7 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form mesthod="POST" action="/E-Cshop/Attr/add/type_id/2.html?type_id=2&attr_name=34344&attr_type=0&attr_option_values=34" style="margin:5px">
+        <form method="POST" action="/E-Cshop/Attr/add/type_id/1.html" style="margin:5px">
               <p>商品类型:
                 <select name="type_id">
                   <?php if(is_array($typeData)): $i = 0; $__LIST__ = $typeData;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v['id']); ?>" <?php if($type_id==$v['id']) echo 'selected="selected"'?>>

@@ -10,13 +10,11 @@ class AttrModel extends Model {
 		array('attr_name', 'require', '属性名不能为空！', 1, 'regex', 3),
 		array('attr_name', '1,30', '属性名的值最长不能超过 30 个字符！', 1, 'length', 3),
 		array('attr_type', 'require', '属性的类型0：唯一 1：可选不能为空！', 1, 'regex', 3),
-		array('attr_type', 'number', '属性的类型0：唯一 1：可选必须是一个整数！', 1, 'regex', 3),
-		array('attr_option_values', 'require', '属性的可选值，多个可选值用，隔开不能为空！', 1, 'regex', 3),
-		array('attr_option_values', '1,150', '属性的可选值，多个可选值用，隔开的值最长不能超过 150 个字符！', 1, 'length', 3),
+		array('attr_type', 'number', '属性的类型0：唯一 1：可选必须是一个整数！', 1, 'regex', 3)
 	);
 	public function search($pageSize = 20){
 		/**************************************** 搜索 ****************************************/
-		$where = array();
+		$where['type_id']=I('get.type_id');
 		/************************************* 翻页 ****************************************/
 		$count = $this->alias('a')->where($where)->count();
 		$page = new \Think\Page($count, $pageSize);
@@ -41,5 +39,4 @@ class AttrModel extends Model {
 			return FALSE;
 		}
 	}
-	/************************************ 其他方法 ********************************************/
 }
