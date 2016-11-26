@@ -1,7 +1,7 @@
 <?php
 return array(
 	'tableName' => 'ecshop_attr',    // 表名
-	'tableCnName' => '属性表',  // 表的中文名
+	'tableCnName' => '属性',  // 表的中文名
 	'moduleName' => 'Admin',  // 代码生成到的模块
 	'digui' => 0,             // 是否无限级（递归）
 	'diguiName' => '',        // 递归时用来显示的字段的名字，如cat_name（分类名称）

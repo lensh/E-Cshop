@@ -42,18 +42,16 @@
 	<div class="list-div" id="listDiv">
 		<table cellpadding="3" cellspacing="1">
 	    	<tr>
-	    		<th>ID</th>
 	            <th>权限名称</th>
 	            <th>模块名称</th>
 	            <th>控制器名称</th>
 	            <th>方法名称</th>
 	            <th>上级权限的ID(0代表顶级权限)</th>
 	            <th>权限等级</th>
-				<th width="60">操作</th>
+				<th width="120">操作</th>
 	        </tr>
 			<?php foreach ($data as $k => $v): ?>            
 				<tr class="tron">
-				    <td><?php echo ($v['id']); ?></td>
 					<td style="text-align:left;text-indent:4px">
 					<?php echo str_repeat('-', 8*$v['auth_level']); echo $v['auth_name'];?></td>
 					<td><?php echo ($v['module_name']); ?></td>

@@ -43,7 +43,7 @@
 			商品类型：
 	   		<input type="text" name="type_name" size="30" value="<?php echo I('get.type_name'); ?>" />
 		</p>
-		<p><input type="submit" value=" 搜索 " class="button" /></p>
+		<p><input type="submit" value="搜索" class="btn btn-info"/></p>
     </form>
 </div>
 <!-- 列表 -->
@@ -52,13 +52,14 @@
     	<tr>
     	    <th>ID</th>
             <th>商品类型</th>
-			<th width="60">操作</th>
+			<th width="150">操作</th>
         </tr>
 		<?php foreach ($data as $k => $v): ?>            
 			<tr class="tron">
 			    <td><?php echo $v['id']; ?></td>
 				<td><?php echo $v['type_name']; ?></td>
 		        <td align="center">
+		        	<a href="<?php echo U('Attr/lst?type_id='.$v['id']); ?>">属性列表</a> |
 		        	<a href="<?php echo U('edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> |
 	                <a href="<?php echo U('delete?id='.$v['id'].'&p='.I('get.p')); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
 		        </td>

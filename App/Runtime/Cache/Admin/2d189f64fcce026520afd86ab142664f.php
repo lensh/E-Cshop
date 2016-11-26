@@ -43,7 +43,7 @@
     		<th>角色ID</th>
             <th>角色名称</th>
             <th>拥有的权限</th>
-			<th width="60">操作</th>
+			<th width="120">操作</th>
         </tr>
 		<?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr class="tron">
 			    <td><?php echo ($v['id']); ?></td>

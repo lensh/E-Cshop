@@ -46,7 +46,7 @@
             <input type="radio" name="is_delete" value="0" <?php if(I('get.is_delete', -1) == 0) echo 'checked="checked"'; ?> />否<br />
          添加时间：
             <input type="text" size="10" id="start_addtime" name="start_addtime" value="{:I('get.start_addtime')}"/>~<input type="text" size="10" id="end_addtime" name="end_addtime" value="{:I('get.end_addtime')}"/><br/>
-            <input type="submit" class="btn btn-primary" value="搜索"/><br /><br />     
+            <input type="submit" class="btn btn-info" value="搜索"/><br /><br />     
          排序方式：
             <input onclick="parentNode.submit();" type="radio" name="odby" value="id_asc" <?php if(I('get.odby', 'id_asc') == 'id_asc') echo 'checked="checked"'; ?> />根据添加时间升序
             <input onclick="parentNode.submit();" type="radio" name="odby" value="id_desc" <?php if(I('get.odby') == 'id_desc') echo 'checked="checked"'; ?> />根据添加时间降序
