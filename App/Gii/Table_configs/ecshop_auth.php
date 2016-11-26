@@ -1,6 +1,6 @@
 <?php
 return array(
-	'tableName' => 'e-cshop_auth',    // 表名
+	'tableName' => 'ecshop_auth',    // 表名
 	'tableCnName' => '权限',  // 表的中文名
 	'moduleName' => 'Admin',  // 代码生成到的模块
 	'digui' => 1,             // 是否无限级（递归）

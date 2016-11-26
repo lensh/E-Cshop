@@ -10,8 +10,8 @@ return array(
 	'DB_PORT'=>'3306',
 	'DB_USER'=>'root',
 	'DB_PWD'=>'',
-	'DB_NAME'=>'e-cshop',
-	'DB_PREFIX'=>'e-cshop_',
+	'DB_NAME'=>'ecshop',
+	'DB_PREFIX'=>'ecshop_',
 	//URL模式
 	'URL_MODEL'=>2,   //url重写模式
 	/*图片相关的配置*/
