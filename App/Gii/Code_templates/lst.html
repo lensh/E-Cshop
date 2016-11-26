@@ -1,7 +1,7 @@
 <extend name="Common:common"/>
 <!--标题-->
 <block name="title">
-	<title>管理中心 - 权限列表 </title>
+	<title>管理中心 - {$config['tableCnName']}列表 </title>
 </block>
 <!--其它样式-->
 <block name="asset">
@@ -12,8 +12,9 @@
 
 <!--具体操作-->
 <block name="action">
-		<span class="action-span"><a href="{:U('add')}">添加权限</a></span>
-		<span id="search_id"> - 权限列表 </span>
+		<span class="action-span"><a href="{:U('add')}">添加{$config['tableCnName']}
+		</a></span>
+		<span id="search_id"> - {$config['tableCnName']}列表 </span>
 </block>
 
 <!-- 列表 -->
