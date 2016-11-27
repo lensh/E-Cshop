@@ -3,7 +3,7 @@
 <head>
 	<!--标题-->
 	
-        <title>管理中心 - 编辑类型</title>
+        <title>管理中心 - 编辑商品分类</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
@@ -23,7 +23,7 @@
     <!--具体操作-->
     
         <span class="action-span"><a href="<?php echo U('lst');?>">返回</a></span>
-        <span id="search_id"> - 编辑类型</span>
+        <span id="search_id"> - 编辑商品分类</span>
 
 
     <div style="clear:both"></div>
@@ -32,10 +32,20 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form method="POST" style="margin:5px" action="/E-Cshop/Type/edit/id/2/p/1.html">
-        <input type="hidden" name="id" value="<?php echo ($data['id']); ?>" />
-         <p>商品类型：<input type="text" name="type_name" value="<?php echo ($data['type_name']); ?>"/></p>
-         <p><input type="submit" class="btn btn-primary" value="确定"/> </p>
+        <form method="POST" style="margin:5px" action="/E-Cshop/Category/edit/id/4.html">
+        <input type="hidden" name="id" value="<?php echo $data['id']; ?>"/>
+        <p>上级分类：
+            <select name="pid">
+    			<option value="0">顶级分类</option>
+    			<?php foreach ($parentData as $k => $v): ?> 
+    		<?php if($v['id'] == $data['id'] || in_array($v['id'], $children)) continue ; ?> 
+    			<option <?php if($v['id'] == $data['pid']): ?>selected="selected"<?php endif; ?> value="<?php echo $v['id']; ?>"><?php echo str_repeat('-', 8*$v['level']).$v['cat_name']; ?>
+                </option>
+    		    <?php endforeach; ?>    		
+        	</select>
+        </p>
+        <p>分类名称:<input type="text" name="cat_name" value="<?php echo ($data['cat_name']); ?>"/></p>
+        <p><input type="submit" class="btn btn-primary" value="确定"/> </p>
         </form>
     </div>
 

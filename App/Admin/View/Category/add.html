@@ -1,0 +1,27 @@
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+        <title>管理中心 - 新增商品分类</title>
+</block>
+<!--具体操作-->
+<block name="action">
+        <span class="action-span"><a href="{:U('lst')}">返回</a></span>
+        <span id="search_id"> - 新增商品分类</span>
+</block>
+
+<block name="main">
+    <div class="main-div">
+        <form method="POST" action="__SELF__" style="margin:5px">
+          <p>上级分类:
+          <select name="pid">
+    				 <option value="0">顶级分类</option>
+    			     <?php foreach ($parentData as $k => $v): ?>
+                <option value="<?php echo $v['id']; ?>"><?php echo str_repeat('-', 8*$v['level']).$v['cat_name']; ?></option>
+    						<?php endforeach; ?>    			 
+               </select>
+          </p>
+          <p>分类名称:<input  type="text" name="cat_name" value=""/></p>
+          <p> <input type="submit" class="btn btn-primary" value="确定"/> </p>
+        </form>
+    </div>
+</block>

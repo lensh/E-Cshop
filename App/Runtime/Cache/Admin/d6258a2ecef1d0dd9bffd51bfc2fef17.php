@@ -19,11 +19,6 @@
       td{text-align: center;}
       a{color:#9cf !important}
     </style>
-    <script type="text/javascript">
-    $(function(){
-
-    });
-    </script>
 
 </head>
 <body>
