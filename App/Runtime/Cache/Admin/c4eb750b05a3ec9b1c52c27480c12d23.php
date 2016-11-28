@@ -86,6 +86,11 @@
             p.remove();
           }   
       }
+      function addCat(btn){
+          var sel=$(btn).next();
+          var newSel=sel.clone();
+          $(btn).parent().append(newSel);
+      }
   </script>
 
 </head>
@@ -118,18 +123,35 @@
         <form method="POST" action="/E-Cshop/Goods/add.html" style="margin:5px">
         <div class="content" style="display:block">
           <p>商品名称：<input type="text" name="goods_name" value=""/></p>
-          <p>主分类的id：<input type="text" name="cat_id" value=""/></p>
-          <p>品牌的id：<input type="text" name="brand_id" value=""/></p>
-          <p>市场价：<input type="text" name="market_price" value="0.00"/></p>
-          <p>本店价：<input type="text" name="shop_price" value="0.00"/></p>
+          <p>主分类：
+            <select name="cat_id">
+                <option value="">选择分类</option>
+                <?php if(is_array($categoryData)): $i = 0; $__LIST__ = $categoryData;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo str_repeat('-',8*$v['level']).$v['cat_name'];?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+            </select>
+          </p>
+          <p>其它分类:
+            <input type="button" value="添加" class="btn btn-info" onclick="addCat(this)">
+            <select name="extend_cat_id[]" style="margin-top:8px">
+                <option value="">选择分类</option>
+                <?php if(is_array($categoryData)): $i = 0; $__LIST__ = $categoryData;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo str_repeat('-',8*$v['level']).$v['cat_name'];?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+            </select>
+          </p>
+          <p>品牌：    
+            <select name="brand_id" style="margin-top:8px">
+                <option value="">选择品牌</option>
+                <?php if(is_array($brandData)): $i = 0; $__LIST__ = $brandData;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo ($v['brand_name']); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+            </select>
+          </p>
+          <p>市场价：￥ <input type="text" name="market_price" value="0.00"/></p>
+          <p>本店价：￥ <input type="text" name="shop_price" value="0.00"/></p>
           <p>赠送积分：<input type="text" name="jifen" value=""/></p>
           <p>赠送经验值：<input type="text" name="jyz" value=""/></p>
           <p>如果要用积分兑换，需要的积分数：
             <input type="text" name="jifen_price" value=""/></p>
           <p>是否促销：<input type="text" name="is_promote" value="0"/></p>
           <p>促销价：<input type="text" name="promote_price" value="0.00"/></p>
-          <p>促销开始时间：<input id="promote_start_time" type="text" name="promote_start_time" value="0"/>
-          促销结束时间：<input id="promote_end_time" type="text" name="promote_end_time" value="0"/></p>
+          <p>促销开始时间：<input id="promote_start_time" type="text" name="promote_start_time"/>
+          促销结束时间：<input id="promote_end_time" type="text" name="promote_end_time"/></p>
           <p>logo原图：<input type="file" name="logo"/></p>
           <p>是否热卖：
               <input type="radio" name="is_hot" value="1"/>是

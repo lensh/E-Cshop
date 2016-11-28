@@ -79,7 +79,7 @@ function uploadOne($imgName, $dirName, $thumb = array())
  */
 function showImage($url, $width='', $height='')
 {
-	$url = '/Public/Uploads/'.$url;
+	$url = '/E-Cshop/Public/Uploads/'.$url;
 	if($width)
 		$width = "width='$width'";
 	if($height)
