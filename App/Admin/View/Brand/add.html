@@ -1,0 +1,21 @@
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+        <title>管理中心 - 新增品牌</title>
+</block>
+<!--具体操作-->
+<block name="action">
+        <span class="action-span"><a href="{:U('lst')}">返回</a></span>
+        <span id="search_id"> - 新增品牌</span>
+</block>
+
+<block name="main">
+    <div class="main-div">
+        <form method="POST" action="__SELF__" style="margin:5px" enctype="multipart/form-data">
+            <p>品牌名称：<input type="text" name="brand_name"/></p>
+            <p>品牌网站地址：<input  type="text" name="site_url"/></p>
+            <p>品牌logo：<input type="file" name="logo"/></p>
+            <p><input type="submit" class="btn btn-primary" value="确定"/></p>
+        </form>
+    </div>
+</block>

@@ -1,0 +1,24 @@
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+        <title>管理中心 - 编辑品牌</title>
+</block>
+<!--具体操作-->
+<block name="action">
+        <span class="action-span"><a href="{:U('lst')}">返回</a></span>
+        <span id="search_id"> - 编辑品牌</span>
+</block>
+<!-- 列表 -->
+<block name="main">
+    <div class="main-div">
+        <form method="POST" style="margin:5px" action="__SELF__" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$data['id']}" />
+        <input type="hidden" name="old_logo" value="{$data['logo']}"/>
+        <p>品牌名称:<input type="text" name="brand_name" value="{$data['brand_name']}"/></p>
+        <p>品牌网站地址:<input type="text" name="site_url" value="{$data['site_url']}"/></p>
+        <p>品牌logo:<input type="file" name="logo"/><br/> 
+        <?php showImage($data['logo'], 100);?></p>
+        <p><input type="submit" class="btn btn-primary" value="确定"/></p>
+        </form>
+    </div>
+</block>
