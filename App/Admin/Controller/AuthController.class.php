@@ -23,7 +23,7 @@ class AuthController extends BaseController {
     {
     	if(IS_AJAX){
     		$model = D('Auth');
-            echo $model->add(I('post.'));
+            echo $model->add(I('post.'))?1:0;
             return;
     	}
 		$parentModel = D('Auth');
