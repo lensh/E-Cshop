@@ -87,7 +87,7 @@ class GoodsModel extends Model {
 	protected function _before_insert(&$data, $option){
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
 			$ret = uploadOne('logo', 'Admin', array(
-				array(150, 150, 2),
+				array(150, 150, 2)
 			));
 			if($ret['ok'] == 1){
 				$data['logo'] = $ret['images'][0];
@@ -101,6 +101,7 @@ class GoodsModel extends Model {
 	}
 	// 修改前
 	protected function _before_update(&$data, $option){
+	    if(!I('post.is_promote'))  $data['is_promote']=0;
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
 			$ret = uploadOne('logo', 'Admin', array(
 				array(150, 150, 2),
