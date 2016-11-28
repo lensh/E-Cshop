@@ -1,0 +1,30 @@
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+        <title>管理中心 - 新增会员级别</title>
+</block>
+<!--具体操作-->
+<block name="action">
+        <span class="action-span"><a href="{:U('lst')}">返回</a></span>
+        <span id="search_id"> - 新增会员级别</span>
+</block>
+
+<block name="main">
+    <div class="main-div">
+        <form method="POST" action="__SELF__" style="margin:5px">
+                <p>级别名称：
+                          <input  type="text" name="level_name" value=""/>
+                      </p>
+                <p>积分下限：
+                          <input  type="text" name="bottom_num" value=""/>
+                      </p>
+                <p>积分上限：
+                          <input  type="text" name="top_num" value=""/>
+                      </p>
+                <p>折扣率，90为9折：
+                          <input  type="text" name="rate" value="100"/>
+                      </p>
+                        <p> <input type="submit" class="btn btn-primary" value="确定"/> </p>
+        </form>
+    </div>
+</block>

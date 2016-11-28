@@ -21,18 +21,18 @@
     			  </select>
     <?php endif; ?>
     <?php foreach ($config['fields'] as $k => $v):if($v['type']=='null' || ($config['digui'] == 1 && 'pid' == $k)) continue; ?>
-        <?php echo $v['text']; ?>：
+        <p><?php echo $v['text']; ?>：
     <?php if($v['type'] == 'text'): ?>
-                      <p><input <?php if((strpos($k, 'time') !== FALSE) || (strpos($k, 'date') !== FALSE)) echo 'id="'.$k.'"'; ?> type="text" name="<?php echo $k; ?>" value="<?php echo $v['default']; ?>"/>
+                      <input <?php if((strpos($k, 'time') !== FALSE) || (strpos($k, 'date') !== FALSE)) echo 'id="'.$k.'"'; ?> type="text" name="<?php echo $k; ?>" value="<?php echo $v['default']; ?>"/>
                       </p>
     <?php elseif($v['type'] == 'password'): ?>
-                        <p> <input type="password" size="25" name="<?php echo $k; ?>"/></p>
+                        <input type="password" size="25" name="<?php echo $k; ?>"/></p>
     <?php elseif ($v['type'] == 'file'): ?>
-                       <p><input type="file" name="<?php echo $k; ?>"/>  </p>
+                       <input type="file" name="<?php echo $k; ?>"/>  </p>
     <?php elseif ($v['type'] == 'html'): ?>
-                       <p><textarea id="<?php echo $k; ?>" name="<?php echo $k; ?>"><?php echo $v['default']; ?></textarea> </p>
+                       <textarea id="<?php echo $k; ?>" name="<?php echo $k; ?>"><?php echo $v['default']; ?></textarea> </p>
     <?php elseif ($v['type'] == 'radio'): $_i = 0; foreach ($v['values'] as $k1 => $v1): ?>
-                    	<p><input type="radio" name="<?php echo $k; ?>" value="<?php echo $k1; ?>" <?php if($v['default'] == $k1) echo 'checked="checked"'; ?> /><?php echo $v1; ?>  </p>
+                    	<input type="radio" name="<?php echo $k; ?>" value="<?php echo $k1; ?>" <?php if($v['default'] == $k1) echo 'checked="checked"'; ?> /><?php echo $v1; ?>  </p>
     <?php $_i++;endforeach;endif; ?>
     <?php endforeach; ?>
                 <p> <input type="submit" class="btn btn-primary" value="确定"/> </p>

@@ -28,21 +28,21 @@
     					</select>
     <?php endif; ?>
     <?php foreach ($config['fields'] as $k => $v):if($v['type']=='null' || ($config['digui'] == 1 && 'pid' == $k)) continue; ?>
-             <?php echo $v['text']; ?>：
+             <p><?php echo $v['text']; ?>：
     <?php if($v['type'] == 'text'): ?>
-                <p><input <?php if((strpos($k, 'time') !== FALSE) || (strpos($k, 'date') !== FALSE)) echo 'id="'.$k.'"'; ?> type="text" name="<?php echo $k; ?>" value="<?php echo "<?php echo \$data['$k']; ?>"; ?>" />
+                <input <?php if((strpos($k, 'time') !== FALSE) || (strpos($k, 'date') !== FALSE)) echo 'id="'.$k.'"'; ?> type="text" name="<?php echo $k; ?>" value="<?php echo "<?php echo \$data['$k']; ?>"; ?>" />
                  </p>
     <?php elseif($v['type'] == 'password'): ?>
-                  <p><input type="password" size="25" name="<?php echo $k; ?>" /> </p>
+                  <input type="password" size="25" name="<?php echo $k; ?>" /> </p>
     <?php elseif ($v['type'] == 'file'): ?>
-                 <p><input type="file" name="<?php echo $k; ?>" /><br /> 
+                 <input type="file" name="<?php echo $k; ?>" /><br /> 
                     	<?php echo "<?php showImage(\$data['$k'], 100); ?>"; ?>
                  </p>
     <?php elseif ($v['type'] == 'html'): ?>
-                <p><textarea id="<?php echo $k; ?>" name="<?php echo $k; ?>"><?php echo "<?php echo \$data['$k']; ?>"; ?></textarea>
+                <textarea id="<?php echo $k; ?>" name="<?php echo $k; ?>"><?php echo "<?php echo \$data['$k']; ?>"; ?></textarea>
                 </p>
     <?php elseif ($v['type'] == 'radio'): $_i = 0; foreach ($v['values'] as $k1 => $v1): ?>
-                 <p><input type="radio" name="<?php echo $k; ?>" value="<?php echo $k1; ?>" <?php echo "<?php if(\$data['$k'] == '$k1') echo 'checked=\"checked\"'; ?>"; ?> /><?php echo $v1; ?> 
+                <input type="radio" name="<?php echo $k; ?>" value="<?php echo $k1; ?>" <?php echo "<?php if(\$data['$k'] == '$k1') echo 'checked=\"checked\"'; ?>"; ?> /><?php echo $v1; ?> 
                   </p>
     <?php $_i++;endforeach;endif; ?>
     <?php endforeach; ?>
