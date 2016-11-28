@@ -38,7 +38,7 @@
           $("#tabbar-div p span").click(function(){
               var index=$(this).index();
               $(this).removeClass('tab-back').addClass('tab-front').siblings().removeClass('tab-front').addClass('tab-back');
-              $('.content').eq(index).show().siblings().hide();
+              $('.content').eq(index).show().siblings('.content').hide();
           });
 
           //下拉框选择
@@ -60,16 +60,18 @@
                         if(json[i].attr_type==1)  
                     html+='<a href="javascript:void(0)" onclick="addNew(this)">[+]</a>';
                         if(json[i].attr_option_values==''){   //是否有可选值
-                          html+='<input type="text"/>';
+                          html+='<input type="text" name="attr['+json[i].id+'][]"/>';
                         }else{
                           var attrs=json[i].attr_option_values.split(',');
-                          html+='<select>';
+                          html+='<select name="attr['+json[i].id+'][]">';
                           html+='<option values="">请选择</option>';
                           for(var j=0;j<attrs.length;j++){
                              html+='<option values="'+attrs[j]+'">'+attrs[j]+'</option>';
                           }
                           html+='</select>';
                         }
+                        if(json[i].attr_type==1) 
+              html+='属性价格:￥<input type="text" name="attr_price['+json[i].id+'][]"/>元';
                         html+='</p>';
                     }
                     $('#attr_container').html(html);
@@ -82,6 +84,11 @@
                    $('.promote_price').removeAttr('disabled');
               else $('.promote_price').attr('disabled','disabled');
           });
+
+          //添加商品图片
+          $('#addImg').click(function(){
+              $(this).parent().parent().append('<input type="file" name="img[]"/>');
+          });
       });
       function addNew(a){
           var p=$(a).parent();
@@ -93,6 +100,7 @@
             p.remove();
           }   
       }
+      //添加分类
       function addCat(btn){
           var sel=$(btn).next();
           var newSel=sel.clone();
@@ -127,7 +135,9 @@
         </p>
     </div>
     <div id="tabbody-div">
-        <form method="POST" action="/E-Cshop/Goods/add.html" style="margin:5px">
+      <form method="POST" action="/E-Cshop/Goods/add.html" style="margin:5px" 
+        enctype="multipart/form-data">
+        <!--基本信息-->
         <div class="content" style="display:block">
           <p>商品名称：<input type="text" name="goods_name" value=""/></p>
           <p>主分类：
@@ -185,12 +195,20 @@
               <input  type="text" name="seo_description" value=""/>
           </p>
           <p>排序数字：<input type="text" name="sort_num" value="100"/></p>
-          <p><input type="submit" class="btn btn-primary" value="确定"/> </p>
         </div>
+        <!--商品描述-->
         <div class="content">          
             <p><textarea id="goods_desc" name="goods_desc"></textarea></p>
         </div>
-        <div class="content">会员价格</div>
+        <!--会员价格-->
+        <div class="content">
+            <p>会员价格(如果没有设置，则按照这个级别的折扣率来计算)</p>
+            <p>
+              <?php if(is_array($memberLevelData)): $i = 0; $__LIST__ = $memberLevelData;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i; echo ($v["level_name"]); ?>(<?= $v['rate']/10?>折) 
+                  ￥ <input type="text" name="mp[<?php echo ($v["id"]); ?>]"/><br/><?php endforeach; endif; else: echo "" ;endif; ?>
+            </p>
+        </div>
+        <!--商品属性-->
         <div class="content">
             <p>商品类型:
                 <select name="type_id">
@@ -200,8 +218,14 @@
             </p>
             <div id="attr_container"></div>
         </div>
-        <div class="content">商品相册</div>
-        </form>
+        <!--商品相册-->
+        <div class="content">
+          <p><input type="button" class="btn btn-info" id="addImg" value="添加商品图片"/>
+          </p>
+        </div>
+
+        <p><input type="submit" class="btn btn-primary" value="确定"/></p>
+      </form>
     </div>
 </div>
 

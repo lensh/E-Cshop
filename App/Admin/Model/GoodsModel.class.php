@@ -2,7 +2,7 @@
 namespace Admin\Model;
 use Think\Model;
 class GoodsModel extends Model {
-	protected $insertFields = array('goods_name','cat_id','brand_id','market_price','shop_price','jifen','jyz','jifen_price','is_promote','promote_price','promote_start_time','promote_end_time','is_hot','is_new','is_best','is_on_sale','seo_keyword','seo_description','type_id','sort_num','is_delete','goods_desc');
+	protected $insertFields = array('goods_name','extend_cat_id','cat_id','brand_id','market_price','shop_price','jifen','jyz','jifen_price','is_promote','promote_price','promote_start_time','promote_end_time','is_hot','is_new','is_best','is_on_sale','seo_keyword','seo_description','type_id','sort_num','is_delete','goods_desc');
 	protected $updateFields = array('id','goods_name','cat_id','brand_id','market_price','shop_price','jifen','jyz','jifen_price','is_promote','promote_price','promote_start_time','promote_end_time','is_hot','is_new','is_best','is_on_sale','seo_keyword','seo_description','type_id','sort_num','is_delete','goods_desc');
 	protected $_validate = array(
 		array('goods_name', 'require', '商品名称不能为空！', 1, 'regex', 3),
@@ -21,8 +21,6 @@ class GoodsModel extends Model {
 		array('jifen_price', 'number', '如果要用积分兑换，需要的积分数必须是一个整数！', 1, 'regex', 3),
 		array('is_promote', 'number', '是否促销必须是一个整数！', 2, 'regex', 3),
 		array('promote_price', 'currency', '促销价必须是货币格式！', 2, 'regex', 3),
-		array('promote_start_time', 'number', '促销开始时间必须是一个整数！', 2, 'regex', 3),
-		array('promote_end_time', 'number', '促销结束时间必须是一个整数！', 2, 'regex', 3),
 		array('is_hot', 'number', '是否热卖必须是一个整数！', 2, 'regex', 3),
 		array('is_new', 'number', '是否新品必须是一个整数！', 2, 'regex', 3),
 		array('is_best', 'number', '是否精品必须是一个整数！', 2, 'regex', 3),
@@ -85,8 +83,9 @@ class GoodsModel extends Model {
 	}
 	// 添加前
 	protected function _before_insert(&$data, $option){
+		$data['addtime']=time();
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
-			$ret = uploadOne('logo', 'Admin', array(
+			$ret = uploadOne('logo', 'Goods', array(
 				array(150, 150, 2)
 			));
 			if($ret['ok'] == 1){
@@ -99,6 +98,55 @@ class GoodsModel extends Model {
 			}
 		}
 	}
+    //添加后
+	protected function _after_insert(&$data, $option){
+
+		/*****处理商品的扩展分类****/
+		$extend_cat_id=I('post.extend_cat_id');
+		if($extend_cat_id){
+			$model=M('GoodsCat');
+			foreach ($extend_cat_id as $v) {
+				if(empty($v)) continue;
+				$model->add(array(
+					'goods_id'=>$data['id'],
+					'cat_id'=>$v
+				));
+			}
+		}
+
+		/*****处理会员价格********/
+		$mp=I('post.mp');
+		if($mp){
+			$model1=M('MemberPrice');
+			foreach ($mp as $k => $v) {
+				if(empty($v)) continue;
+			    $model1->add(array(
+					'goods_id'=>$data['id'],
+					'level_id'=>$k,
+					'price'=>$v
+				));
+			}
+		}
+
+		/*******处理商品属性********/
+	    $attr=I('post.attr');
+	    $attr_price=I('post.attr_price');  
+	    if($attr){
+	    	$model2=M('GoodsAttr');
+	    	foreach ($attr as $k=> $v) {
+	    		foreach ($v as $k1 => $v1) {
+	    			if(empty($v1)) continue;
+	    			$model2->add(array(
+						'goods_id'=>$data['id'],
+						'attr_id'=>$k,
+						'attr_value'=>$v1,
+						'attr_price'=>$attr_price[$k][$k1]
+					));	
+	    		}
+	    	}
+	    }
+
+	}	
 	// 修改前
 	protected function _before_update(&$data, $option){
 	    if(!I('post.is_promote'))  $data['is_promote']=0;
@@ -116,8 +164,7 @@ class GoodsModel extends Model {
 			}
 			deleteImage(array(
 				I('post.old_logo'),
-				I('post.old_sm_logo'),
-	
+				I('post.old_sm_logo')
 			));
 		}
 	}

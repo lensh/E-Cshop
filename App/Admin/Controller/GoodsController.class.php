@@ -25,6 +25,9 @@ class GoodsController extends BaseController{
         //取出所有的品牌
         $brandData=M('Brand')->field('id,brand_name')->select();
         $this->assign('brandData',$brandData);
+        //取出所有的会员级别
+        $memberLevelData=M('MemberLevel')->select();
+        $this->assign('memberLevelData',$memberLevelData);
 		$this->display();
     }
 
