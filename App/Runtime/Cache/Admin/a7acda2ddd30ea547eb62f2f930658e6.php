@@ -141,10 +141,12 @@
         </p>
     </div>
     <div id="tabbody-div">
-      <form method="POST" action="/E-Cshop/Goods/edit/id/3.html" style="margin:5px" 
+      <form method="POST" action="/E-Cshop/Goods/edit/id/1/p/1.html" style="margin:5px" 
         enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo ($data["id"]); ?>" />
         <input type="hidden" name="old_type_id" value="<?php echo ($data["type_id"]); ?>" />
+        <input type="hidden" name="old_logo" value="<?php echo ($data["logo"]); ?>" />
+        <input type="hidden" name="old_sm_logo" value="<?php echo ($data["sm_logo"]); ?>" />
         <!--基本信息-->
         <div class="content" style="display:block">
           <p>商品名称：<input type="text" name="goods_name" 
@@ -161,7 +163,7 @@
           <p>其它分类:
             <input type="button" value="添加" class="btn btn-info" onclick="addCat(this)">
             <?php  foreach ($extCatId as $k1 => $v1): ?>
-                    <select name="ext_cat_id[]">
+                    <select name="ext_cat_id[]" style="margin-top:8px">
                         <option value="">选择分类</option>
                     <?php foreach ($catData as $k => $v): if($v['id'] == $v1['cat_id']) $select = 'selected="selected"'; else $select = ''; ?>
                  <option <?php echo ($select); ?> value="<?php echo ($v["id"]); ?>"><?php echo str_repeat('-',$v['level'] * 8); echo ($v["cat_name"]); ?></option>

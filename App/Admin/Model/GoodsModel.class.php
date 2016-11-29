@@ -84,8 +84,10 @@ class GoodsModel extends Model {
 	// 添加前
 	protected function _before_insert(&$data, $option){
 		$data['addtime']=time();
-		$data['promote_start_time']=strtotime($data['promote_start_time']);
-		$data['promote_end_time']=strtotime($data['promote_end_time']);
+		$promote_start_time=I('post.promote_start_time');
+		$promote_end_time=I('post.promote_end_time');
+		$data['promote_start_time']=strtotime("$promote_start_time 00:00:00");
+		$data['promote_end_time']=strtotime("$promote_end_time 00:00:00");
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
 			$ret = uploadOne('logo', 'Goods', array(
 				array(150, 150, 2)
@@ -185,9 +187,14 @@ class GoodsModel extends Model {
 	}	
 	// 修改前
 	protected function _before_update(&$data, $option){
+		//修改时间
+		$promote_start_time=I('post.promote_start_time');
+		$promote_end_time=I('post.promote_end_time');
+		$data['promote_start_time']=strtotime("$promote_start_time 00:00:00");
+		$data['promote_end_time']=strtotime("$promote_end_time 00:00:00");
 	    if(!I('post.is_promote'))  $data['is_promote']=0;
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
-			$ret = uploadOne('logo', 'Admin', array(
+			$ret = uploadOne('logo', 'Goods', array(
 				array(150, 150, 2)
 			));
 			if($ret['ok'] == 1){

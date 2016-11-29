@@ -13,7 +13,7 @@
 
 <!--具体操作-->
 <block name="action">
-		<span class="action-span"><a href="{:U('add')}">添加商品		</a></span>
+		<span class="action-span"><a href="{:U('add')}">添加商品</a></span>
 		<span id="search_id"> - 商品列表 </span>
 </block>
 
@@ -95,9 +95,9 @@
             <th >是否热卖</th>
             <th >是否新品</th>
             <th >是否精品</th>
-            <th >是否上架：1：上架，0：下架</th>
-            <th >seo优化[搜索引擎【百度、谷歌等】优化]_关键字</th>
-            <th >seo优化[搜索引擎【百度、谷歌等】优化]_描述</th>
+            <th >是否上架</th>
+            <th >seo关键字</th>
+            <th >seo描述</th>
             <th >商品类型id</th>
             <th >排序数字</th>
             <th >商品描述</th>
@@ -105,28 +105,28 @@
         </tr>
 		<?php foreach ($data as $k => $v): ?>            
 			<tr class="tron">
-				<td><?php echo $v['goods_name']; ?></td>
-				<td><?php echo $v['cat_id']; ?></td>
-				<td><?php echo $v['brand_id']; ?></td>
-				<td><?php echo $v['market_price']; ?></td>
-				<td><?php echo $v['shop_price']; ?></td>
-				<td><?php echo $v['jifen']; ?></td>
-				<td><?php echo $v['jyz']; ?></td>
-				<td><?php echo $v['jifen_price']; ?></td>
-				<td><?php echo $v['is_promote']; ?></td>
-				<td><?php echo $v['promote_price']; ?></td>
-				<td><?php echo $v['promote_start_time']; ?></td>
-				<td><?php echo $v['promote_end_time']; ?></td>
-				<td><?php echo $v['logo']; ?></td>
-				<td><?php echo $v['is_hot']; ?></td>
-				<td><?php echo $v['is_new']; ?></td>
-				<td><?php echo $v['is_best']; ?></td>
-				<td><?php echo $v['is_on_sale']; ?></td>
-				<td><?php echo $v['seo_keyword']; ?></td>
-				<td><?php echo $v['seo_description']; ?></td>
-				<td><?php echo $v['type_id']; ?></td>
-				<td><?php echo $v['sort_num']; ?></td>
-				<td><?php echo $v['goods_desc']; ?></td>
+				<td>{$v['goods_name']}</td>
+				<td>{$v['cat_id']}</td>
+				<td>{$v['brand_id']}</td>
+				<td>{$v['market_price']}</td>
+				<td>{$v['shop_price']}</td>
+				<td>{$v['jifen']}</td>
+				<td>{$v['jyz']}</td>
+				<td>{$v['jifen_price']}</td>
+				<td>{$v['is_promote']?'是':'否'}</td>
+				<td>{$v['promote_price']}</td>
+				<td><?php echo date('Y-m-d',$v['promote_start_time']); ?></td>
+				<td><?php echo date('Y-m-d',$v['promote_end_time']); ?></td>
+				<td>{$v['logo']}</td>
+				<td>{$v['is_hot']?'是':'否'}</td>
+				<td>{$v['is_new']?'是':'否'}</td>
+				<td>{$v['is_best']?'是':'否'}</td>
+				<td>{$v['is_on_sale']?'是':'否'}</td>
+				<td>{$v['seo_keyword']}</td>
+				<td>{$v['seo_description']}</td>
+				<td>{$v['type_id']}</td>
+				<td>{$v['sort_num']}</td>
+				<td>{$v['goods_desc']}</td>
 		        <td align="center">
 		        	<a href="<?php echo U('edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> |
 	                <a href="<?php echo U('delete?id='.$v['id'].'&p='.I('get.p')); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 

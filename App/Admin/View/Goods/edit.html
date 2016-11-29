@@ -125,6 +125,8 @@
         enctype="multipart/form-data">
         <input type="hidden" name="id" value="{$data.id}" />
         <input type="hidden" name="old_type_id" value="{$data.type_id}" />
+        <input type="hidden" name="old_logo" value="{$data.logo}" />
+        <input type="hidden" name="old_sm_logo" value="{$data.sm_logo}" />
         <!--基本信息-->
         <div class="content" style="display:block">
           <p>商品名称：<input type="text" name="goods_name" 
@@ -148,7 +150,7 @@
             <?php 
             // 循环所在的扩展分类，有几个就输出几个下拉框
                 foreach ($extCatId as $k1 => $v1): ?>
-                    <select name="ext_cat_id[]">
+                    <select name="ext_cat_id[]" style="margin-top:8px">
                         <option value="">选择分类</option>
                     <?php foreach ($catData as $k => $v): 
                         // 判断选中状态
