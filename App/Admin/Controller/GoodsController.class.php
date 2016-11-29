@@ -41,7 +41,7 @@ class GoodsController extends BaseController{
     		if($model->create(I('post.'), 2)){
     			if($model->save() !== FALSE){
     				$this->success('修改成功！', U('lst', array('p' => I('get.p', 1))));
-    				exit;
+    				return;
     			}
     		}
     		$this->error($model->getError());
@@ -94,7 +94,8 @@ class GoodsController extends BaseController{
         $attr_id = array_unique($attr_id);
         // 取出当前类型下的后添加的新属性
         $attrModel = M('Attr');
-        $otherAttr = $attrModel->field('*')->where(array('type_id'=>array('eq', $data['type_id']), 'id'=>array('not in', $attr_id)))->select();
+        //id attr_id 意思是给id取别名
+        $otherAttr = $attrModel->field('id attr_id,attr_name,attr_type,attr_option_values')->where(array('type_id'=>array('eq', $data['type_id']), 'id'=>array('not in', $attr_id)))->select();
         if($otherAttr){
             // 把新的属性和原属性合并起来
             $gaData = array_merge($gaData, $otherAttr);
@@ -170,4 +171,39 @@ class GoodsController extends BaseController{
         }
     }
 
+    /**
+     * 商品放入回收站
+     */
+    public function recycle(){
+        $id=I('get.id');
+        $affect=M("Goods")->where(array('id'=>$id))->setField('is_delete',1);
+        if($affect){
+            $this->success('回收成功',U('lst'));
+        }
+    }
+
+    /**
+     * 商品还原
+     */
+    public function restore(){
+        $id=I('get.id');
+        $affect=M("Goods")->where(array('id'=>$id))->setField('is_delete',0);
+        if($affect){
+            $this->success('还原成功',U('recyclelst'));
+        }
+    }
+    
+    /**
+     * 回收站列表
+     * @return [type] [description]
+     */
+    public function recyclelst(){
+        $model = D('Goods');
+        $data = $model->search(15,1);
+        $this->assign(array(
+            'data' => $data['data'],
+            'page' => $data['page'],
+        ));
+        $this->display();
+    }
 }

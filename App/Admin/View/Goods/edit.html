@@ -86,7 +86,7 @@
               $(this).parent().parent().append('<input type="file" name="pics[]"/>');
           });
 
-          // 判断如果现在没有属性就直接触发AJAX事件获取属性的数据
+          // 判断如果现在没有属性,就直接触发AJAX事件获取属性的数据
           <?php if(empty($gaData)): ?>
             $("select[name=type_id]").trigger("change");
           <?php endif; ?>

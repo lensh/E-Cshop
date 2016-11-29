@@ -113,3 +113,15 @@ function hasImage($imgName){
 	}
 	return false;
 }
+
+/**
+ * 按attr_id排序
+ * @param  [type] $a [description]
+ * @param  [type] $b [description]
+ * @return [type]    [description]
+ */
+function attr_id_sort($a,$b){
+	if($a['attr_id']==$b['attr_id'])  
+		return 0;
+	return $a['attr_id']<$b['attr_id']?-1:1;
+}

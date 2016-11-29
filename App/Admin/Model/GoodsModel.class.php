@@ -31,9 +31,9 @@ class GoodsModel extends Model {
 		array('sort_num', 'number', '排序数字必须是一个整数！', 2, 'regex', 3),
 		array('is_delete', 'number', '是否放到回收站：1：是，0：否必须是一个整数！', 2, 'regex', 3),
 	);
-	public function search($pageSize = 20){
+	public function search($pageSize = 20,$is_delete=0){
 		/**************************************** 搜索 ****************************************/
-		$where = array();
+		$where['is_delete'] = $is_delete;
 		if($goods_name = I('get.goods_name'))
 			$where['goods_name'] = array('like', "%$goods_name%");
 		if($cat_id = I('get.cat_id'))
@@ -191,9 +191,14 @@ class GoodsModel extends Model {
 	    //修改促销时间
 		$promote_start_time=I('post.promote_start_time');
 		$promote_end_time=I('post.promote_end_time');
-		if($promote_start_time!=''&&$promote_end_time!=''){
+		if($promote_start_time&&$promote_end_time){
 			$data['promote_start_time']=strtotime("$promote_start_time 00:00:00");
 			$data['promote_end_time']=strtotime("$promote_end_time 00:00:00");
+		}
+		//判断商品类型有没有修改，如果修改了则删除该商品原来的属性
+		if(I('post.old_type_id')!=I('post.type_id')){
+			$gamodel=M('GoodsAttr');
+			$gamodel->where(array('goods_id'=>$option['where']['id']))->delete();
 		}
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
 			$ret = uploadOne('logo', 'Goods', array(
@@ -329,5 +334,27 @@ class GoodsModel extends Model {
 		}
 		$images = $this->field('logo,sm_logo')->find($option['where']['id']);
 		deleteImage($images);
+	    /**********先删除商品的其他的信息*********/
+		// 扩展分类
+		$model = M('GoodsCat');
+		$model->where(array('goods_id'=>array('eq', $option['where']['id'])))->delete();
+		// 会员价格
+		$model = M('MemberPrice');
+		$model->where(array('goods_id'=>array('eq', $option['where']['id'])))->delete();
+		// 商品属性
+		$model = M('GoodsAttr');
+		$model->where(array('goods_id'=>array('eq', $option['where']['id'])))->delete();
+		// 商品库存量
+		$model = M('GoodsNumber');
+		$model->where(array('goods_id'=>array('eq', $option['where']['id'])))->delete();
+		// 商品图片
+		$model = M('GoodsPics');
+		// 先取出图片的路径
+		$pics = $model->field('pic,sm_pic')->where(array('goods_id'=>array('eq', $option['where']['id'])))->select();
+		// 循环每个图片进行删除
+		foreach ($pics as $p){
+			deleteImage($p);
+		}
+		$model->where(array('goods_id'=>array('eq', $option['where']['id'])))->delete();
 	}
 }

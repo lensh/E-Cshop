@@ -3,7 +3,7 @@
 <head>
 	<!--标题-->
 	
-	<title>管理中心 - 商品列表 </title>
+	<title>管理中心 - 商品回收站列表 </title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
@@ -27,9 +27,9 @@
 
     <!--具体操作-->
     
-		<span class="action-span"><a href="<?php echo U('add');?>">添加商品</a></span>
-		<span id="search_id"> - 商品列表 </span>
-
+    	<span class="action-span"><a href="<?php echo U('Goods/add');?>">添加新商品</a></span>
+		<span id="search_id"> - 添加新商品 </span>
+	
 
     <div style="clear:both"></div>
 </h1>
@@ -96,15 +96,15 @@
 <div class="list-div" id="listDiv">
 	<table cellpadding="3" cellspacing="1">
     	<tr>
-            <th >商品名称</th>
-            <th >市场价</th>
-            <th >本店价</th>
-            <th >logo原图</th>
-            <th >是否热卖</th>
-            <th >是否新品</th>
-            <th >是否精品</th>
-            <th >是否上架</th>
-            <th >商品描述</th>
+            <th>商品名称</th>
+            <th>市场价</th>
+            <th>本店价</th>
+            <th>logo原图</th>
+            <th>是否热卖</th>
+            <th>是否新品</th>
+            <th>是否精品</th>
+            <th>是否上架</th>
+            <th>商品描述</th>
 			<th width="150">操作</th>
         </tr>
 		<?php foreach ($data as $k => $v): ?>            
@@ -119,8 +119,8 @@
 				<td><?php echo ($v['is_on_sale']?'是':'否'); ?></td>
 				<td><?php echo ($v['goods_desc']); ?></td>
 		        <td>
-		        	<a href="<?php echo U('edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> |
-	                <a href="<?php echo U('recycle?id='.$v['id']);?>" onclick="return confirm('确定要放入回收站除吗？');" title="移除">放入回收站</a> 
+		        	<a href="<?php echo U('restore?id='.$v['id']);?>" title="还原">还原</a> |
+	                <a href="<?php echo U('recycle?id='.$v['id']);?>" onclick="return confirm('确定删除吗？');" title="删除">删除</a> 
 		        </td>
 	        </tr>
         <?php endforeach; ?> 
