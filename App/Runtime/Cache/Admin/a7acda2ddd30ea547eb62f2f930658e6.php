@@ -111,14 +111,29 @@
       });
       function addNew(a){
           var p=$(a).parent();
-          if($(a).html()=='[+]'){
-              var newP=p.clone();   
+          if($(a).html()=='[+]'){  //点击了加号
+              var newP=p.clone();  
+              //把新克隆出来的old_去掉
+              var old_name=newP.find('select').attr('name');
+              var new_name=old_name.replace('old_','');
+              newP.find('select').attr('name',new_name);  
+
+              var old_price=newP.find('input').attr('name');
+              var new_price=old_price.replace('old_','');
+              newP.find('input').attr('name',new_price);
               newP.find('a').html('[-]');       
               p.after(newP);
-          }else{
-            p.remove();
+          }
+          else{  //点击了减号，则ajax删除属性          
+              if(confirm('确定要删除吗?')){
+                   var attrId=$(a).attr('gaid');
+                   $.get("<?php echo U('ajaxDeleteAttr');?>",{'id':attrId},function(res){
+                        if(res==1) p.remove();
+                   });               
+              }  
           }   
       }
+
       //添加分类
       function addCat(btn){
           var sel=$(btn).next();

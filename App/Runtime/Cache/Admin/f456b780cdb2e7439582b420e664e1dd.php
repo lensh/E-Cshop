@@ -32,7 +32,7 @@
 <!--内容主题-->
 
     <div class="main-div">
-        <form method="POST" style="margin:5px" action="/E-Cshop/Attr/edit/id/2/type_id/2.html">
+        <form method="POST" style="margin:5px" action="/E-Cshop/Attr/edit/id/4/p/1/type_id/1.html">
         <input type="hidden" name="id" value="<?php echo $data['id']; ?>" />
               <p>商品类型:
                 <select name="type_id">

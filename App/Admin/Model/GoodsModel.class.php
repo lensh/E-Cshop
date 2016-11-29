@@ -214,7 +214,7 @@ class GoodsModel extends Model {
 		}
 	}
 
-	// 修改后处理关联的表
+	// 修改后,处理关联的表
 	protected function _after_update($data, $option){
 
 		/*****处理商品的扩展分类****/
@@ -250,7 +250,8 @@ class GoodsModel extends Model {
 		}
 
 		/*******处理商品属性********/
-	    $attr=I('post.attr');
+		//1.处理新加的属性,名字不带old_
+	    $attr=I('post.ga');
 	    $attr_price=I('post.attr_price');  
 	    if($attr){
 	    	$model2=M('GoodsAttr');
@@ -259,7 +260,7 @@ class GoodsModel extends Model {
 	    			if(empty($v1)) continue;
 	    			$price = isset($attr_price[$k][$k1])?$attr_price[$k][$k1]:'';
 	    			$model2->add(array(
-						'goods_id'=>$data['id'],
+						'goods_id'=>$option['where']['id'],
 						'attr_id'=>$k,
 						'attr_value'=>$v1,
 						'attr_price'=>$price
@@ -267,6 +268,23 @@ class GoodsModel extends Model {
 	    		}
 	    	}
 	    }
+	    //2.处理原属性
+   		$old_attr=I('post.old_ga');
+	    $old_attr_price=I('post.old_attr_price');  
+	    if($old_attr){
+	    	$model2=M('GoodsAttr');
+	    	foreach ($old_attr as $k=> $v) {
+	    		foreach ($v as $k1 => $v1) {
+	    			if(empty($v1)) continue;
+	    			$price = isset($old_attr_price[$k][$k1])?$old_attr_price[$k][$k1]:'';
+	    			$model2->save(array(
+						'id'=>$k1,
+						'attr_value'=>$v1,
+						'attr_price'=>$price
+					));	
+	    		}
+	    	}
+	    }	    
 
 	    /*******处理商品相册********/
 	    if(hasImage('pics')){
