@@ -67,6 +67,7 @@ class GoodsController extends BaseController{
         $model = M('Goods');
         $data = $model->find($id);
         $this->assign('data', $data);
+        var_dump($data);
         // 取出当前商品扩展分类的数据
         $gcModel = M('GoodsCat');
         $extCatId = $gcModel->field('cat_id')->where(array('goods_id'=>array('eq', $id)))->select();
@@ -145,5 +146,16 @@ class GoodsController extends BaseController{
         //取出属性
         $attrData=M('Attr')->where(array('type_id'=>$type_id))->select();
         echo json_encode($attrData);
+    }
+
+    /**
+     * ajax删除商品图片
+     */
+    public function ajaxDeletePic(){
+        //删除图片及缩略图
+        $model=M('GoodsPics');
+        $picData=$model->field('pic,sm_pic')->where(array('id'=>I('get.id')))->find();
+        deleteImage($picData);
+        echo $model->delete(I('get.id'))?1:0;
     }
 }

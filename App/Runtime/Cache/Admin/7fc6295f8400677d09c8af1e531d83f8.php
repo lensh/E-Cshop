@@ -27,7 +27,7 @@
 
     <!--具体操作-->
     
-		<span class="action-span"><a href="<?php echo U('add');?>">添加商品		</a></span>
+		<span class="action-span"><a href="<?php echo U('add');?>">添加商品</a></span>
 		<span id="search_id"> - 商品列表 </span>
 
 
@@ -97,13 +97,11 @@
 	<table cellpadding="3" cellspacing="1">
     	<tr>
             <th >商品名称</th>
-            <th >主分类的id</th>
-            <th >品牌的id</th>
             <th >市场价</th>
             <th >本店价</th>
             <th >赠送积分</th>
             <th >赠送经验值</th>
-            <th >如果要用积分兑换，需要的积分数</th>
+            <th >用积分兑换<br/>需要的积分数</th>
             <th >是否促销</th>
             <th >促销价</th>
             <th >促销开始时间</th>
@@ -112,39 +110,35 @@
             <th >是否热卖</th>
             <th >是否新品</th>
             <th >是否精品</th>
-            <th >是否上架：1：上架，0：下架</th>
-            <th >seo优化[搜索引擎【百度、谷歌等】优化]_关键字</th>
-            <th >seo优化[搜索引擎【百度、谷歌等】优化]_描述</th>
-            <th >商品类型id</th>
+            <th >是否上架</th>
+            <th >seo关键字</th>
+            <th >seo描述</th>
             <th >排序数字</th>
             <th >商品描述</th>
-			<th width="60">操作</th>
+			<th width="150">操作</th>
         </tr>
 		<?php foreach ($data as $k => $v): ?>            
 			<tr class="tron">
-				<td><?php echo $v['goods_name']; ?></td>
-				<td><?php echo $v['cat_id']; ?></td>
-				<td><?php echo $v['brand_id']; ?></td>
-				<td><?php echo $v['market_price']; ?></td>
-				<td><?php echo $v['shop_price']; ?></td>
-				<td><?php echo $v['jifen']; ?></td>
-				<td><?php echo $v['jyz']; ?></td>
-				<td><?php echo $v['jifen_price']; ?></td>
-				<td><?php echo $v['is_promote']; ?></td>
-				<td><?php echo $v['promote_price']; ?></td>
-				<td><?php echo $v['promote_start_time']; ?></td>
-				<td><?php echo $v['promote_end_time']; ?></td>
-				<td><?php echo $v['logo']; ?></td>
-				<td><?php echo $v['is_hot']; ?></td>
-				<td><?php echo $v['is_new']; ?></td>
-				<td><?php echo $v['is_best']; ?></td>
-				<td><?php echo $v['is_on_sale']; ?></td>
-				<td><?php echo $v['seo_keyword']; ?></td>
-				<td><?php echo $v['seo_description']; ?></td>
-				<td><?php echo $v['type_id']; ?></td>
-				<td><?php echo $v['sort_num']; ?></td>
-				<td><?php echo $v['goods_desc']; ?></td>
-		        <td align="center">
+				<td><?php echo ($v['goods_name']); ?></td>
+				<td><?php echo ($v['market_price']); ?></td>
+				<td><?php echo ($v['shop_price']); ?></td>
+				<td><?php echo ($v['jifen']); ?></td>
+				<td><?php echo ($v['jyz']); ?></td>
+				<td><?php echo ($v['jifen_price']); ?></td>
+				<td><?php echo ($v['is_promote']?'是':'否'); ?></td>
+				<td><?php echo ($v['promote_price']); ?></td>
+				<td><?php echo date('Y-m-d',$v['promote_start_time']); ?></td>
+				<td><?php echo date('Y-m-d',$v['promote_end_time']); ?></td>
+				<td><?php echo showImage($v['sm_logo']);?></td>
+				<td><?php echo ($v['is_hot']?'是':'否'); ?></td>
+				<td><?php echo ($v['is_new']?'是':'否'); ?></td>
+				<td><?php echo ($v['is_best']?'是':'否'); ?></td>
+				<td><?php echo ($v['is_on_sale']?'是':'否'); ?></td>
+				<td><?php echo ($v['seo_keyword']); ?></td>
+				<td><?php echo ($v['seo_description']); ?></td>
+				<td><?php echo ($v['sort_num']); ?></td>
+				<td><?php echo ($v['goods_desc']); ?></td>
+		        <td>
 		        	<a href="<?php echo U('edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> |
 	                <a href="<?php echo U('delete?id='.$v['id'].'&p='.I('get.p')); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
 		        </td>

@@ -102,7 +102,7 @@ class GoodsModel extends Model {
 			}
 		}
 	}
-    //添加后
+    //添加后处理关联的表
 	protected function _after_insert(&$data, $option){
 
 		/*****处理商品的扩展分类****/
@@ -187,12 +187,14 @@ class GoodsModel extends Model {
 	}	
 	// 修改前
 	protected function _before_update(&$data, $option){
-		//修改时间
+	    if(!I('post.is_promote'))  $data['is_promote']=0;
+	    //修改促销时间
 		$promote_start_time=I('post.promote_start_time');
 		$promote_end_time=I('post.promote_end_time');
-		$data['promote_start_time']=strtotime("$promote_start_time 00:00:00");
-		$data['promote_end_time']=strtotime("$promote_end_time 00:00:00");
-	    if(!I('post.is_promote'))  $data['is_promote']=0;
+		if($promote_start_time!=''&&$promote_end_time!=''){
+			$data['promote_start_time']=strtotime("$promote_start_time 00:00:00");
+			$data['promote_end_time']=strtotime("$promote_end_time 00:00:00");
+		}
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
 			$ret = uploadOne('logo', 'Goods', array(
 				array(150, 150, 2)
@@ -211,6 +213,96 @@ class GoodsModel extends Model {
 			));
 		}
 	}
+
+	// 修改后处理关联的表
+	protected function _after_update($data, $option){
+
+		/*****处理商品的扩展分类****/
+		$ext_cat_id=I('post.ext_cat_id');
+		if($ext_cat_id){
+			$model=M('GoodsCat');
+		    //先清除商品原来的扩展分类数据
+		    $model->where(array('goods_id'=>$option['where']['id']))->delete();
+		    //再添加
+			foreach ($ext_cat_id as $v) {
+				if(empty($v)) continue;
+				$model->add(array(
+					'goods_id'=>$data['id'],
+					'cat_id'=>$v
+				));
+			}
+		}
+
+		/*****处理会员价格********/
+		$mp=I('post.mp');
+		if($mp){
+			$model1=M('MemberPrice');
+			//先清除商品原来的扩展分类数据
+		    $model1->where(array('goods_id'=>$option['where']['id']))->delete();
+			foreach ($mp as $k => $v) {
+				if(empty($v)) continue;
+			    $model1->add(array(
+					'goods_id'=>$data['id'],
+					'level_id'=>$k,
+					'price'=>$v
+				));
+			}
+		}
+
+		/*******处理商品属性********/
+	    $attr=I('post.attr');
+	    $attr_price=I('post.attr_price');  
+	    if($attr){
+	    	$model2=M('GoodsAttr');
+	    	foreach ($attr as $k=> $v) {
+	    		foreach ($v as $k1 => $v1) {
+	    			if(empty($v1)) continue;
+	    			$price = isset($attr_price[$k][$k1])?$attr_price[$k][$k1]:'';
+	    			$model2->add(array(
+						'goods_id'=>$data['id'],
+						'attr_id'=>$k,
+						'attr_value'=>$v1,
+						'attr_price'=>$price
+					));	
+	    		}
+	    	}
+	    }
+
+	    /*******处理商品相册********/
+	    if(hasImage('pics')){
+	    	//批量上传之后的图片数组，改造成多个一维数组
+	    	$pics=array();
+	    	foreach ($_FILES['pics']['name'] as $k => $v) {
+	    		if($_FILES['pics']['size'][$k]==0)  continue;
+	    		$pics[]=array(
+	    			'name'=>$v,
+	    			'type'=>$_FILES['pics']['type'][$k],
+	    			'tmp_name'=>$_FILES['pics']['tmp_name'][$k],
+	    			'error'=>$_FILES['pics']['error'][$k],
+	    			'size'=>$_FILES['pics']['size'][$k]
+	    		);
+	    	}
+	    	//在调用uploadOne上传时会使用$_FILES数组上传图片
+	    	$_FILES=$pics;
+	    	//循环所有的图片一张一张上传
+	    	$goodsPicModel=M('GoodsPics');
+	    	foreach ($pics as $k => $v) {
+	    		$ret=uploadOne($k,'Goods',array(
+	    			array('150','150')
+	    		));
+	    		//如果上传成功，则插到数据库里
+	    		if($ret['ok']==1){
+	    			$goodsPicModel->add(array(
+	    				'goods_id'=>$option['where']['id'],
+	    				'pic'=>$ret['images'][0],
+	    				'sm_pic'=>$ret['images'][1],
+	    			));
+	    		}
+	    	}
+	    }
+
+	}
+
 	// 删除前
 	protected function _before_delete($option){
 		if(is_array($option['where']['id'])){

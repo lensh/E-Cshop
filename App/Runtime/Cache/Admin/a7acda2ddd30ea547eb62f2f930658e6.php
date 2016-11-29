@@ -95,6 +95,19 @@
           <?php if(empty($gaData)): ?>
             $("select[name=type_id]").trigger("change");
           <?php endif; ?>
+
+          //删除图片
+          $('.delimage').click(function(){
+            if(confirm('确定要删除吗?')){
+                var _this=this;
+                var id=$(this).attr('pic_id');
+                $.get("<?php echo U('ajaxDeletePic');?>",{'id':id},function(res){
+                   if(res==1){
+                        $(_this).parent().remove();
+                   }
+                });
+            }     
+          });
       });
       function addNew(a){
           var p=$(a).parent();
@@ -190,8 +203,8 @@
           <p><input type="checkbox" <?php if($data['is_promote'] == 1) echo 'checked="checked"'; ?> value="1" name="is_promote" id="is_promote">
           促销价：<input type="text" <?php if($data['is_promote']==0) echo 'disabled="disabled"'; ?> name="promote_price"
           class="promote_price" value="<?php echo ($data["promote_price"]); ?>"/></p>
-          <p>促销开始时间：<input <?php if($data['is_promote']==0) echo 'disabled="disabled"'; ?> id="promote_start_time" type="text" name="promote_start_time" class="promote_price" value="<?php if($data['promote_start_time']) echo date('Y-m-d H:i', $data['promote_start_time']); ?>"/></p>
-          <p>促销结束时间：<input <?php if($data['is_promote']==0) echo 'disabled="disabled"'; ?> id="promote_end_time" type="text" name="promote_end_time" class="promote_price" value="<?php if($data['promote_end_time']) echo date('Y-m-d H:i', $data['promote_end_time']); ?>"/></p>
+          <p>促销开始时间：<input <?php if($data['is_promote']==0) echo 'disabled="disabled"'; ?> id="promote_start_time" type="text" name="promote_start_time" class="promote_price" value="<?php if($data['promote_start_time']) echo date('Y-m-d', $data['promote_start_time']);?>"/></p>
+          <p>促销结束时间：<input <?php if($data['is_promote']==0) echo 'disabled="disabled"'; ?> id="promote_end_time" type="text" name="promote_end_time" class="promote_price" value="<?php if($data['promote_end_time']) echo date('Y-m-d', $data['promote_end_time']);?>"/></p>
           <p>logo原图：<?php showImage($data['sm_logo']); ?><br/>
           <input type="file" name="logo"/></p>
           <p>是否热卖：
