@@ -10,7 +10,7 @@ class GoodsController extends BaseController{
     		if($model->create(I('post.'), 1)){
     			if($id = $model->add()){
     				$this->success('添加成功！', U('lst?p='.I('get.p')));
-    				exit;
+    				return;
     			}
     		}
     		$this->error($model->getError());

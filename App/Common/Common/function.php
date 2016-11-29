@@ -39,8 +39,8 @@ function uploadOne($imgName, $dirName, $thumb = array())
 		$upload->exts = C('IMG_exts');// 设置附件上传类型
 		/// $upload->rootPath = $rootPath; // 设置附件上传根目录
 		$upload->savePath = $dirName . '/'; // 图片二级目录的名称
-		// 上传文件 
-		$info   =   $upload->upload();
+		// 上传文件 ,TP调用Upload时，会把表单中所有的图片都上传
+		$info = $upload->upload(array($imgName=>$_FILES[$imgName]));
 		if(!$info)
 		{
 			return array(
@@ -100,4 +100,16 @@ function deleteImage($images){
 		// @错误抵制符：忽略掉错误,一般在删除文件时都添加上这个
 		@unlink($rp . $v);
 	}
+}
+
+/**
+ * 判断批量上传的数组有没有图片
+ * @param  [type]  $imgName [description]
+ * @return boolean          [description]
+ */
+function hasImage($imgName){
+	foreach ($_FILES[$imgName]['error'] as $v) {
+		if($v==0)  return true;
+	}
+	return false;
 }

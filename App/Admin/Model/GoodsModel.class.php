@@ -84,6 +84,8 @@ class GoodsModel extends Model {
 	// 添加前
 	protected function _before_insert(&$data, $option){
 		$data['addtime']=time();
+		$data['promote_start_time']=strtotime($data['promote_start_time']);
+		$data['promote_end_time']=strtotime($data['promote_end_time']);
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
 			$ret = uploadOne('logo', 'Goods', array(
 				array(150, 150, 2)
@@ -146,13 +148,46 @@ class GoodsModel extends Model {
 	    	}
 	    }
 
+	    /*******处理商品相册********/
+	    if(hasImage('pics')){
+	    	//批量上传之后的图片数组，改造成多个一维数组
+	    	$pics=array();
+	    	foreach ($_FILES['pics']['name'] as $k => $v) {
+	    		if($_FILES['pics']['size'][$k]==0)  continue;
+	    		$pics[]=array(
+	    			'name'=>$v,
+	    			'type'=>$_FILES['pics']['type'][$k],
+	    			'tmp_name'=>$_FILES['pics']['tmp_name'][$k],
+	    			'error'=>$_FILES['pics']['error'][$k],
+	    			'size'=>$_FILES['pics']['size'][$k]
+	    		);
+	    	}
+	    	//在调用uploadOne上传时会使用$_FILES数组上传图片
+	    	$_FILES=$pics;
+	    	//循环所有的图片一张一张上传
+	    	$goodsPicModel=M('GoodsPics');
+	    	foreach ($pics as $k => $v) {
+	    		$ret=uploadOne($k,'Goods',array(
+	    			array('150','150')
+	    		));
+	    		//如果上传成功，则插到数据库里
+	    		if($ret['ok']==1){
+	    			$goodsPicModel->add(array(
+	    				'goods_id'=>$data['id'],
+	    				'pic'=>$ret['images'][0],
+	    				'sm_pic'=>$ret['images'][1],
+	    			));
+	    		}
+	    	}
+	    }
+
 	}	
 	// 修改前
 	protected function _before_update(&$data, $option){
 	    if(!I('post.is_promote'))  $data['is_promote']=0;
 		if(isset($_FILES['logo']) && $_FILES['logo']['error'] == 0){
 			$ret = uploadOne('logo', 'Admin', array(
-				array(150, 150, 2),
+				array(150, 150, 2)
 			));
 			if($ret['ok'] == 1){
 				$data['logo'] = $ret['images'][0];
@@ -177,5 +212,4 @@ class GoodsModel extends Model {
 		$images = $this->field('logo,sm_logo')->find($option['where']['id']);
 		deleteImage($images);
 	}
-	/************************************ 其他方法 ********************************************/
 }
