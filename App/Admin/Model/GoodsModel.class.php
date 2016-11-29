@@ -138,11 +138,12 @@ class GoodsModel extends Model {
 	    	foreach ($attr as $k=> $v) {
 	    		foreach ($v as $k1 => $v1) {
 	    			if(empty($v1)) continue;
+	    			$price = isset($attr_price[$k][$k1])?$attr_price[$k][$k1]:'';
 	    			$model2->add(array(
 						'goods_id'=>$data['id'],
 						'attr_id'=>$k,
 						'attr_value'=>$v1,
-						'attr_price'=>$attr_price[$k][$k1]
+						'attr_price'=>$price
 					));	
 	    		}
 	    	}
