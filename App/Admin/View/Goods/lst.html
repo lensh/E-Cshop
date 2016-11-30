@@ -87,6 +87,7 @@
             <th>是否新品</th>
             <th>是否精品</th>
             <th>是否上架</th>
+            <th>库存量</th>
             <th>商品描述</th>
 			<th width="150">操作</th>
         </tr>
@@ -100,9 +101,10 @@
 				<td>{$v['is_new']?'是':'否'}</td>
 				<td>{$v['is_best']?'是':'否'}</td>
 				<td>{$v['is_on_sale']?'是':'否'}</td>
+				<td>{$v['gn']}</td>
 				<td>{$v['goods_desc']}</td>
 		        <td>
-		            <a href="<?php echo U('number?id='.$v['id'].'&p='.I('get.p')); ?>" title="库存量">库存量</a>
+		            <a href="<?php echo U('number?id='.$v['id'].'&p='.I('get.p')); ?>" title="库存">库存</a> |
 		        	<a href="<?php echo U('edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> |
 	                <a href="<?php echo U('recycle?id='.$v['id']);?>" onclick="return confirm('确定要放入回收站吗？');" title="放入回收站">放入回收站</a> 
 		        </td>

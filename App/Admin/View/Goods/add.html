@@ -200,6 +200,7 @@
         <div class="content">
             <p>商品类型:
                 <select name="type_id">
+                  <option value="">请选择</option>
                   <volist name="typeData" id="v">
                     <option value="{$v['id']}" <?php if($type_id==$v['id']) echo 'selected="selected"'?>>
                     {$v['type_name']}</option>

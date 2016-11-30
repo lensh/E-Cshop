@@ -218,6 +218,7 @@ class GoodsController extends BaseController{
             $goods_number=I('post.goods_number');
             $rate= count($goods_attr_id)/count($goods_number);//比例
             $gnmodel=M('GoodsNumber');
+            $gnmodel->where(array('goods_id'=>$goods_id))->delete();
             $_i=0;  //从第几个开始拿
             foreach ($goods_number as $k => $v) {
                 //把每次拿到的uid放到这个数组里
@@ -249,6 +250,10 @@ class GoodsController extends BaseController{
             $attr[$v['attr_id']][]=$v;
         }
         $this->assign('attr',$attr);
-        $this->display();
+
+        //查找库存表,取出当前商品的库存量
+        $gnData=M('GoodsNumber')->where(array('goods_id'=>$goods_id))->select();
+        $this->assign('gnData',$gnData);
+        $this->display();  
     }
 }

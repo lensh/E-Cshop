@@ -78,7 +78,9 @@ class GoodsModel extends Model {
 		$page->setConfig('next', '下一页');
 		$data['page'] = $page->show();
 		/************************************** 取数据 ******************************************/
-		$data['data'] = $this->alias('a')->where($where)->group('a.id')->limit($page->firstRow.','.$page->listRows)->select();
+		$data['data'] = $this->field('a.*,IFNULL(sum(b.goods_number),0) gn')->alias('a')
+		->join('left join ecshop_goods_number b on a.id=b.goods_id')
+		->where($where)->group('a.id')->limit($page->firstRow.','.$page->listRows)->select();
 		return $data;
 	}
 	// 添加前

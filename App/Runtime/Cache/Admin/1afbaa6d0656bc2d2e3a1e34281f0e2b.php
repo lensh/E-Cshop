@@ -50,24 +50,48 @@
 <!--内容主题-->
 
 <div class="list-div" id="listDiv">
- <form method="post" action="/E-Cshop/Goods/number/id/1.html">
+ <form method="post" action="/E-Cshop/Goods/number/id/2.html">
 	<table cellpadding="3" cellspacing="1">
     	<tr>
     		<?php if(is_array($attr)): $i = 0; $__LIST__ = $attr;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><th width="150"><?php echo ($v[0]['attr_name']); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>
             <th width="150">库存</th>
 			<th width="150">操作</th>
         </tr>
+<?php  if($gnData){ foreach ($gnData as $k0 => $v0) { $opt=$k0==0?'+':'-'; ?>
         <tr>
-        	<?php if(is_array($attr)): $i = 0; $__LIST__ = $attr;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><td>
-	    		  <select name="goods_attr_id[]">
-	    		    <option value="">请选择</option>
-	    		  	<?php if(is_array($v)): $i = 0; $__LIST__ = $v;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v1['id']); ?>"><?php echo ($v1['attr_value']); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-	    		  </select>
-    			</td><?php endforeach; endif; else: echo "" ;endif; ?>
-            <td><input type="text" name="goods_number[]"/></td>
-			<td><input type="button" onclick="addNew(this)" class="btn btn-info" value="+"/>
+            <?php foreach ($attr as $k => $v){ ?>
+			    <td>
+			    <select name="goods_attr_id[]">
+			    	<option value="">请选择</option>
+			    	<?php foreach ($v as $k1 => $v1){ $select =strpos(','.$v0['goods_attr_id'].',',','.$v1['id'].',')!== FALSE?'selected="selected"':''; ?>
+			    	<option <?php echo ($select); ?> value="<?php echo ($v1["id"]); ?>"><?php echo ($v1["attr_value"]); ?></option>
+			    	<?php } ?>
+			    </select>
+			    </td>
+		    <?php }?>
+            <td><input type="text" name="goods_number[]" value="<?php echo ($v0["goods_number"]); ?>"/></td>
+			<td><input type="button" onclick="addNew(this)" class="btn btn-info" 
+			value="<?= $opt?>"/>
 			</td>
         </tr>
+<?php  } } else{ ?>
+        <tr>
+            <?php foreach ($attr as $k => $v){ ?>
+			    <td>
+			    <select name="goods_attr_id[]">
+			    	<option value="">请选择</option>
+			    	<?php foreach ($v as $k1 => $v1){ $select =strpos(','.$v0['goods_attr_id'].',',','.$v1['id'].',')!== FALSE?'selected="selected"':''; ?>
+			    	<option <?php echo ($select); ?> value="<?php echo ($v1["id"]); ?>"><?php echo ($v1["attr_value"]); ?></option>
+			    	<?php } ?>
+			    </select>
+			    </td>
+		    <?php }?>
+            <td><input type="text" name="goods_number[]" value="<?php echo ($v0["goods_number"]); ?>"/></td>
+			<td><input type="button" onclick="addNew(this)" class="btn btn-info" 
+			value="+"/>
+			</td>
+        </tr>
+<?php } ?>
         <tr>	
         	<td colspan="<?= count($attr)+2;?>"><input type="submit" class="btn btn-primary" value="保存"/></td>
         </tr>
