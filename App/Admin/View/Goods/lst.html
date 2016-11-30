@@ -79,15 +79,15 @@
 <div class="list-div" id="listDiv">
 	<table cellpadding="3" cellspacing="1">
     	<tr>
-            <th >商品名称</th>
-            <th >市场价</th>
-            <th >本店价</th>
-            <th >logo原图</th>
-            <th >是否热卖</th>
-            <th >是否新品</th>
-            <th >是否精品</th>
-            <th >是否上架</th>
-            <th >商品描述</th>
+            <th>商品名称</th>
+            <th>市场价</th>
+            <th>本店价</th>
+            <th>logo原图</th>
+            <th>是否热卖</th>
+            <th>是否新品</th>
+            <th>是否精品</th>
+            <th>是否上架</th>
+            <th>商品描述</th>
 			<th width="150">操作</th>
         </tr>
 		<?php foreach ($data as $k => $v): ?>            
@@ -95,13 +95,14 @@
 				<td>{$v['goods_name']}</td>
 				<td>{$v['market_price']}</td>
 				<td>{$v['shop_price']}</td>
-				<td>{:showImage($v['sm_logo'])}</td>
+				<td width="50" height="50">{:showImage($v['sm_logo'])}</td>
 				<td>{$v['is_hot']?'是':'否'}</td>
 				<td>{$v['is_new']?'是':'否'}</td>
 				<td>{$v['is_best']?'是':'否'}</td>
 				<td>{$v['is_on_sale']?'是':'否'}</td>
 				<td>{$v['goods_desc']}</td>
 		        <td>
+		            <a href="<?php echo U('number?id='.$v['id'].'&p='.I('get.p')); ?>" title="库存量">库存量</a>
 		        	<a href="<?php echo U('edit?id='.$v['id'].'&p='.I('get.p')); ?>" title="编辑">编辑</a> |
 	                <a href="<?php echo U('recycle?id='.$v['id']);?>" onclick="return confirm('确定要放入回收站吗？');" title="放入回收站">放入回收站</a> 
 		        </td>

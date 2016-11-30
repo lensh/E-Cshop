@@ -206,4 +206,49 @@ class GoodsController extends BaseController{
         ));
         $this->display();
     }
+
+    /**
+     * 库存量
+     * @return [type] [description]
+     */
+    public function number(){
+        $goods_id=I('get.id');
+        if(IS_POST){
+            $goods_attr_id=I('post.goods_attr_id');
+            $goods_number=I('post.goods_number');
+            $rate= count($goods_attr_id)/count($goods_number);//比例
+            $gnmodel=M('GoodsNumber');
+            $_i=0;  //从第几个开始拿
+            foreach ($goods_number as $k => $v) {
+                //把每次拿到的uid放到这个数组里
+                $_arr=array();
+                //到attr_id的数组里拿rate个
+                for($i=0;$i<$rate;$i++){
+                    $_arr[]=$goods_attr_id[$_i];
+                    $_i++;
+                }   
+                //升序排列数组
+                sort($_arr);        
+                $gnmodel->add(array(
+                    'goods_id'=>$goods_id,
+                    'goods_number'=>$v,
+                    'goods_attr_id'=>implode(',',$_arr),
+                ));
+            }
+            $this->success('设置成功',U('lst'));
+            return;
+        }
+        //先在goods_attr表里取出这件商品同一个属性有多个值的属性id，再在goods_attr表里找出attr_id
+        //等于上面id的记录，最后去联attr表查询这个属性的名称
+        $sql="select a.attr_name,b.* from ecshop_attr a left join ecshop_goods_attr b on 
+         a.id=b.attr_id where b.attr_id in(select attr_id from ecshop_goods_attr
+         where goods_id='$goods_id' group by attr_id having count(*)>1) and goods_id='$goods_id'";
+        $attrData=M()->query($sql);
+        $attr=array();
+        foreach ($attrData as $k => $v) {
+            $attr[$v['attr_id']][]=$v;
+        }
+        $this->assign('attr',$attr);
+        $this->display();
+    }
 }

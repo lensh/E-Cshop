@@ -27,9 +27,9 @@
 
     <!--具体操作-->
     
-    	<span class="action-span"><a href="<?php echo U('Goods/add');?>">添加新商品</a></span>
-		<span id="search_id"> - 添加新商品 </span>
-	
+		<span class="action-span"><a href="<?php echo U('add');?>">添加商品</a></span>
+		<span id="search_id"> - 商品回收站列表 </span>
+
 
     <div style="clear:both"></div>
 </h1>
@@ -119,7 +119,7 @@
 				<td><?php echo ($v['is_on_sale']?'是':'否'); ?></td>
 				<td><?php echo ($v['goods_desc']); ?></td>
 		        <td>
-		        	<a href="<?php echo U('restore?id='.$v['id']);?>" title="还原">还原</a> |
+		        	<a href="<?php echo U('restore?id='.$v['id']);?>" onclick="return confirm('确定要还原吗？');" title="还原">还原</a> |
 	                <a href="<?php echo U('recycle?id='.$v['id']);?>" onclick="return confirm('确定删除吗？');" title="删除">删除</a> 
 		        </td>
 	        </tr>

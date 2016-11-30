@@ -1,0 +1,66 @@
+<extend name="Common:common"/>
+<!--标题-->
+<block name="title">
+	<title>管理中心 - 库存量</title>
+</block>
+<!--其它样式-->
+<block name="asset">
+    <style type="text/css">
+      td{text-align: center;}
+      a{color:#9cf !important}
+    </style>
+    <script type="text/javascript">
+        //点击按钮
+    	function addNew(a){
+    		if($(a).val()=='+'){
+    	 		var tr=$(a).parent().parent();
+    			var newTr=tr.clone();
+    			newTr.find(':button').val('-');
+    			tr.after(newTr);		
+    		}else{
+    			$(a).parent().parent().remove();
+    		}
+    	}
+    </script>
+</block>
+
+<!--具体操作-->
+<block name="action">
+		<span class="action-span"><a href="{:U('lst')}">商品列表</a></span>
+		<span id="search_id"> - 库存设置</span>
+</block>
+
+<!-- 列表 -->
+<block name="main">
+<div class="list-div" id="listDiv">
+ <form method="post" action="__SELF__">
+	<table cellpadding="3" cellspacing="1">
+    	<tr>
+    		<volist name="attr" id ="v">
+    			<th width="150">{$v[0]['attr_name']}</th>
+    		</volist>
+            <th width="150">库存</th>
+			<th width="150">操作</th>
+        </tr>
+        <tr>
+        	<volist name="attr" id="v">
+    			<td>
+	    		  <select name="goods_attr_id[]">
+	    		    <option value="">请选择</option>
+	    		  	<volist name="v" id="v1">
+	    		  		<option value="{$v1['id']}">{$v1['attr_value']}</option>
+	    			</volist>
+	    		  </select>
+    			</td>
+    		</volist>
+            <td><input type="text" name="goods_number[]"/></td>
+			<td><input type="button" onclick="addNew(this)" class="btn btn-info" value="+"/>
+			</td>
+        </tr>
+        <tr>	
+        	<td colspan="<?= count($attr)+2;?>"><input type="submit" class="btn btn-primary" value="保存"/></td>
+        </tr>
+	</table>
+  </form>
+</div>
+</block>
