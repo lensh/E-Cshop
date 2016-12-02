@@ -2,9 +2,10 @@
 namespace Home\Controller;
 
 class IndexController extends BaseController{
+
 	public function index($value=''){
 		//设置页面信息
-	    $this->setPageInfo(1,'京西商城-首页','首页','首页',array('index'),array('index'));
+	    $this->setPageInfo('京西商城-首页','首页','首页',1,array('index'),array('index'));
 	    //获取疯狂抢购的商品
 	    $promote_goods=D('Admin/Goods')->getPromote();
 	    $this->assign('promote_goods',$promote_goods);
