@@ -15,5 +15,5 @@ return array(
 		//每条键值对，对应一个路由规则
 		'i/:domain'=>'Space/index',
 		//对应的URL就是Space/index/i/xiaoxin
-	),
+	)
 );
