@@ -58,7 +58,7 @@ class MemberModel extends Model
 		<p><a href="http://localhost/E-Cshop/index.php/Home/Member/emailchk/code/{$data['email_code']}">点击完成验证</a></p>
 HTML;
 		// 把生成的验证码发到会员的邮箱中
-		sendMail($data['email'], 'ECshop网email验证', $content);
+		sendMail($data['email'], 'ECshop网email验证',$content);
 	}
     /**
      * 验证用户登陆

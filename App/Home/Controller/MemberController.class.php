@@ -35,7 +35,7 @@ class MemberController extends BaseController{
    			if($model->validate($model->_login_validate)->create(I('post.'), 9))
    			{
    				if($model->login())
-   					redirect('/');  // 登录成功之后直接跳到首页
+   					redirect(U('Index/index'));  // 登录成功之后直接跳到首页
    			}
    			$this->error($model->getError());
    		}
@@ -79,7 +79,7 @@ class MemberController extends BaseController{
 	 */
 	public function logout(){
 		session(null);
-		redirect('/');
+		redirect(U('Index/index'));
 	}
 
 	/**
