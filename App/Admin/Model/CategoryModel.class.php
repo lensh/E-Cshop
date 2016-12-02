@@ -44,6 +44,38 @@ class CategoryModel extends Model {
 		}
 		return $ret;
 	}
+
+	/**
+	 * 前台首页获取分类数据
+	 * @return [type] [description]
+	 */
+	public function getNavCat(){
+		//从缓存里获取
+		if(S('data')){
+			return S('data');
+		}
+		$ret=array();
+		$data=$this->select();
+		foreach ($data as $k => $v) {
+			//顶级分类
+			if($v['pid']==0){
+				foreach ($data as $k1 => $v1) {
+					//二级分类
+					if($v1['pid']==$v['id']){
+						foreach ($data as $k2 => $v2) {
+							//三级分类
+							if($v2['pid']==$v1['id'])
+								$v1['children'][]=$v2;
+						}
+						$v['children'][]=$v1;
+					}
+				}
+				$ret[]=$v;
+			}
+		}
+		S('data',$ret);
+		return $ret;
+	}
 	/************************************ 其他方法 ********************************************/
 	public function _before_delete($option){
 		// 先找出所有的子分类

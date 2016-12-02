@@ -1,11 +1,5 @@
 <?php
 return array(
-	//设置模版替换变量
-	'TMPL_PARSE_STRING' => array(
-		'__CSS__'=>__ROOT__.'/Public/'.MODULE_NAME.'/css',
-		'__JS__'=>__ROOT__.'/Public/'.MODULE_NAME.'/js',
-		'__IMG__'=>__ROOT__.'/Public/'.MODULE_NAME.'/img',
-	),
 	//页面Trace
 	'SHOW_PAGE_TRACE'=>true,	
 	//启用路由功能
