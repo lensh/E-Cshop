@@ -4,6 +4,10 @@ use Think\Model;
 class GoodsModel extends Model {
 	protected $insertFields = array('goods_name','extend_cat_id','cat_id','brand_id','market_price','shop_price','jifen','jyz','jifen_price','is_promote','promote_price','promote_start_time','promote_end_time','is_hot','is_new','is_best','is_on_sale','seo_keyword','seo_description','type_id','sort_num','is_delete','goods_desc');
 	protected $updateFields = array('id','goods_name','cat_id','brand_id','market_price','shop_price','jifen','jyz','jifen_price','is_promote','promote_price','promote_start_time','promote_end_time','is_hot','is_new','is_best','is_on_sale','seo_keyword','seo_description','type_id','sort_num','is_delete','goods_desc');
+	/**
+	 * 自动验证字段
+	 * @var array
+	 */
 	protected $_validate = array(
 		array('goods_name', 'require', '商品名称不能为空！', 1, 'regex', 3),
 		array('goods_name', '1,45', '商品名称的值最长不能超过 45 个字符！', 1, 'length', 3),
@@ -31,6 +35,12 @@ class GoodsModel extends Model {
 		array('sort_num', 'number', '排序数字必须是一个整数！', 2, 'regex', 3),
 		array('is_delete', 'number', '是否放到回收站：1：是，0：否必须是一个整数！', 2, 'regex', 3),
 	);
+	/**
+	 * 查找商品
+	 * @param  integer $pageSize  [description]
+	 * @param  integer $is_delete [description]
+	 * @return [type]             [description]
+	 */
 	public function search($pageSize = 20,$is_delete=0){
 		/**************************************** 搜索 ****************************************/
 		$where['is_delete'] = $is_delete;
@@ -83,7 +93,12 @@ class GoodsModel extends Model {
 		->where($where)->group('a.id')->limit($page->firstRow.','.$page->listRows)->select();
 		return $data;
 	}
-	// 添加前
+	/**
+	 * 添加前
+	 * @param  [type] &$data  [description]
+	 * @param  [type] $option [description]
+	 * @return [type]         [description]
+	 */
 	protected function _before_insert(&$data, $option){
 		$data['addtime']=time();
 		$promote_start_time=I('post.promote_start_time');
@@ -104,7 +119,10 @@ class GoodsModel extends Model {
 			}
 		}
 	}
-    //添加后处理关联的表
+
+	/**
+	 * 添加后处理关联的表
+	 */
 	protected function _after_insert(&$data, $option){
 
 		/*****处理商品的扩展分类****/
@@ -185,9 +203,13 @@ class GoodsModel extends Model {
 	    		}
 	    	}
 	    }
-
 	}	
-	// 修改前
+	/**
+	 * 修改前
+	 * @param  [type] &$data  [description]
+	 * @param  [type] $option [description]
+	 * @return [type]         [description]
+	 */
 	protected function _before_update(&$data, $option){
 	    if(!I('post.is_promote'))  $data['is_promote']=0;
 	    //修改促销时间
@@ -221,7 +243,9 @@ class GoodsModel extends Model {
 		}
 	}
 
-	// 修改后,处理关联的表
+	/**
+	 * 修改后处理相关联的表
+	 */
 	protected function _after_update($data, $option){
 
 		/*****处理商品的扩展分类****/
@@ -328,7 +352,11 @@ class GoodsModel extends Model {
 
 	}
 
-	// 删除前
+	/**
+	 * 删除前
+	 * @param  [type] $option [description]
+	 * @return [type]         [description]
+	 */
 	protected function _before_delete($option){
 		if(is_array($option['where']['id'])){
 			$this->error = '不支持批量删除';
@@ -358,5 +386,83 @@ class GoodsModel extends Model {
 			deleteImage($p);
 		}
 		$model->where(array('goods_id'=>array('eq', $option['where']['id'])))->delete();
+	}
+    
+    /**
+     * 前台取出处于促销期间的商品
+     * @return [type] [description]
+     */
+	public function getPromote($limit=5){
+		if(S('promote_goods')){
+			return S('promote_goods');
+		}
+		$map=array(
+			'is_promote'=>1,
+			'is_delete'=>0,
+			'is_on_sale'=>1,
+			'promote_start_time'=>array('elt',time()),
+			'promote_end_time'=>array('egt',time())
+		);
+		$data=$this->field('id,goods_name,promote_price,sm_logo')->where($map)
+		->order('sort_num desc')->limit($limit)->select();
+		S('promote_goods',$data);
+		return $data;
+	}
+
+	/**
+     * 前台取出最新的商品
+     * @return [type] [description]
+     */
+	public function getNew($limit=5){
+		if(S('new_goods')){
+			return S('new_goods');
+		}
+		$map=array(
+			'is_new'=>1,
+			'is_delete'=>0,
+			'is_on_sale'=>1
+		);
+		$data=$this->field('id,goods_name,shop_price,sm_logo')->where($map)
+		->order('sort_num desc')->limit($limit)->select();
+		S('new_goods',$data);
+		return $data;
+	}
+
+	/**
+     * 前台取出最热的商品
+     * @return [type] [description]
+     */
+	public function getHot($limit=5){
+		if(S('hot_goods')){
+			return S('hot_goods');
+		}
+		$map=array(
+			'is_hot'=>1,
+			'is_delete'=>0,
+			'is_on_sale'=>1
+		);
+		$data=$this->field('id,goods_name,shop_price,sm_logo')->where($map)
+		->order('sort_num desc')->limit($limit)->select();
+		S('hot_goods',$data);
+		return $data;
+	}
+
+	/**
+     * 前台取出最精的商品
+     * @return [type] [description]
+     */
+	public function getBest($limit=5){
+		if(S('best_goods')){
+			return S('best_goods');
+		}
+		$map=array(
+			'is_best'=>1,
+			'is_delete'=>0,
+			'is_on_sale'=>1
+		);
+		$data=$this->field('id,goods_name,shop_price,sm_logo')->where($map)
+		->order('sort_num desc')->limit($limit)->select();
+		S('best_goods',$data);
+		return $data;
 	}
 }
