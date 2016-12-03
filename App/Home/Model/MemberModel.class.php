@@ -72,8 +72,14 @@ HTML;
 			if(empty($user['email_code'])){
 				// 判断密码是否正确
 				if($user['password'] == md5($password . C('MD5_KEY'))){
-					session('id', $user['id']);
+					session('mid', $user['id']);
 					session('email', $user['email']);
+					session('jyz', $user['jyz']);
+					// 取出当前登录会员所在的级别ID和这个级别的折扣率
+					$mlModel = M('MemberLevel');
+					$ml = $mlModel->field('id,rate')->where("{$user['jyz']} BETWEEN bottom_num AND top_num")->find();
+					session('level_id', $ml['id']);
+					session('rate', $ml['rate']/100);				
 					return TRUE;
 				}
 				else {

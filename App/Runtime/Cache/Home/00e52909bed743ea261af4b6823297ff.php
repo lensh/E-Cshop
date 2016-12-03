@@ -331,8 +331,8 @@
 					<ul>
 					<?php if(is_array($promote_goods)): $i = 0; $__LIST__ = $promote_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods/id='.$v['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v["sm_logo"]); ?>" alt="" /></a></dt>
-								<dd><a href="<?php echo U('goods/id='.$v['id']);?>"><?php echo ($v["goods_name"]); ?></a></dd>
+								<dt><a href="<?php echo U('goods?id='.$v['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v["sm_logo"]); ?>" alt="" /></a></dt>
+								<dd><a href="<?php echo U('goods?id='.$v['id']);?>"><?php echo ($v["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v["promote_price"]); ?></strong></dd>
 							</dl>
 						</li><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -345,8 +345,8 @@
 					<ul>
 					<?php if(is_array($hot_goods)): $i = 0; $__LIST__ = $hot_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods/id='.$v1['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v1["sm_logo"]); ?>" alt="" /></a></dt>
-								<dd><a href="<?php echo U('goods/id='.$v1['id']);?>"><?php echo ($v1["goods_name"]); ?></a></dd>
+								<dt><a href="<?php echo U('goods?id='.$v1['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v1["sm_logo"]); ?>" alt="" /></a></dt>
+								<dd><a href="<?php echo U('goods?id='.$v1['id']);?>"><?php echo ($v1["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v1["shop_price"]); ?></strong></dd>
 							</dl>
 						</li><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -359,8 +359,8 @@
 					<ul>
 					<?php if(is_array($best_goods)): $i = 0; $__LIST__ = $best_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v2): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods/id='.$v2['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v2["sm_logo"]); ?>" alt="" /></a></dt>
-								<dd><a href="<?php echo U('goods/id='.$v2['id']);?>"><?php echo ($v2["goods_name"]); ?></a></dd>
+								<dt><a href="<?php echo U('goods?id='.$v2['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v2["sm_logo"]); ?>" alt="" /></a></dt>
+								<dd><a href="<?php echo U('goods?id='.$v2['id']);?>"><?php echo ($v2["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v2["shop_price"]); ?></strong></dd>
 							</dl>
 						</li><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -373,8 +373,8 @@
 					<ul>
 					<?php if(is_array($new_goods)): $i = 0; $__LIST__ = $new_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v3): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods/id='.$v3['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v3["sm_logo"]); ?>" alt="" /></a></dt>
-								<dd><a href="<?php echo U('goods/id='.$v3['id']);?>"><?php echo ($v3["goods_name"]); ?></a></dd>
+								<dt><a href="<?php echo U('goods?id='.$v3['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v3["sm_logo"]); ?>" alt="" /></a></dt>
+								<dd><a href="<?php echo U('goods?id='.$v3['id']);?>"><?php echo ($v3["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v3["shop_price"]); ?></strong></dd>
 							</dl>
 						</li><?php endforeach; endif; else: echo "" ;endif; ?>

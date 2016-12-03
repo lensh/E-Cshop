@@ -169,7 +169,7 @@
         </p>
     </div>
     <div id="tabbody-div">
-      <form method="POST" action="/E-Cshop/Admin/Goods/edit/id/2/p/1.html" style="margin:5px" 
+      <form method="POST" action="/E-Cshop/Admin/Goods/edit/id/2.html" style="margin:5px" 
         enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo ($data["id"]); ?>" />
         <input type="hidden" name="old_type_id" value="<?php echo ($data["type_id"]); ?>" />

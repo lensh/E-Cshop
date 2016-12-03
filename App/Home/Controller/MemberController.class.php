@@ -86,7 +86,7 @@ class MemberController extends BaseController{
 	 * ajax验证登陆
 	 */
 	public function ajaxChkLogin(){
-		if(session('id')){
+		if(session('mid')){
 			$arr = array(
 				'ok' => 1,
 				'email' => session('email'),
