@@ -98,10 +98,7 @@
 						<div style="clear:both;"></div>
 						<div class="viewlist mt10">
 							<h3>最近浏览的商品：</h3>
-							<ul>
-								<li><a href=""><img src="/E-Cshop/Public/Home/images/view_list1.jpg" alt="" /></a></li>
-								<li><a href=""><img src="/E-Cshop/Public/Home/images/view_list2.jpg" alt="" /></a></li>
-								<li><a href=""><img src="/E-Cshop/Public/Home/images/view_list3.jpg" alt="" /></a></li>
+							<ul id="recentView">
 							</ul>
 						</div>
 					</dd>
@@ -180,6 +177,20 @@
 	</div>
 	<!-- 头部 end-->
 	<div style="clear:both;"></div>
+
+
+<!--ajax获取最近浏览量-->
+<script type="text/javascript">
+    var imgURL="<?php echo C('IMG_URL');?>";
+	$.get('<?php echo U("Index/ajaxGetRecent");?>','',function(data){
+		var json=JSON.parse(data);
+		var html='';
+		for(var i=0;i<json.length;i++){
+			html+='<li><a href="<?php echo U('goods','',false);?>/id/'+json[i].id+'"><img src="'+imgURL+json[i].sm_logo+'" alt="" /></a></li>';
+		}
+		$('#recentView').html(html);
+	})
+</script>
 	<script type="text/javascript">
 		$(function(){
 			$('.jqzoom').jqzoom({
@@ -298,16 +309,7 @@
 			<!-- 最近浏览 start -->
 			<div class="viewd leftbar mt10">
 				<h2><a href="">清空</a><strong>最近浏览过的商品</strong></h2>
-				<div class="leftbar_wrap">
-					<dl>
-						<dt><a href=""><img src="/E-Cshop/Public/Home/images/hpG4.jpg" alt="" /></a></dt>
-						<dd><a href="">惠普G4-1332TX 14英寸笔记...</a></dd>
-					</dl>
-
-					<dl class="last">
-						<dt><a href=""><img src="/E-Cshop/Public/Home/images/crazy4.jpg" alt="" /></a></dt>
-						<dd><a href="">直降200元！TCL正1.5匹空调</a></dd>
-					</dl>
+				<div class="leftbar_wrap" id="recentView1">
 				</div>
 			</div>
 			<!-- 最近浏览 end -->
@@ -714,25 +716,20 @@
 		</div>
 	</div>
 	<!-- 底部导航 end -->
-<script>
+<script type="text/javascript">
 var goodsId = <?php echo $info['id']; ?>;
-// 计算会员价格-最近浏览的功能
+// 计算会员价格-最近浏览的功能-生成xcookie
 $.get("<?php echo U('ajaxGetPrice');?>",{'goodsId':goodsId},function(data){
 	$("#memberprice").html('￥ '+data+' 元');
 })
+
 // ajax获取商品的评论
-$.ajax({
-	type :"GET",
-	url : "<?php echo U('ajaxGetComment', '', FALSE); ?>/goods_id/"+goodsId,
-	dataType : "json",
-	success : function(data)
-	{
-		if(data.login == 1)
-		{
+$.get("<?php echo U('ajaxGetComment');?>",{'goodsId':goodsId},function(data){
+	if(data.login == 1){
 			$("#comment_form").html('<form action=""><ul><li><label for=""> 评分：</label><input type="radio" name="grade"/> <strong class="star star5"></strong><input type="radio" name="grade"/> <strong class="star star4"></strong><input type="radio" name="grade"/> <strong class="star star3"></strong><input type="radio" name="grade"/> <strong class="star star2"></strong><input type="radio" name="grade"/> <strong class="star star1"></strong></li><li><label for="">评价内容：</label><textarea name="" id="" cols="" rows=""></textarea></li><li><label for="">&nbsp;</label><input type="submit" value="提交评论"  class="comment_btn"/></li></ul></form>');
 		}
-	}
-});
+})
+
 // 点击登录时，先执行AJAX把当前地址存到SESSION
 $("#login_a").click(function(){
 	$.ajax({
@@ -744,6 +741,18 @@ $("#login_a").click(function(){
 		}
 	});
 });
+
+//ajax获取最近浏览量
+var imgURL="<?php echo C('IMG_URL');?>";
+$.get('<?php echo U("Index/ajaxGetRecent");?>','',function(data){
+		var json=JSON.parse(data);
+		var html='';
+		for(var i=0;i<json.length;i++){
+			html+='<dl><dt><a href="<?php echo U('goods','',false);?>/id/'+json[i].id+'"><img src="'+imgURL+json[i].sm_logo+'" alt="" /></a></dt><dd><a href="<?php echo U('goods','',false);?>/id/'+json[i].id+'">'+json[i].goods_name+'</a></dd></dl>';
+		}
+		$('#recentView1').html(html);
+})
+</script>
 </script>
 
 

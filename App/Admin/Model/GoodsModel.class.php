@@ -465,4 +465,31 @@ class GoodsModel extends Model {
 		S('best_goods',$data);
 		return $data;
 	}
+
+    /**
+	 * 前台商品详情页ajax获取会员价格
+	 */
+	public function getMemberPrice($goods_id){
+		$now = time();
+		// 先判断是否有促销价格
+		$price = $this->field('shop_price,is_promote,promote_price,promote_start_time,promote_end_time')->find($goodsId);
+		if($price['is_promote'] == 1 && ($price['promote_start_time'] < $now && $price['promote_end_time'] > $now))
+		{
+			return $price['promote_price'];
+		}
+		// 如果会员没登录直接使用本店价
+		$memberId = session('mid');
+		if(!$memberId){
+			return $price['shop_price'];
+		}
+		// 计算会员价格
+		$mpModel = M('MemberPrice');
+		$mprice = $mpModel->field('price')->where(array('goods_id'=>array('eq', $goodsId), 'level_id'=>array('eq', session('level_id'))))->find();		
+		// 如果有会员价格就直接使用会员价格
+		if($mprice)
+			return $mprice['price'];
+		else 
+			// 如果没有设置会员价格，就按这个级别的折扣率来算
+			return session('rate') * $price['shop_price'];
+	}
 }

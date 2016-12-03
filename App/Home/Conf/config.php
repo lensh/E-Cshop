@@ -25,7 +25,7 @@ return array(
 	'MAIL_PASSWORD' => 'kiss12345'
 );
 
-//每一百见商品放到一个目录里
+//每一百件商品放到一个目录里
 function goodsdir($id){
 	return ceil($id/100);
 }

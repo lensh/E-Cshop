@@ -21,6 +21,7 @@ class IndexController extends BaseController{
 	    //新品
 	    $new_goods=D('Admin/Goods')->getNew();
 	    $this->assign('new_goods',$new_goods);
+	    var_dump(unserialize($_COOKIE['recentView']));
 		$this->display();
 	}
 
@@ -61,34 +62,45 @@ class IndexController extends BaseController{
 	}
 
 	/**
-	 * ajax获取会员价格
+	 * ajax获取会员价格和浏览量
 	 */
-	public function ajaxGetPrice($goodsId)
-	{
-		$now = time();
-		$gmodel=M('Goods');
-		// 先判断是否有促销价格
-		$price = $gmodel->field('shop_price,is_promote,promote_price,promote_start_time,promote_end_time')->find($goodsId);
-		if($price['is_promote'] == 1 && ($price['promote_start_time'] < $now && $price['promote_end_time'] > $now))
-		{
-			echo $price['promote_price'];
-			return;
+	public function ajaxGetPrice(){
+		//计算会员价格
+		$goodsId=I('get.goodsId');	
+		$price=D('Admin/Goods')->getMemberPrice($goodsId);
+		//用1个数组记录浏览量,保存最近10件商品的id，但是COOKIE只能存字符串，不能存数组，所以要序列化。
+		//当要把一个复杂的数据类型持久化时，需要序列化.serialize，取出时用unserialize反序列化。
+		$recentView=isset($_COOKIE['recentView'])?unserialize($_COOKIE['recentView']):array();
+		//把最新的放到数组的第一个位置
+		array_unshift($recentView,$goodsId); 
+		//去重
+		$recentView=array_unique($recentView);
+		//只取前10个，如果超过10个就切掉后面的
+		if(count($recentView)>10){
+			$recentView=array_slice($recentView,0,10); //从第一个元素开始截，截10个
 		}
-		// 如果会员没登录直接使用本店价
-		$memberId = session('mid');
-		if(!$memberId){
-			echo $price['shop_price'];
-			return;
+		//把处理好的数组保存回cookie
+		$savetime=time()+30*86400;
+		setCookie('recentView',serialize($recentView),$savetime); //序列化存储
+	    //setCookie('recentView',serialize($recentView),$savetime,'/','lensh.com');  放到服务器上后这样写
+		//第三个参数跨目录，根目录下有效。第四个参数跨域，二级域名
+		echo $price;
+	}
+
+	/**
+	 * ajax获取最近浏览的商品
+	 * @return [type] [description]
+	 */
+	public function ajaxGetRecent(){
+		$recentView=isset($_COOKIE['recentView'])?unserialize($_COOKIE['recentView']):array();
+		$ids=implode(',',$recentView);
+		$map=array('id'=>array('in',$recentView));
+		if($recentView){
+			$goodsData=M('Goods')->field('id,goods_name,sm_logo')->where($map)
+			->order("INSTR(',$ids,',CONCAT(',',id,','))")->select();
+			//MYSQL不排序
+			echo json_encode($goodsData);
 		}
-		// 计算会员价格
-		$mpModel = M('MemberPrice');
-		$mprice = $mpModel->field('price')->where(array('goods_id'=>array('eq', $goodsId), 'level_id'=>array('eq', session('level_id'))))->find();		
-		// 如果有会员价格就直接使用会员价格
-		if($mprice)
-			echo $mprice['price'];
-		else 
-			// 如果没有设置会员价格，就按这个级别的折扣率来算
-			echo session('rate') * $price['shop_price'];
 	}
 }
 
