@@ -1,8 +1,10 @@
 <?php
 namespace Admin\Model;
 use Think\Model;
-class RoleModel extends Model 
-{
+/**
+ * 角色模型
+ */
+class RoleModel extends Model {
 	protected $insertFields = array('role_name','auth_id');
 	protected $updateFields = array('id','role_name','auth_id');
 	protected $_validate = array(

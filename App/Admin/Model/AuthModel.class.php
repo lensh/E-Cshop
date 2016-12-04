@@ -1,6 +1,9 @@
 <?php
 namespace Admin\Model;
 use Think\Model;
+/**
+ * 权限模型
+ */
 class AuthModel extends Model{
 	//插入时维护的字段
 	protected $insertFields=array('auth_name','module_name','controller_name','action_name','pid','auth_level');
@@ -111,7 +114,7 @@ class AuthModel extends Model{
 		// 如果有子分类都删除掉
 		if($children){
 			$children = implode(',', $children);
-			$this->execute("DELETE FROM e-cshop_auth WHERE id IN($children)");
+			$this->execute("DELETE FROM ecshop_auth WHERE id IN($children)");
 		}
 	}
 }

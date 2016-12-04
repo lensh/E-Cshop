@@ -1,6 +1,9 @@
 <?php
 namespace Admin\Model;
 use Think\Model;
+/**
+ * 会员等级模型
+ */
 class MemberLevelModel extends Model {
 	protected $insertFields = array('level_name','bottom_num','top_num','rate');
 	protected $updateFields = array('id','level_name','bottom_num','top_num','rate');
@@ -26,12 +29,6 @@ class MemberLevelModel extends Model {
 		/************************************** 取数据 ******************************************/
 		$data['data'] = $this->alias('a')->where($where)->group('a.id')->limit($page->firstRow.','.$page->listRows)->select();
 		return $data;
-	}
-	// 添加前
-	protected function _before_insert(&$data, $option){
-	}
-	// 修改前
-	protected function _before_update(&$data, $option){
 	}
 	// 删除前
 	protected function _before_delete($option){

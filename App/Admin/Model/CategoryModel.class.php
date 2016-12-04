@@ -1,6 +1,9 @@
 <?php
 namespace Admin\Model;
 use Think\Model;
+/**
+ * 分类模型
+ */
 class CategoryModel extends Model {
 	protected $insertFields = array('cat_name','pid');
 	protected $updateFields = array('id','cat_name','pid');
@@ -76,7 +79,11 @@ class CategoryModel extends Model {
 		S('data',$ret);
 		return $ret;
 	}
-	/************************************ 其他方法 ********************************************/
+	/**
+	 * 删除前
+	 * @param  [type] $option [description]
+	 * @return [type]         [description]
+	 */
 	public function _before_delete($option){
 		// 先找出所有的子分类
 		$children = $this->getChildren($option['where']['id']);

@@ -1,9 +1,13 @@
 <?php
 namespace Admin\Model;
 use Think\Model;
+/**
+ * 属性模型
+ */
 class AttrModel extends Model {
 	protected $insertFields = array('type_id','attr_name','attr_type','attr_option_values');
 	protected $updateFields = array('id','type_id','attr_name','attr_type','attr_option_values');
+	//自动验证
 	protected $_validate = array(
 		array('type_id', 'require', '所在的类型的id不能为空！', 1, 'regex', 3),
 		array('type_id', 'number', '所在的类型的id必须是一个整数！', 1, 'regex', 3),
@@ -12,6 +16,12 @@ class AttrModel extends Model {
 		array('attr_type', 'require', '属性的类型0：唯一 1：可选不能为空！', 1, 'regex', 3),
 		array('attr_type', 'number', '属性的类型0：唯一 1：可选必须是一个整数！', 1, 'regex', 3)
 	);
+
+	/**
+	 * 查找属性
+	 * @param  integer $pageSize [description]
+	 * @return [type]            [description]
+	 */
 	public function search($pageSize = 20){
 		/**************************************** 搜索 ****************************************/
 		$where['type_id']=I('get.type_id');
@@ -26,13 +36,10 @@ class AttrModel extends Model {
 		$data['data'] = $this->alias('a')->where($where)->group('a.id')->limit($page->firstRow.','.$page->listRows)->select();
 		return $data;
 	}
-	// 添加前
-	protected function _before_insert(&$data, $option){
-	}
-	// 修改前
-	protected function _before_update(&$data, $option){
-	}
-	// 删除前
+
+	/**
+	 * 删除前
+	 */
 	protected function _before_delete($option){
 		if(is_array($option['where']['id'])){
 			$this->error = '不支持批量删除';

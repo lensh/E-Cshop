@@ -1,6 +1,9 @@
 <?php
 namespace Admin\Model;
 use Think\Model;
+/**
+ * 类型模型
+ */
 class TypeModel extends Model {
 	protected $insertFields = array('type_name');
 	protected $updateFields = array('id','type_name');
@@ -24,12 +27,6 @@ class TypeModel extends Model {
 		$data['data'] = $this->alias('a')->where($where)->group('a.id')->limit($page->firstRow.','.$page->listRows)->select();
 		return $data;
 	}
-	// 添加前
-	protected function _before_insert(&$data, $option){
-	}
-	// 修改前
-	protected function _before_update(&$data, $option){
-	}
 	// 删除前
 	protected function _before_delete($option){
 		if(is_array($option['where']['id'])){
@@ -37,5 +34,4 @@ class TypeModel extends Model {
 			return FALSE;
 		}
 	}
-	/************************************ 其他方法 ********************************************/
 }
