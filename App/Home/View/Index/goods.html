@@ -470,22 +470,6 @@ var goodsId = <?php echo $info['id']; ?>;
 $.get("{:U('ajaxGetPrice')}",{'goodsId':goodsId},function(data){
 	$("#memberprice").html('￥ '+data+' 元');
 })
-
-// ajax获取商品的评论
-$.get("{:U('ajaxGetComment')}",{'goodsId':goodsId},function(res){
-	var data=JSON.parse(res);
-	if(data.login == 1){
-			$("#comment_form").html('<form action=""><ul><li><label for=""> 评分：</label><input type="radio" name="grade"/> <strong class="star star5"></strong><input type="radio" name="grade"/> <strong class="star star4"></strong><input type="radio" name="grade"/> <strong class="star star3"></strong><input type="radio" name="grade"/> <strong class="star star2"></strong><input type="radio" name="grade"/> <strong class="star star1"></strong></li><li><label for="">评价内容：</label><textarea name="" id="" cols="" rows=""></textarea></li><li><label for="">&nbsp;</label><input type="submit" value="提交评论"  class="comment_btn"/></li></ul></form>');
-		}
-})
-
-// 点击评论里的登录时，执行AJAX把当前地址存到SESSION，以便登陆后跳回到这里
-$("#login_a").click(function(){
-	$.get("{:U('saveAndLogin')}","",function(){
-		location.href="{:U('Home/Member/login')}";
-	});
-});
-
 //ajax获取最近浏览量
 var imgURL="<?php echo C('IMG_URL');?>";
 $.get('{:U("ajaxGetRecent")}','',function(data){
@@ -495,6 +479,43 @@ $.get('{:U("ajaxGetRecent")}','',function(data){
 			html+='<dl><dt><a href="{:U(\'goods\','',false)}/id/'+json[i].id+'"><img src="'+imgURL+json[i].sm_logo+'" alt="" /></a></dt><dd><a href="{:U(\'goods\','',false)}/id/'+json[i].id+'">'+json[i].goods_name+'</a></dd></dl>';
 		}
 		$('#recentView1').html(html);
+});
+// ajax获取商品的评论及发表评论
+$.get("{:U('ajaxGetComment')}",{'goodsId':goodsId},function(res){
+	var data=JSON.parse(res);
+	if(data.login == 1){
+			$("#comment_form").html('<form id="comment_real_form"><input type="hidden" name="goods_id" value="<?php echo $info['id']; ?>" /><ul><li><label for=""> 评分：</label><input type="radio" name="star" value="5" /> <strong class="star star5"></strong><input type="radio" name="star" value="4" /> <strong class="star star4"></strong><input type="radio" name="star" value="3" checked="checked"/> <strong class="star star3"></strong><input type="radio" name="star" value="2" /> <strong class="star star2"></strong><input type="radio" name="star" value="1" /> <strong class="star star1"></strong></li><li><label for="">评价内容：</label><textarea name="content" id="" cols="" rows=""></textarea></li><li><label for="">印象：</label><input name="yx" /> 多个印象用，隔开</li><li><label for="">&nbsp;</label><input type="button" value="提交评论" class="comment_btn"/></li></ul></form>');
+			$(".comment_btn").click(function(){
+				// 收集表单中的所有的数据
+				var formData = $("#comment_real_form").serialize();
+				// AJAX的提交表单
+				$.ajax({
+					type : "POST",
+					url : "<?php echo U('Comment/add'); ?>",
+					data : formData,  // 表单中的数据
+					success : function(res){
+						var data=JSON.parse(res);
+						if(data.ok == 1){
+							// 先拼出评论的字符串
+							var html = '<div class="comment_items mt10"><div class="user_pic"><dl><dt><a href=""><img src="'+data.face+'" alt="" /></a></dt><dd><a href="">'+data.email+'</a></dd></dl></div><div class="item"><div class="title"><span>'+data.addtime+'</span><strong class="star star'+data.star+'"></strong></div><div class="comment_content">'+data.content+'</div><div class="btns"><a href="" class="reply">回复(0)</a><a href="" class="useful">有用(0)</a></div></div><div class="cornor"></div></div>';
+							// 把评论的内容直接放到页面上
+							$(".comment_summary").after(html);
+							
+							// 清空表单
+							document.getElementById("comment_real_form").reset();
+							// 先滚动到710这个位置然后再显示出评论的内容
+							$("body").animate({scrollTop:"710px"},300,'linear',function(){html.fadeIn('slow');});	
+						}				
+					}
+				});
+			});
+	}
+})
+// 点击评论里的登录时，执行AJAX把当前地址存到SESSION，以便登陆后跳回到这里
+$("#login_a").click(function(){
+	$.get("{:U('saveAndLogin')}","",function(){
+		location.href="{:U('Home/Member/login')}";
+	});
 });
 </script>
 </script>
