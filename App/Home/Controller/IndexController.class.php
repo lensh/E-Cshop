@@ -21,7 +21,6 @@ class IndexController extends BaseController{
 	    //新品
 	    $new_goods=D('Admin/Goods')->getNew();
 	    $this->assign('new_goods',$new_goods);
-	    var_dump(unserialize($_COOKIE['recentView']));
 		$this->display();
 	}
 
@@ -101,6 +100,25 @@ class IndexController extends BaseController{
 			//MYSQL不排序
 			echo json_encode($goodsData);
 		}
+	}
+
+	/**
+	 * ajax获取商品的评论
+	 * @return [type] [description]
+	 */
+	public function ajaxGetComment(){
+		$ret=array('login'=>0);
+		if(session('mid')){
+			$ret['login']=1;	
+		}
+		echo json_encode($ret);
+	}
+
+    /**
+	 * ajax获取从哪个评论页点进登陆的,以便跳回原来的地方
+	 */
+	public function saveAndLogin(){
+		session('returnUrl',$_SERVER['HTTP_REFERER']);
 	}
 }
 

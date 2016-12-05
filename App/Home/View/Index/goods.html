@@ -421,9 +421,9 @@
 						<!-- 分页信息 end -->
 
 						<!--  评论表单 start-->
-						<div class="comment_form mt20" id="comment_form"><a id="login_a">登录</a>之后就可以评论！</div>
+						<div class="comment_form mt20" id="comment_form"><a id="login_a"
+						style="color:#9cf">登录</a>之后就可以评论！</div>
 						<!--  评论表单 end-->
-						
 					</div>
 					<!-- 商品评论 end -->
 
@@ -472,34 +472,30 @@ $.get("{:U('ajaxGetPrice')}",{'goodsId':goodsId},function(data){
 })
 
 // ajax获取商品的评论
-$.get("{:U('ajaxGetComment')}",{'goodsId':goodsId},function(data){
+$.get("{:U('ajaxGetComment')}",{'goodsId':goodsId},function(res){
+	var data=JSON.parse(res);
 	if(data.login == 1){
 			$("#comment_form").html('<form action=""><ul><li><label for=""> 评分：</label><input type="radio" name="grade"/> <strong class="star star5"></strong><input type="radio" name="grade"/> <strong class="star star4"></strong><input type="radio" name="grade"/> <strong class="star star3"></strong><input type="radio" name="grade"/> <strong class="star star2"></strong><input type="radio" name="grade"/> <strong class="star star1"></strong></li><li><label for="">评价内容：</label><textarea name="" id="" cols="" rows=""></textarea></li><li><label for="">&nbsp;</label><input type="submit" value="提交评论"  class="comment_btn"/></li></ul></form>');
 		}
 })
 
-// 点击登录时，先执行AJAX把当前地址存到SESSION
+// 点击评论里的登录时，执行AJAX把当前地址存到SESSION，以便登陆后跳回到这里
 $("#login_a").click(function(){
-	$.ajax({
-		type : "GET",
-		url : "<?php echo U('Home/Member/saveAndLogin'); ?>",
-		success : function(data)
-		{
-			location.href='<?php echo U('Home/Member/login'); ?>';
-		}
+	$.get("{:U('saveAndLogin')}","",function(){
+		location.href="{:U('Home/Member/login')}";
 	});
 });
 
 //ajax获取最近浏览量
 var imgURL="<?php echo C('IMG_URL');?>";
-$.get('{:U("Index/ajaxGetRecent")}','',function(data){
+$.get('{:U("ajaxGetRecent")}','',function(data){
 		var json=JSON.parse(data);
 		var html='';
 		for(var i=0;i<json.length;i++){
 			html+='<dl><dt><a href="{:U(\'goods\','',false)}/id/'+json[i].id+'"><img src="'+imgURL+json[i].sm_logo+'" alt="" /></a></dt><dd><a href="{:U(\'goods\','',false)}/id/'+json[i].id+'">'+json[i].goods_name+'</a></dd></dl>';
 		}
 		$('#recentView1').html(html);
-})
+});
 </script>
 </script>
 

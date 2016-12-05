@@ -34,8 +34,17 @@ class MemberController extends BaseController{
    			$model = D('Member');
    			if($model->validate($model->_login_validate)->create(I('post.'), 9))
    			{
-   				if($model->login())
+   				if($model->login()){
+   					$returnUrl=session('returnUrl');
+   					if($returnUrl){
+   						session('returnUrl',null);
+   						redirect($returnUrl);
+   					}
+   				}
+   				else{
    					redirect(U('Index/index'));  // 登录成功之后直接跳到首页
+   				}	
+   				
    			}
    			$this->error($model->getError());
    		}

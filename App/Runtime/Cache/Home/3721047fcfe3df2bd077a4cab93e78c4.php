@@ -76,8 +76,7 @@
 						<b></b>
 					</dt>
 					<dd>
-						<div class="prompt">
-							您好，请<a href="">登录</a>
+						<div class="prompt" id="prompt">
 						</div>
 						<div class="uclist mt10">
 							<ul class="list1 fl">
@@ -189,6 +188,14 @@
 			html+='<li><a href="<?php echo U('goods','',false);?>/id/'+json[i].id+'"><img src="'+imgURL+json[i].sm_logo+'" alt="" /></a></li>';
 		}
 		$('#recentView').html(html);
+	});
+	$.get('<?php echo U("Member/ajaxChkLogin");?>','',function(res){
+		var data=JSON.parse(res);
+		if(data.ok == 1)
+			var html = "您好,<a href='<?php echo U('Home/Member/index'); ?>'>"+data['email']+"</a>";
+		else
+			var html="您好，请<a href='<?php echo U('Home/Member/login'); ?>'>登录</a>";
+		$("#prompt").html(html);
 	})
 </script>
 	<script type="text/javascript">
@@ -610,9 +617,9 @@
 						<!-- 分页信息 end -->
 
 						<!--  评论表单 start-->
-						<div class="comment_form mt20" id="comment_form"><a id="login_a">登录</a>之后就可以评论！</div>
+						<div class="comment_form mt20" id="comment_form"><a id="login_a"
+						style="color:#9cf">登录</a>之后就可以评论！</div>
 						<!--  评论表单 end-->
-						
 					</div>
 					<!-- 商品评论 end -->
 
@@ -724,34 +731,30 @@ $.get("<?php echo U('ajaxGetPrice');?>",{'goodsId':goodsId},function(data){
 })
 
 // ajax获取商品的评论
-$.get("<?php echo U('ajaxGetComment');?>",{'goodsId':goodsId},function(data){
+$.get("<?php echo U('ajaxGetComment');?>",{'goodsId':goodsId},function(res){
+	var data=JSON.parse(res);
 	if(data.login == 1){
 			$("#comment_form").html('<form action=""><ul><li><label for=""> 评分：</label><input type="radio" name="grade"/> <strong class="star star5"></strong><input type="radio" name="grade"/> <strong class="star star4"></strong><input type="radio" name="grade"/> <strong class="star star3"></strong><input type="radio" name="grade"/> <strong class="star star2"></strong><input type="radio" name="grade"/> <strong class="star star1"></strong></li><li><label for="">评价内容：</label><textarea name="" id="" cols="" rows=""></textarea></li><li><label for="">&nbsp;</label><input type="submit" value="提交评论"  class="comment_btn"/></li></ul></form>');
 		}
 })
 
-// 点击登录时，先执行AJAX把当前地址存到SESSION
+// 点击评论里的登录时，执行AJAX把当前地址存到SESSION，以便登陆后跳回到这里
 $("#login_a").click(function(){
-	$.ajax({
-		type : "GET",
-		url : "<?php echo U('Home/Member/saveAndLogin'); ?>",
-		success : function(data)
-		{
-			location.href='<?php echo U('Home/Member/login'); ?>';
-		}
+	$.get("<?php echo U('saveAndLogin');?>","",function(){
+		location.href="<?php echo U('Home/Member/login');?>";
 	});
 });
 
 //ajax获取最近浏览量
 var imgURL="<?php echo C('IMG_URL');?>";
-$.get('<?php echo U("Index/ajaxGetRecent");?>','',function(data){
+$.get('<?php echo U("ajaxGetRecent");?>','',function(data){
 		var json=JSON.parse(data);
 		var html='';
 		for(var i=0;i<json.length;i++){
 			html+='<dl><dt><a href="<?php echo U('goods','',false);?>/id/'+json[i].id+'"><img src="'+imgURL+json[i].sm_logo+'" alt="" /></a></dt><dd><a href="<?php echo U('goods','',false);?>/id/'+json[i].id+'">'+json[i].goods_name+'</a></dd></dl>';
 		}
 		$('#recentView1').html(html);
-})
+});
 </script>
 </script>
 

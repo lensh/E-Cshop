@@ -76,8 +76,7 @@
 						<b></b>
 					</dt>
 					<dd>
-						<div class="prompt">
-							您好，请<a href="">登录</a>
+						<div class="prompt" id="prompt">
 						</div>
 						<div class="uclist mt10">
 							<ul class="list1 fl">
@@ -189,6 +188,14 @@
 			html+='<li><a href="<?php echo U('goods','',false);?>/id/'+json[i].id+'"><img src="'+imgURL+json[i].sm_logo+'" alt="" /></a></li>';
 		}
 		$('#recentView').html(html);
+	});
+	$.get('<?php echo U("Member/ajaxChkLogin");?>','',function(res){
+		var data=JSON.parse(res);
+		if(data.ok == 1)
+			var html = "您好,<a href='<?php echo U('Home/Member/index'); ?>'>"+data['email']+"</a>";
+		else
+			var html="您好，请<a href='<?php echo U('Home/Member/login'); ?>'>登录</a>";
+		$("#prompt").html(html);
 	})
 </script>
 
