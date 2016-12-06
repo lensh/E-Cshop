@@ -295,128 +295,9 @@
 								</dl>
 							</div>
 						</div>
-
-						<div class="comment_items mt10">
-							<div class="user_pic">
-								<dl>
-									<dt><a href=""><img src="__PUBLIC__/Home/images/user1.gif" alt="" /></a></dt>
-									<dd><a href="">乖乖</a></dd>
-								</dl>
-							</div>
-							<div class="item">
-								<div class="title">
-									<span>2013-03-11 22:18</span>
-									<strong class="star star5"></strong> <!-- star5表示5星级 start4表示4星级，以此类推 -->
-								</div>
-								<div class="comment_content">
-									<dl>
-										<dt>心得：</dt>
-										<dd>东西挺好，挺满意的！</dd>
-									</dl>
-									<dl>
-										<dt>优点：</dt>
-										<dd>反应速度开，散热性能好</dd>
-									</dl>
-									<dl>
-										<dt>不足：</dt>
-										<dd>暂时还没发现缺点哦！</dd>
-									</dl>
-									<dl>
-										<dt>购买日期：</dt>
-										<dd>2013-11-24</dd>
-									</dl>
-								</div>
-								<div class="btns">
-									<a href="" class="reply">回复(0)</a>
-									<a href="" class="useful">有用(0)</a>
-								</div>
-							</div>
-							<div class="cornor"></div>
-						</div>
-
-						<div class="comment_items mt10">
-							<div class="user_pic">
-								<dl>
-									<dt><a href=""><img src="__PUBLIC__/Home/images/user2.jpg" alt="" /></a></dt>
-									<dd><a href="">小宝贝</a></dd>
-								</dl>
-							</div>
-							<div class="item">
-								<div class="title">
-									<span>2013-10-01 14:10</span>
-									<strong class="star star4"></strong> <!-- star5表示5星级 start4表示4星级，以此类推 -->
-								</div>
-								<div class="comment_content">
-									<dl>
-										<dt>心得：</dt>
-										<dd>外观漂亮同，还在使用过程中。</dd>
-									</dl>
-									<dl>
-										<dt>型号：</dt>
-										<dd>i5 8G内存版</dd>
-									</dl>
-									<dl>
-										<dt>购买日期：</dt>
-										<dd>2013-11-20</dd>
-									</dl>
-								</div>
-								<div class="btns">
-									<a href="" class="reply">回复(0)</a>
-									<a href="" class="useful">有用(0)</a>
-								</div>
-							</div>
-							<div class="cornor"></div>
-						</div>
-
-						<div class="comment_items mt10">
-							<div class="user_pic">
-								<dl>
-									<dt><a href=""><img src="__PUBLIC__/Home/images/user3.jpg" alt="" /></a></dt>
-									<dd><a href="">天使</a></dd>
-								</dl>
-							</div>
-							<div class="item">
-								<div class="title">
-									<span>2013-03-11 22:18</span>
-									<strong class="star star5"></strong> <!-- star5表示5星级 start4表示4星级，以此类推 -->
-								</div>
-								<div class="comment_content">
-									<dl>
-										<dt>心得：</dt>
-										<dd>挺好的，物超所值，速度挺好，WIN8用起来也不错。</dd>
-									</dl>
-									<dl>
-										<dt>优点：</dt>
-										<dd>散热很好，配置不错</dd>
-									</dl>
-									<dl>
-										<dt>不足：</dt>
-										<dd>暂时还没发现缺点哦！</dd>
-									</dl>
-									<dl>
-										<dt>购买日期：</dt>
-										<dd>2013-11-24</dd>
-									</dl>
-								</div>
-								<div class="btns">
-									<a href="" class="reply">回复(0)</a>
-									<a href="" class="useful">有用(0)</a>
-								</div>
-							</div>
-							<div class="cornor"></div>
-						</div>
-
 						<!-- 分页信息 start -->
-						<div class="page mt20">
-							<a href="">首页</a>
-							<a href="">上一页</a>
-							<a href="">1</a>
-							<a href="">2</a>
-							<a href="" class="cur">3</a>
-							<a href="">4</a>
-							<a href="">5</a>
-							<a href="">下一页</a>
-							<a href="">尾页</a>
+						<div id="comment_page" class="page mt20">
+							<a style="width:100px;margin:0 auto;" id="a_load_more" onclick="ajaxGetCommentByPageNum();" href="javascript:void(0);">加载更多...</a>
 						</div>
 						<!-- 分页信息 end -->
 
@@ -516,6 +397,59 @@ $("#login_a").click(function(){
 	$.get("{:U('saveAndLogin')}","",function(){
 		location.href="{:U('Home/Member/login')}";
 	});
+});
+// 发请求的开头
+var pending = 0;  // 当前是否正在发请求
+// 先获取加载更多按钮的指针
+var a_load_more = $("#a_load_more");
+// ajax获取评论的数据，每页显示5条，当滚动条拖动到最后一条评论时，再自动加载5条评论
+var current_comment_page = 1; // 应该加载第几页的评论
+// AJAX获取某一页的评论
+function ajaxGetCommentByPageNum(){
+	$.ajax({
+		type : "GET",
+		url : "<?php echo U('Comment/ajaxGetComment', '', FALSE); ?>/p/"+current_comment_page+"/goods_id/"+<?php echo $info['id']; ?>,
+		dataType : "json",
+		success : function(data){
+			// 循环服务器端返回的数据拼出HTML字符串
+			var html = '<div>';
+			$(data).each(function(k,v){
+				html += '<div class="comment_items mt10"><div class="user_pic"><dl><dt><a href=""><img src="'+v.face+'" alt="" /></a></dt><dd><a href="">'+v.email+'</a></dd></dl></div><div class="item"><div class="title"><span>'+v.addtime+'</span><strong class="star star'+data.star+'"></strong></div><div class="comment_content">'+v.content+'</div><div class="btns"><a href="" class="reply">回复('+v.reply_count+')</a><a href="" class="useful">有用('+v.used+')</a></div></div><div class="cornor"></div></div>';
+			});
+			html += "</div>";
+			html = $(html);
+			// 把数据放到页面上
+			$("#comment_page").before(html);
+			// 效果显示出来评论的内容
+			html.fadeIn("slow");
+			current_comment_page++;  // 下一次取下一页
+			if(data == null){
+				// 如果没有评论的数据
+				$(window).unbind("scroll");
+				a_load_more.remove();
+			}
+			pending = 0; // 可以发下一个AJAX请求了
+		}
+	});
+}
+// 先获取窗口的高度
+var wp = $(window).height();
+// 为滚动条绑定一个滚动事件
+$(window).scroll(function(){
+	// 如果当前正在发请求中就不再响应事件
+	if(pending == 1)
+		return ;
+	// 获取加载更多按钮所在的位置
+	var p = a_load_more.offset();
+	if(p == 0)  //如果那个加载更多按钮是隐藏，则直接返回
+		return ;
+	// 获取滚动了多高
+	var sh = $(window).scrollTop();
+	// 如果窗口的高度加上滚动的高度大于按钮距离上面的距离就说明按钮出现在了屏幕上
+	if((sh + wp - 400) >  p.top){
+		pending = 1;  // 标记为当前正在发AJAX请求
+		a_load_more.trigger("click");
+	}
 });
 </script>
 </script>

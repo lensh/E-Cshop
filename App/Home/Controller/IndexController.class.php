@@ -103,7 +103,7 @@ class IndexController extends BaseController{
 	}
 
 	/**
-	 * ajax获取商品的评论
+	 * ajax获取登陆状态
 	 * @return [type] [description]
 	 */
 	public function ajaxGetComment(){

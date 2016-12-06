@@ -35,16 +35,15 @@ class MemberController extends BaseController{
    			if($model->validate($model->_login_validate)->create(I('post.'), 9))
    			{
    				if($model->login()){
-   					$returnUrl=session('returnUrl');
-   					if($returnUrl){
+   					if(session('returnUrl')){
+   						$returnUrl=session('returnUrl');
    						session('returnUrl',null);
    						redirect($returnUrl);
    					}
-   				}
-   				else{
-   					redirect(U('Index/index'));  // 登录成功之后直接跳到首页
-   				}	
-   				
+   					else{
+   						redirect(U('Index/index'));  // 登录成功之后直接跳到首页
+   					}	
+   				}		
    			}
    			$this->error($model->getError());
    		}

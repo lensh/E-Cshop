@@ -57,10 +57,10 @@ class CommentController extends BaseController {
 		$offset = ($p-1)*$perpage;  // 从第几条记录开始取
 		$goodsId = I('get.goods_id');
 		$comment = M('Comment');
-		$data = $comment->field('a.*,b.email,b.face,COUNT(c.id) reply_count')->alias('a')->join('LEFT JOIN php34_member b ON a.member_id=b.id LEFT JOIN php34_reply c ON a.id=c.comment_id')->where(array('a.goods_id'=>array('eq', $goodsId)))->limit("$offset,$perpage")->group('a.id')->order('a.id DESC')->select();
+		$data = $comment->field('a.*,b.email,b.face,COUNT(c.id) reply_count')->alias('a')->join('LEFT JOIN ecshop_member b ON a.member_id=b.id LEFT JOIN ecshop_reply c ON a.id=c.comment_id')->where(array('a.goods_id'=>array('eq', $goodsId)))->limit("$offset,$perpage")->group('a.id')->order('a.id DESC')->select();
 		// 处理一下数据
 		foreach ($data as $k => $v){
-			$data[$k]['face'] = $v['face'] ? '/Public/Home/'.$v['face'] : '/Public/Home/images/default_face.jpg';
+			$data[$k]['face'] = $v['face'] ? '/E-Cshop/Public/Home/'.$v['face'] : '/E-Cshop/Public/Home/images/default_face.jpg';
 			$data[$k]['addtime'] = date('Y-m-d H:i', $v['addtime']);
 		}
 		echo json_encode($data);
