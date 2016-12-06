@@ -492,4 +492,17 @@ class GoodsModel extends Model {
 			// 如果没有设置会员价格，就按这个级别的折扣率来算
 			return session('rate') * $price['shop_price'];
 	}
+
+	/**
+	 * 转化商品属性ID为商品属性字符串
+	 */
+	public function convertGoodsAttrIdToGoodsAttrStr($gaid){
+		if($gaid){
+			$sql = 'SELECT GROUP_CONCAT( CONCAT( b.attr_name,  ":", a.attr_value ) SEPARATOR  "<br />" ) gastr FROM ecshop_goods_attr a LEFT JOIN ecshop_attr b ON a.attr_id = b.id WHERE a.id IN ('.$gaid.')';
+			$ret = $this->query($sql);
+			return $ret[0]['gastr'];
+		}
+		else 
+			return '';
+	}
 }

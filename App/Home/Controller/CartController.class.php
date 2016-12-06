@@ -7,8 +7,7 @@ class CartController extends BaseController {
 	/**
 	 * 添加到购物车
 	 */
-	public function add()
-	{
+	public function add(){
 		$cartModel = D('Cart');
 		$goodsAttrId = I('post.goods_attr_id');
 		if($goodsAttrId){

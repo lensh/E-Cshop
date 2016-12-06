@@ -370,7 +370,8 @@
 						<li><span>会员价格：</span> <font style="font-size:14px;font-weight:bold;" id="memberprice"></font></li>
 						<li class="star"><span>商品评分：</span> <strong></strong><a href="">(已有21人评价)</a></li> <!-- 此处的星级切换css即可 默认为5星 star4 表示4星 star3 表示3星 star2表示2星 star1表示1星 -->
 					</ul>
-					<form action="" method="post" class="choose">
+					<form action="<?php echo U('Cart/add');?>" method="post" class="choose">
+					    <input type="hidden" name="goods_id" value="<?php echo ($info["id"]); ?>">
 						<ul>
 							<?php foreach ($gaData1 as $k => $v): ?>
 							<li class="product">
@@ -379,7 +380,8 @@
 									<dd>
 									<?php foreach ($v as $k1 => $v1): ?>
 										<a <?php if($k1==0) echo 'class="selected"'; ?> href="javascript:;"><?php echo ($v1["attr_value"]); ?> 
-										<input type="radio" name="color" value="<?php echo ($v1["attr_value"]); ?>" <?php if($k1==0) echo 'checked="checked"'; ?> />
+										<input type="radio" name="goods_attr_id[<?php echo ($v1['attr_id']); ?>]" value="<?php echo ($v1["id"]); ?>" 
+										<?php if($k1==0) echo 'checked="checked"'; ?> />
 										</a>
 									<?php endforeach; ?>
 									</dd>

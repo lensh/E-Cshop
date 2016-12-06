@@ -45,7 +45,7 @@ class CartModel extends Model {
 				$cart[$key] = $goods_number;
 			// 把这个数组存回到cookie
 			$aMonth = 30 * 86400;
-			setcookie('cart', serialize($cart), time() + $aMonth, '/', '34.com');
+			setcookie('cart', serialize($cart), time() + $aMonth);
 		}
 	}
 
@@ -103,7 +103,7 @@ class CartModel extends Model {
 					$this->addToCart($_k[0], $_k[1], $v);
 				}
 				// 清空COOKIE中的数据
-				setcookie('cart', '', time()-1, '/', '34.com');
+				setcookie('cart', '', time()-1);
 			}
 		}
 	}
@@ -142,7 +142,7 @@ class CartModel extends Model {
 				$arr[$key] = $gn;
 			// 把这个数组存回到cookie
 			$aMonth = 30 * 86400;
-			setcookie('cart', serialize($cart), time() + $aMonth, '/', '34.com');
+			setcookie('cart', serialize($cart), time() + $aMonth);
 		}
 	}
 }
