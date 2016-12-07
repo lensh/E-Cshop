@@ -95,6 +95,7 @@ class CartModel extends Model {
 		if($mid){
 			// 先从COOKIE中取出购物车的数据
 			$cart = isset($_COOKIE['cart']) ? unserialize($_COOKIE['cart']) : array();
+			var_dump($cart);
 			if($cart){
 				// 循环每件商品加入到数据库中
 				foreach ($cart as $k => $v){

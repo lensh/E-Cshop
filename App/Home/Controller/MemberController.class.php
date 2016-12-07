@@ -43,6 +43,8 @@ class MemberController extends BaseController{
    					else{
    						redirect(U('Index/index'));  // 登录成功之后直接跳到首页
    					}	
+   					//登陆成功后把cookie中购物车的数据转存到数据库里
+   					$cart=D('Cart')->moveDataToDb();
    				}		
    			}
    			$this->error($model->getError());

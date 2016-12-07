@@ -109,14 +109,9 @@
 			<div class="cart fl">
 				<dl>
 					<dt>
-						<a href="">去购物车结算</a>
+						<a href="<?php echo U('Cart/lst');?>">去购物车结算</a>
 						<b></b>
 					</dt>
-					<dd>
-						<div class="prompt">
-							购物车中还没有商品，赶紧选购吧！
-						</div>
-					</dd>
 				</dl>
 			</div>
 			<!-- 购物车 end -->
