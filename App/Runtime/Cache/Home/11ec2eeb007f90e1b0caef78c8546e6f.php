@@ -76,7 +76,7 @@
 					<td class="col4"> 
 						<a href="javascript:;" class="reduce_num"></a>
 						<input type="text" name="amount" value="<?php echo ($v["goods_number"]); ?>" class="amount"/>
-						<a href="javascript:;" class="add_num"></a>
+						<a href="javascript:;" class="add_num" onclick="ajaxUpdateCartData()"></a>
 					</td>
 					<td class="col5">￥<span><?php $xj = $v['goods_number'] * $v['price']; $tp+=$xj; echo $xj; ?></span>元</td>
 					<td class="col6"><a href="">删除</a></td>

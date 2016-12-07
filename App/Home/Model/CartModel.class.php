@@ -45,7 +45,7 @@ class CartModel extends Model {
 				$cart[$key] = $goods_number;
 			// 把这个数组存回到cookie
 			$aMonth = 30 * 86400;
-			setcookie('cart', serialize($cart), time() + $aMonth);
+			setcookie('cart', serialize($cart), time() + $aMonth,'/');
 		}
 	}
 
@@ -95,7 +95,6 @@ class CartModel extends Model {
 		if($mid){
 			// 先从COOKIE中取出购物车的数据
 			$cart = isset($_COOKIE['cart']) ? unserialize($_COOKIE['cart']) : array();
-			var_dump($cart);
 			if($cart){
 				// 循环每件商品加入到数据库中
 				foreach ($cart as $k => $v){
@@ -104,7 +103,7 @@ class CartModel extends Model {
 					$this->addToCart($_k[0], $_k[1], $v);
 				}
 				// 清空COOKIE中的数据
-				setcookie('cart', '', time()-1);
+				setcookie('cart', '', time()-1,'/');
 			}
 		}
 	}
@@ -143,7 +142,7 @@ class CartModel extends Model {
 				$arr[$key] = $gn;
 			// 把这个数组存回到cookie
 			$aMonth = 30 * 86400;
-			setcookie('cart', serialize($cart), time() + $aMonth);
+			setcookie('cart', serialize($cart), time() + $aMonth,'/');
 		}
 	}
 }

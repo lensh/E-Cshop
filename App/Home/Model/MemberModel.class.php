@@ -79,7 +79,10 @@ HTML;
 					$mlModel = M('MemberLevel');
 					$ml = $mlModel->field('id,rate')->where("{$user['jyz']} BETWEEN bottom_num AND top_num")->find();
 					session('level_id', $ml['id']);
-					session('rate', $ml['rate']/100);				
+					session('rate', $ml['rate']/100);	
+					// 把购物车中的数据从COOKIE移动到数据库
+					$cartModel = D('Cart');
+					$cartModel->moveDataToDb();			
 					return TRUE;
 				}
 				else {
