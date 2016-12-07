@@ -13,6 +13,12 @@ $(function(){
 			alert("商品数量最少为1");
 		} else{
 			$(amount).val(parseInt($(amount).val()) - 1);
+			//先获取所在的TR
+			var tr = $(this).parent().parent();
+			var gid = tr.attr("goods_id");
+			var gaid = tr.attr("goods_attr_id");
+			// 执行AJAX更新到服务器
+			ajaxUpdateCartData(gid, gaid, $(amount).val());
 		}
 		//小计
 		var subtotal = parseFloat($(this).parent().parent().find(".col3 span").text()) * parseInt($(amount).val());
@@ -30,6 +36,12 @@ $(function(){
 	$(".add_num").click(function(){
 		var amount = $(this).parent().find(".amount");
 		$(amount).val(parseInt($(amount).val()) + 1);
+		// 先获取所在的TR
+		var tr = $(this).parent().parent();
+		var gid = tr.attr("goods_id");
+		var gaid = tr.attr("goods_attr_id");
+		// 执行AJAX更新到服务器
+		ajaxUpdateCartData(gid, gaid, $(amount).val());
 		//小计
 		var subtotal = parseFloat($(this).parent().parent().find(".col3 span").text()) * parseInt($(amount).val());
 		$(this).parent().parent().find(".col5 span").text(subtotal.toFixed(2));

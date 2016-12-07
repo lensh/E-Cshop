@@ -76,7 +76,7 @@
 					<td class="col4"> 
 						<a href="javascript:;" class="reduce_num"></a>
 						<input type="text" name="amount" value="<?php echo ($v["goods_number"]); ?>" class="amount"/>
-						<a href="javascript:;" class="add_num" onclick="ajaxUpdateCartData()"></a>
+						<a href="javascript:;" class="add_num"></a>
 					</td>
 					<td class="col5">￥<span><?php $xj = $v['goods_number'] * $v['price']; $tp+=$xj; echo $xj; ?></span>元</td>
 					<td class="col6"><a href="">删除</a></td>
@@ -102,7 +102,7 @@ function ajaxUpdateCartData(goodsId, goodsAttrId, goodsNumber){
 	if(goodsAttrId != "")
 		_gaid = "/gaid/"+goodsAttrId;
 	// 以GET方式请求一个地址
-	$.get("<?php echo U('Home/Cart/ajaxUpdateData', '', FALSE); ?>/gid/"+goodsId+"/gn/"+goodsNumber+_gaid);
+	$.get("<?php echo U('Cart/ajaxUpdateData', '', FALSE);?>/gid/"+goodsId+"/gn/"+goodsNumber+_gaid);
 }
 </script>
 	<!-- 底部版权 start -->

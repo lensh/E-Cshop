@@ -18,9 +18,9 @@ class CartModel extends Model {
 		if($mid){
 			$cartModel = M('Cart');
 			$has = $cartModel->where(array(
-				'member_id' => array('eq', $mid),
-				'goods_id' => array('eq', $goods_id),
-				'goods_attr_id' => array('eq', $goods_attr_id),
+				'member_id' => $mid,
+				'goods_id' => $goods_id,
+				'goods_attr_id' => $goods_attr_id
 			))->find();
 			// 判断是否商品已经存在
 			if($has)
@@ -119,18 +119,13 @@ class CartModel extends Model {
 		$mid = session('mid');
 		if($mid){
 			$cartModel = M('Cart');
-			if($gn == 0)
-				$cartModel->where(array(
-					'goods_id' => array('eq', $gid),
-					'goods_attr_id' => array('eq', $gaid),
-					'member_id' => array('eq', $mid),
-				))->delete();
-			else 
-				$cartModel->where(array(
-					'goods_id' => array('eq', $gid),
-					'goods_attr_id' => array('eq', $gaid),
-					'member_id' => array('eq', $mid),
-				))->setField('goods_number', $gn);
+			$map=array(
+				'goods_id' => $gid,
+				'goods_attr_id' => $gaid,
+				'member_id' => $mid
+			);
+			if($gn == 0) $cartModel->where($map)->delete();
+			else $cartModel->where($map)->setField('goods_number', $gn);
 		}
 		else {
 			// 先从COOKIE中取出购物车的数组
