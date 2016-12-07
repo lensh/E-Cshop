@@ -72,4 +72,20 @@ $(function(){
 		$("#total").text(total.toFixed(2));
 
 	});
+
+	// delete
+	$(".col6 a").click(function(){
+		if(confirm("are you sure?")){
+			// 先获取所在的TR
+			var tr = $(this).parent().parent();
+			var gid = tr.attr("goods_id");
+			var gaid = tr.attr("goods_attr_id");
+			// 执行AJAX更新到服务器
+			ajaxUpdateCartData(gid, gaid, 0);
+			var newTp = parseFloat($("#total").html()) - parseFloat(tr.find(".col5").find("span").html());
+			$("#total").html(newTp.toFixed(2));
+			tr.remove();
+		}
+		return false; 
+	});
 });

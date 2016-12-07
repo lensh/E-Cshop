@@ -39,7 +39,7 @@ class CartController extends BaseController {
 	 */
 	public function ajaxUpdateData(){
 		$gid = I('get.gid');
-		$gaid = I('get.gaid', '');
+		$gaid = I('get.gaid', '');  //如果没有属性则默认为
 		$gn = I('get.gn');
 		$cartModel = D('Cart');
 		$data = $cartModel->updateData($gid, $gaid, $gn);
