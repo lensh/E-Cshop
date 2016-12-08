@@ -50,14 +50,26 @@ class CartController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function order(){
-		//未登陆
-		if(!session('mid')){
+		/************** 把用户选择的商品存到了SESSION中，如果会员没有选择过商品就不能进入这个页面 *****************/
+		$buythis = I('post.buythis');
+		// 先判断表单中是否选择了
+		if(!$buythis){
+			$buythis = session('buythis');
+			if(!$buythis)
+				$this->error('必须先选择商品', U('lst'));
+		}
+		else 
+			session('buythis', $buythis);
+			
+		$mid = session('mid');
+		// 如果会员没有登录跳到登录页面，登录成功之后再跳回到这个页面
+		if(!$mid){
 			// 把当前这个页面的地址存到SESSION中，这样登录成功之后就跳回来了
 			session('returnUrl', U('order'));
 			redirect(U('Member/login'));
 		}
 		// 如果是下单的表单就处理
-		if(IS_POST){
+		if(IS_POST && !isset($_POST['buythis'])){
 			$orderModel = D('Order');
 			if($orderModel->create(I('post.'), 1)){
 				if($id = $orderModel->add()){
@@ -67,12 +79,14 @@ class CartController extends BaseController {
 			}
 			$this->error($orderModel->getError());
 		}
-		//取出购物车中的商品
+		
+		// 取出购物车中的商品
 		$cartModel = D('Cart');
-		$data = $cartModel->cartList();	
+		$data = $cartModel->cartList();
+		
 		$this->assign('data', $data);
-
-		//显示表单
+		
+		// 显示表单
 		$this->setPageInfo('下定单', '下定单', '下定单', 1, array('fillin'), array('cart2'));
 		$this->display();
 	}

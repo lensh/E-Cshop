@@ -107,7 +107,6 @@ class OrderModel extends Model
 				mysql_query('ROLLBACK');
 				return FALSE;
 			}
-			
 		}
 
 		mysql_query('COMMIT'); // 提交事务
