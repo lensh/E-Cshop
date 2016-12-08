@@ -44,6 +44,38 @@ class CartController extends BaseController {
 		$cartModel = D('Cart');
 		$data = $cartModel->updateData($gid, $gaid, $gn);
 	}
+
+	/**
+	 * 下订单
+	 * @return [type] [description]
+	 */
+	public function order(){
+		//未登陆
+		if(!session('mid')){
+			// 把当前这个页面的地址存到SESSION中，这样登录成功之后就跳回来了
+			session('returnUrl', U('order'));
+			redirect(U('Member/login'));
+		}
+		// 如果是下单的表单就处理
+		if(IS_POST){
+			$orderModel = D('Order');
+			if($orderModel->create(I('post.'), 1)){
+				if($id = $orderModel->add()){
+					$this->success('下单成功！', U('order_ok?id='.$id));
+					return;
+				}
+			}
+			$this->error($orderModel->getError());
+		}
+		//取出购物车中的商品
+		$cartModel = D('Cart');
+		$data = $cartModel->cartList();	
+		$this->assign('data', $data);
+
+		//显示表单
+		$this->setPageInfo('下定单', '下定单', '下定单', 1, array('fillin'), array('cart2'));
+		$this->display();
+	}
 }
 
 

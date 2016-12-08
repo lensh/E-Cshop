@@ -36,6 +36,7 @@ class MemberController extends BaseController{
    			{
    				if($model->login()){
    					if(session('returnUrl')){
+   						//跳回到原来的页面
    						$returnUrl=session('returnUrl');
    						session('returnUrl',null);
    						redirect($returnUrl);

@@ -140,6 +140,24 @@ class CartModel extends Model {
 			setcookie('cart', serialize($cart), time() + $aMonth,'/');
 		}
 	}
+
+	/**
+	 * 清空购物车
+	 */
+	public function clearDb(){
+		$mid = session('mid');
+		if($mid){
+			// 取出勾选的商品
+			$buythis = session('buythis');
+			$cartModel = M('Cart');
+			// 循环勾选 的商品进行删除
+			foreach ($buythis as $k => $v){
+				// 从字符串解析出商品ID和商品属性ID
+				$_v = explode('-', $v);
+				$cartModel->where(array('member_id'=>$mid, 'goods_id'=>$_v[0], 'goods_attr_id'=>$_v[1]))->delete();
+			}
+		}
+	}
 }
 
 
