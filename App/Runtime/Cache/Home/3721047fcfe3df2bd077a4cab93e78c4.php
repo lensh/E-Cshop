@@ -6,18 +6,18 @@
 	<meta name="keywords" content="<?php echo ($page_keywords); ?>">
 	<meta name="description" content="<?php echo ($page_description); ?>">
 	<!--公共css和js-->
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/base.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/global.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/header.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/bottomnav.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/footer.css" type="text/css">
-	<script type="text/javascript" src="/E-Cshop/Public/Home/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="/E-Cshop/Public/Home/js/header.js"></script>
+	<link rel="stylesheet" href="/Public/Home/style/base.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/global.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/header.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/bottomnav.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/footer.css" type="text/css">
+	<script type="text/javascript" src="/Public/Home/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/Public/Home/js/header.js"></script>
 
     <!--单独的css和js-->
-	<?php if(is_array($page_css)): $i = 0; $__LIST__ = $page_css;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><link rel="stylesheet" href="/E-Cshop/Public/Home/style/<?php echo ($v); ?>.css" type="text/css"><?php endforeach; endif; else: echo "" ;endif; ?>
+	<?php if(is_array($page_css)): $i = 0; $__LIST__ = $page_css;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><link rel="stylesheet" href="/Public/Home/style/<?php echo ($v); ?>.css" type="text/css"><?php endforeach; endif; else: echo "" ;endif; ?>
 
-	<?php if(is_array($page_js)): $i = 0; $__LIST__ = $page_js;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><script type="text/javascript" src="/E-Cshop/Public/Home/js/<?php echo ($v1); ?>.js"></script><?php endforeach; endif; else: echo "" ;endif; ?>
+	<?php if(is_array($page_js)): $i = 0; $__LIST__ = $page_js;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><script type="text/javascript" src="/Public/Home/js/<?php echo ($v1); ?>.js"></script><?php endforeach; endif; else: echo "" ;endif; ?>
 	
 </head>
 <body>
@@ -44,7 +44,7 @@
 	<div class="header w1210 bc mt15">
 		<!-- 头部上半部分 start 包括 logo、搜索、用户中心和购物车结算 -->
 		<div class="logo w1210">
-			<h1 class="fl"><a href="index.html"><img src="/E-Cshop/Public/Home/images/logo.png" alt="京西商城"></a></h1>
+			<h1 class="fl"><a href="index.html"><img src="/Public/Home/images/logo.png" alt="京西商城"></a></h1>
 			<!-- 头部搜索 start -->
 			<div class="search fl">
 				<div class="search_form">
@@ -266,7 +266,7 @@
 					<ul>
 						<li>
 							<dl>
-								<dt><a href=""><img src="/E-Cshop/Public/Home/images/relate_view1.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Public/Home/images/relate_view1.jpg" alt="" /></a></dt>
 								<dd><a href="">ThinkPad E431(62771A7) 14英寸笔记本电脑 (i5-3230 4G 1TB 2G独显 蓝牙 win8)</a></dd>
 								<dd><strong>￥5199.00</strong></dd>
 							</dl>
@@ -274,7 +274,7 @@
 
 						<li>
 							<dl>
-								<dt><a href=""><img src="/E-Cshop/Public/Home/images/relate_view2.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Public/Home/images/relate_view2.jpg" alt="" /></a></dt>
 								<dd><a href="">ThinkPad X230i(2306-3V9） 12.5英寸笔记本电脑 （i3-3120M 4GB 500GB 7200转 蓝牙 摄像头 Win8）</a></dd>
 								<dd><strong>￥5199.00</strong></dd>
 							</dl>
@@ -282,7 +282,7 @@
 
 						<li>
 							<dl>
-								<dt><a href=""><img src="/E-Cshop/Public/Home/images/relate_view3.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Public/Home/images/relate_view3.jpg" alt="" /></a></dt>
 								<dd><a href="">T联想（Lenovo） Yoga13 II-Pro 13.3英寸超极本 （i5-4200U 4G 128G固态硬盘 摄像头 蓝牙 Win8）晧月银</a></dd>
 								<dd><strong>￥7999.00</strong></dd>
 							</dl>
@@ -290,7 +290,7 @@
 
 						<li>
 							<dl>
-								<dt><a href=""><img src="/E-Cshop/Public/Home/images/relate_view4.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Public/Home/images/relate_view4.jpg" alt="" /></a></dt>
 								<dd><a href="">联想（Lenovo） Y510p 15.6英寸笔记本电脑（i5-4200M 4G 1T 2G独显 摄像头 DVD刻录 Win8）黑色</a></dd>
 								<dd><strong>￥6199.00</strong></dd>
 							</dl>
@@ -298,7 +298,7 @@
 
 						<li class="last">
 							<dl>
-								<dt><a href=""><img src="/E-Cshop/Public/Home/images/relate_view5.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Public/Home/images/relate_view5.jpg" alt="" /></a></dt>
 								<dd><a href="">ThinkPad E530c(33662D0) 15.6英寸笔记本电脑 （i5-3210M 4G 500G NV610M 1G独显 摄像头 Win8）</a></dd>
 								<dd><strong>￥4399.00</strong></dd>
 							</dl>
@@ -434,23 +434,23 @@
 
 						<div class="desc mt10">
 							<!-- 此处的内容 一般是通过在线编辑器添加保存到数据库，然后直接从数据库中读出 -->
-							<img src="/E-Cshop/Public/Home/images/desc1.jpg" alt="" />
+							<img src="/Public/Home/images/desc1.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc2.jpg" alt="" />
+							<img src="/Public/Home/images/desc2.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc3.jpg" alt="" />
+							<img src="/Public/Home/images/desc3.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc4.jpg" alt="" />
+							<img src="/Public/Home/images/desc4.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc5.jpg" alt="" />
+							<img src="/Public/Home/images/desc5.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc6.jpg" alt="" />
+							<img src="/Public/Home/images/desc6.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc7.jpg" alt="" />
+							<img src="/Public/Home/images/desc7.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc8.jpg" alt="" />
+							<img src="/Public/Home/images/desc8.jpg" alt="" />
 							<p style="height:10px;"></p>
-							<img src="/E-Cshop/Public/Home/images/desc9.jpg" alt="" />
+							<img src="/Public/Home/images/desc9.jpg" alt="" />
 						</div>
 					</div>
 					<!-- 商品介绍 end -->
@@ -742,10 +742,10 @@ $(window).scroll(function(){
 			 © 2005-2013 京东网上商城 版权所有，并保留所有权利。  ICP备案证书号:京ICP证070359号 
 		</p>
 		<p class="auth">
-			<a href=""><img src="/E-Cshop/Public/Home/images/xin.png" alt="" /></a>
-			<a href=""><img src="/E-Cshop/Public/Home/images/kexin.jpg" alt="" /></a>
-			<a href=""><img src="/E-Cshop/Public/Home/images/police.jpg" alt="" /></a>
-			<a href=""><img src="/E-Cshop/Public/Home/images/beian.gif" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/xin.png" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/kexin.jpg" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/police.jpg" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/beian.gif" alt="" /></a>
 		</p>
 	</div>
 	<!-- 底部版权 end -->

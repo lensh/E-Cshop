@@ -6,18 +6,18 @@
 	<meta name="keywords" content="<?php echo ($page_keywords); ?>">
 	<meta name="description" content="<?php echo ($page_description); ?>">
 	<!--公共css和js-->
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/base.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/global.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/header.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/bottomnav.css" type="text/css">
-	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/footer.css" type="text/css">
-	<script type="text/javascript" src="/E-Cshop/Public/Home/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="/E-Cshop/Public/Home/js/header.js"></script>
+	<link rel="stylesheet" href="/Public/Home/style/base.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/global.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/header.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/bottomnav.css" type="text/css">
+	<link rel="stylesheet" href="/Public/Home/style/footer.css" type="text/css">
+	<script type="text/javascript" src="/Public/Home/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/Public/Home/js/header.js"></script>
 
     <!--单独的css和js-->
-	<?php if(is_array($page_css)): $i = 0; $__LIST__ = $page_css;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><link rel="stylesheet" href="/E-Cshop/Public/Home/style/<?php echo ($v); ?>.css" type="text/css"><?php endforeach; endif; else: echo "" ;endif; ?>
+	<?php if(is_array($page_css)): $i = 0; $__LIST__ = $page_css;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><link rel="stylesheet" href="/Public/Home/style/<?php echo ($v); ?>.css" type="text/css"><?php endforeach; endif; else: echo "" ;endif; ?>
 
-	<?php if(is_array($page_js)): $i = 0; $__LIST__ = $page_js;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><script type="text/javascript" src="/E-Cshop/Public/Home/js/<?php echo ($v1); ?>.js"></script><?php endforeach; endif; else: echo "" ;endif; ?>
+	<?php if(is_array($page_js)): $i = 0; $__LIST__ = $page_js;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><script type="text/javascript" src="/Public/Home/js/<?php echo ($v1); ?>.js"></script><?php endforeach; endif; else: echo "" ;endif; ?>
 	
 </head>
 <body>
@@ -42,7 +42,7 @@
     <!-- 页面头部 start -->
 	<div class="header w990 bc mt15">
 		<div class="logo w990">
-			<h2 class="fl"><a href="<?php echo U('Index/index');?>"><img src="/E-Cshop/Public/Home/images/logo.png" alt="京西商城"></a></h2>
+			<h2 class="fl"><a href="<?php echo U('Index/index');?>"><img src="/Public/Home/images/logo.png" alt="京西商城"></a></h2>
 		</div>
 	</div>
 	<!-- 页面头部 end -->
@@ -123,10 +123,10 @@
 			 © 2005-2013 京东网上商城 版权所有，并保留所有权利。  ICP备案证书号:京ICP证070359号 
 		</p>
 		<p class="auth">
-			<a href=""><img src="/E-Cshop/Public/Home/images/xin.png" alt="" /></a>
-			<a href=""><img src="/E-Cshop/Public/Home/images/kexin.jpg" alt="" /></a>
-			<a href=""><img src="/E-Cshop/Public/Home/images/police.jpg" alt="" /></a>
-			<a href=""><img src="/E-Cshop/Public/Home/images/beian.gif" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/xin.png" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/kexin.jpg" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/police.jpg" alt="" /></a>
+			<a href=""><img src="/Public/Home/images/beian.gif" alt="" /></a>
 		</p>
 	</div>
 	<!-- 底部版权 end -->
