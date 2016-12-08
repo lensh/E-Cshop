@@ -54,11 +54,13 @@
 	<!-- 页面头部 end -->
 	<div style="clear:both;"></div>
 	<!-- 主体部分 start -->
+<form method="POST" action="<?php echo U('order');?>">
 	<div class="mycart w990 mt10 bc">
 		<h2><span>我的购物车</span></h2>
 		<table>
 			<thead>
 				<tr>
+				    <th></th>
 					<th class="col1">商品名称</th>
 					<th class="col2">商品信息</th>
 					<th class="col3">单价</th>
@@ -70,6 +72,8 @@
 			<tbody>
 				<?php  $tp = 0; foreach ($data as $k => $v): ?>
 				<tr goods_id="<?php echo ($v["goods_id"]); ?>" goods_attr_id="<?php echo ($v["goods_attr_id"]); ?>">
+					<td><input type="checkbox" value="<?php echo ($v["goods_id"]); ?>-<?php echo ($v["goods_attr_id"]); ?>" 
+					name="buythis[]" checked="checked"/></td>
 					<td class="col1"><a href=""><?php showImage($v['sm_logo']); ?></a>  <strong><a href=""><?php echo ($v["goods_name"]); ?></a></strong></td>
 					<td class="col2"> <?php echo ($v["goods_attr_str"]); ?> </td>
 					<td class="col3">￥<span><?php echo ($v["price"]); ?></span>元</td>
@@ -91,11 +95,11 @@
 		</table>
 		<div class="cart_btn w990 bc mt10">
 			<a href="<?php echo U('Index/index');?>" class="continue">继续购物</a>
-			<a href="<?php echo U('Cart/order');?>" class="checkout">结 算</a>
+			<a href="javascript:void(0);" onclick="$('form').submit();" class="checkout">结 算</a>
 		</div>
 	</div>
 	<!-- 主体部分 end -->
-	
+</form>
 <script type="text/javascript">
 function ajaxUpdateCartData(goodsId, goodsAttrId, goodsNumber){
 	var _gaid = "";

@@ -145,7 +145,7 @@
 						</thead>
 							<tr>
 								
-								<td><input type="radio" name="post_method" value="顺风" />顺风</td>
+								<td><input type="radio" name="post_method" value="顺风" checked="checked" />顺风</td>
 								<td>￥40.00</td>
 								<td>每张订单不满499.00元,运费40.00元, 订单4...</td>
 							</tr>
@@ -168,7 +168,7 @@
 				<div class="pay_select">
 					<table> 
 						<tr class="cur">
-							<td class="col1"><input type="radio" name="pay_method" value="支付宝" />支付宝</td>
+							<td class="col1"><input type="radio" name="pay_method" value="支付宝" checked="checked" />支付宝</td>
 						</tr>
 					</table>
 				</div>
@@ -220,7 +220,7 @@
 						</tr>	
 					</thead>
 					<tbody>
-					<?php  $tp = 0; foreach ($data as $k => $v): ?>
+					<?php  $tp = 0; $buythis = session('buythis'); foreach ($data as $k => $v): if(!in_array($v['goods_id'].'-'.$v['goods_attr_id'], $buythis)) continue; ?>
 					<tr goods_id="<?php echo ($v["goods_id"]); ?>" goods_attr_id="<?php echo ($v["goods_attr_id"]); ?>">
 						<td class="col1"><a href=""><?php showImage($v['sm_logo']); ?></a>  <strong><a href=""><?php echo ($v["goods_name"]); ?></a></strong></td>
 						<td class="col2"> <?php echo ($v["goods_attr_str"]); ?> </td>

@@ -50,16 +50,18 @@ class CartController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function order(){
-		/************** 把用户选择的商品存到了SESSION中，如果会员没有选择过商品就不能进入这个页面 *****************/
+		/************** 把用户选择的商品存到SESSION中，如果会员没有选择过商品就不能进入这个页面 *****************/
 		$buythis = I('post.buythis');
 		// 先判断表单中是否选择了
 		if(!$buythis){
 			$buythis = session('buythis');
-			if(!$buythis)
+			if(!$buythis){
 				$this->error('必须先选择商品', U('lst'));
+			}
 		}
-		else 
+		else{
 			session('buythis', $buythis);
+		}
 			
 		$mid = session('mid');
 		// 如果会员没有登录跳到登录页面，登录成功之后再跳回到这个页面

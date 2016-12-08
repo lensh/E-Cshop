@@ -50,7 +50,7 @@
 <!--内容主题-->
 
 <div class="list-div" id="listDiv">
- <form method="post" action="/E-Cshop/Admin/Goods/number/id/3.html">
+ <form method="post" action="/E-Cshop/Admin/Goods/number/id/2.html">
 	<table cellpadding="3" cellspacing="1">
     	<tr>
     		<?php if(is_array($attr)): $i = 0; $__LIST__ = $attr;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><th width="150"><?php echo ($v[0]['attr_name']); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>

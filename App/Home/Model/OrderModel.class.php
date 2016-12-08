@@ -47,6 +47,7 @@ class OrderModel extends Model
 				'goods_id' => $v['goods_id'],
 				'goods_attr_id' => $v['goods_attr_id']
 			))->find();
+		
 			if($gn['goods_number'] < $v['goods_number']){
 				$this->error = '商品库存量不足无法下单';
 				return FALSE;
