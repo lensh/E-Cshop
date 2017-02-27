@@ -6,18 +6,18 @@
 	<meta name="keywords" content="<?php echo ($page_keywords); ?>">
 	<meta name="description" content="<?php echo ($page_description); ?>">
 	<!--公共css和js-->
-	<link rel="stylesheet" href="/Public/Home/style/base.css" type="text/css">
-	<link rel="stylesheet" href="/Public/Home/style/global.css" type="text/css">
-	<link rel="stylesheet" href="/Public/Home/style/header.css" type="text/css">
-	<link rel="stylesheet" href="/Public/Home/style/bottomnav.css" type="text/css">
-	<link rel="stylesheet" href="/Public/Home/style/footer.css" type="text/css">
-	<script type="text/javascript" src="/Public/Home/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="/Public/Home/js/header.js"></script>
+	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/base.css" type="text/css">
+	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/global.css" type="text/css">
+	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/header.css" type="text/css">
+	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/bottomnav.css" type="text/css">
+	<link rel="stylesheet" href="/E-Cshop/Public/Home/style/footer.css" type="text/css">
+	<script type="text/javascript" src="/E-Cshop/Public/Home/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/E-Cshop/Public/Home/js/header.js"></script>
 
     <!--单独的css和js-->
-	<?php if(is_array($page_css)): $i = 0; $__LIST__ = $page_css;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><link rel="stylesheet" href="/Public/Home/style/<?php echo ($v); ?>.css" type="text/css"><?php endforeach; endif; else: echo "" ;endif; ?>
+	<?php if(is_array($page_css)): $i = 0; $__LIST__ = $page_css;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><link rel="stylesheet" href="/E-Cshop/Public/Home/style/<?php echo ($v); ?>.css" type="text/css"><?php endforeach; endif; else: echo "" ;endif; ?>
 
-	<?php if(is_array($page_js)): $i = 0; $__LIST__ = $page_js;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><script type="text/javascript" src="/Public/Home/js/<?php echo ($v1); ?>.js"></script><?php endforeach; endif; else: echo "" ;endif; ?>
+	<?php if(is_array($page_js)): $i = 0; $__LIST__ = $page_js;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><script type="text/javascript" src="/E-Cshop/Public/Home/js/<?php echo ($v1); ?>.js"></script><?php endforeach; endif; else: echo "" ;endif; ?>
 	
 </head>
 <body>
@@ -44,7 +44,7 @@
 	<div class="header w1210 bc mt15">
 		<!-- 头部上半部分 start 包括 logo、搜索、用户中心和购物车结算 -->
 		<div class="logo w1210">
-			<h1 class="fl"><a href="index.html"><img src="/Public/Home/images/logo.png" alt="京西商城"></a></h1>
+			<h1 class="fl"><a href="index.html"><img src="/E-Cshop/Public/Home/images/logo.png" alt="京西商城"></a></h1>
 			<!-- 头部搜索 start -->
 			<div class="search fl">
 				<div class="search_form">
@@ -204,12 +204,12 @@
 			<div class="area">
 				<div class="slide_items">
 					<ul>
-						<li><a href=""><img src="/Public/Home/images/index_slide1.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/index_slide2.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/index_slide3.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/index_slide4.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/index_slide5.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/index_slide6.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/index_slide1.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/index_slide2.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/index_slide3.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/index_slide4.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/index_slide5.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/index_slide6.jpg" alt="" /></a></li>
 					</ul>
 				</div>
 				<div class="slide_controls">
@@ -228,7 +228,7 @@
 	
 		<!-- 快报区域 start-->
 		<div class="coll_right fl ml10">
-			<div class="ad"><a href=""><img src="/Public/Home/images/ad.jpg" alt="" /></a></div>
+			<div class="ad"><a href=""><img src="/E-Cshop/Public/Home/images/ad.jpg" alt="" /></a></div>
 			
 			<div class="news mt10">
 				<h2><a href="">更多快报&nbsp;></a><strong>网站快报</strong></h2>
@@ -290,11 +290,11 @@
 					<div class="travel none">
 						<ul>
 							<li>
-								<a href=""><img src="/Public/Home/images/holiday.jpg" alt="" /></a>
+								<a href=""><img src="/E-Cshop/Public/Home/images/holiday.jpg" alt="" /></a>
 								<a href="" class="button">度假查询</a>
 							</li>
 							<li>
-								<a href=""><img src="/Public/Home/images/scenic.jpg" alt="" /></a>
+								<a href=""><img src="/E-Cshop/Public/Home/images/scenic.jpg" alt="" /></a>
 								<a href="" class="button">景点查询</a>
 							</li>
 						</ul>
@@ -303,16 +303,16 @@
 						
 					<!-- 彩票 start -->
 					<div class="lottery none">
-						<p><img src="/Public/Home/images/lottery.jpg" alt="" /></p>
+						<p><img src="/E-Cshop/Public/Home/images/lottery.jpg" alt="" /></p>
 					</div>
 					<!-- 彩票 end -->
 
 					<!-- 游戏 start -->
 					<div class="game none">
 						<ul>
-							<li><a href=""><img src="/Public/Home/images/sanguo.jpg" alt="" /></a></li>
-							<li><a href=""><img src="/Public/Home/images/taohua.jpg" alt="" /></a></li>
-							<li><a href=""><img src="/Public/Home/images/wulin.jpg" alt="" /></a></li>
+							<li><a href=""><img src="/E-Cshop/Public/Home/images/sanguo.jpg" alt="" /></a></li>
+							<li><a href=""><img src="/E-Cshop/Public/Home/images/taohua.jpg" alt="" /></a></li>
+							<li><a href=""><img src="/E-Cshop/Public/Home/images/wulin.jpg" alt="" /></a></li>
 						</ul>
 					</div>
 					<!-- 游戏 end -->
@@ -344,7 +344,7 @@
 					<ul>
 					<?php if(is_array($promote_goods)): $i = 0; $__LIST__ = $promote_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods?id='.$v['id']);?>"><img src="/Public/Uploads/<?php echo ($v["sm_logo"]); ?>" alt="" /></a></dt>
+								<dt><a href="<?php echo U('goods?id='.$v['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v["sm_logo"]); ?>" alt="" /></a></dt>
 								<dd><a href="<?php echo U('goods?id='.$v['id']);?>"><?php echo ($v["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v["promote_price"]); ?></strong></dd>
 							</dl>
@@ -358,7 +358,7 @@
 					<ul>
 					<?php if(is_array($hot_goods)): $i = 0; $__LIST__ = $hot_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v1): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods?id='.$v1['id']);?>"><img src="/Public/Uploads/<?php echo ($v1["sm_logo"]); ?>" alt="" /></a></dt>
+								<dt><a href="<?php echo U('goods?id='.$v1['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v1["sm_logo"]); ?>" alt="" /></a></dt>
 								<dd><a href="<?php echo U('goods?id='.$v1['id']);?>"><?php echo ($v1["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v1["shop_price"]); ?></strong></dd>
 							</dl>
@@ -372,7 +372,7 @@
 					<ul>
 					<?php if(is_array($best_goods)): $i = 0; $__LIST__ = $best_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v2): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods?id='.$v2['id']);?>"><img src="/Public/Uploads/<?php echo ($v2["sm_logo"]); ?>" alt="" /></a></dt>
+								<dt><a href="<?php echo U('goods?id='.$v2['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v2["sm_logo"]); ?>" alt="" /></a></dt>
 								<dd><a href="<?php echo U('goods?id='.$v2['id']);?>"><?php echo ($v2["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v2["shop_price"]); ?></strong></dd>
 							</dl>
@@ -386,7 +386,7 @@
 					<ul>
 					<?php if(is_array($new_goods)): $i = 0; $__LIST__ = $new_goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v3): $mod = ($i % 2 );++$i;?><li>
 							<dl>
-								<dt><a href="<?php echo U('goods?id='.$v3['id']);?>"><img src="/Public/Uploads/<?php echo ($v3["sm_logo"]); ?>" alt="" /></a></dt>
+								<dt><a href="<?php echo U('goods?id='.$v3['id']);?>"><img src="/E-Cshop/Public/Uploads/<?php echo ($v3["sm_logo"]); ?>" alt="" /></a></dt>
 								<dd><a href="<?php echo U('goods?id='.$v3['id']);?>"><?php echo ($v3["goods_name"]); ?></a></dd>
 								<dd><span>售价：</span><strong> ￥<?php echo ($v3["shop_price"]); ?></strong></dd>
 							</dl>
@@ -400,21 +400,21 @@
 					<ul>
 						<li>
 							<dl>
-								<dt><a href=""><img src="/Public/Home/images/guess1.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/E-Cshop/Public/Home/images/guess1.jpg" alt="" /></a></dt>
 								<dd><a href="">Thinkpad USB光电鼠标</a></dd>
 								<dd><span>售价：</span><strong> ￥39.00</strong></dd>
 							</dl>
 						</li>
 						<li>
 							<dl>
-								<dt><a href=""><img src="/Public/Home/images/guess2.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/E-Cshop/Public/Home/images/guess2.jpg" alt="" /></a></dt>
 								<dd><a href="">宜客莱（ECOLA）电脑散热器</a></dd>
 								<dd><span>售价：</span><strong> ￥89.00</strong></dd>
 							</dl>
 						</li>
 						<li>
 							<dl>
-								<dt><a href=""><img src="/Public/Home/images/guess3.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/E-Cshop/Public/Home/images/guess3.jpg" alt="" /></a></dt>
 								<dd><a href="">巴黎欧莱雅男士洁面膏 100ml</a></dd>
 								<dd><span>售价：</span><strong> ￥30.00</strong></dd>
 							</dl>
@@ -433,13 +433,13 @@
 			<h2><strong>网站首发</strong></h2>
 			<div class="sidebar_wrap">
 				<dl class="first">
-					<dt class="fl"><a href=""><img src="/Public/Home/images/viewsonic.jpg" alt="" /></a></dt>
+					<dt class="fl"><a href=""><img src="/E-Cshop/Public/Home/images/viewsonic.jpg" alt="" /></a></dt>
 					<dd><strong><a href="">ViewSonic优派N710 </a></strong> <em>首发</em></dd>
 					<dd>苹果iphone 5免费送！攀高作为全球智能语音血压计领导品牌，新推出的黑金刚高端智能电子血压计，改变传统测量方式让血压测量迈入一体化时代。</dd>
 				</dl>
 
 				<dl>
-					<dt class="fr"><a href=""><img src="/Public/Home/images/samsung.jpg" alt="" /></a></dt>
+					<dt class="fr"><a href=""><img src="/E-Cshop/Public/Home/images/samsung.jpg" alt="" /></a></dt>
 					<dd><strong><a href="">Samsung三星Galaxy</a></strong> <em>首发</em></dd>
 					<dd>电视百科全书，360°无死角操控，感受智能新体验！双核CPU+双核GPU+MEMC运动防抖，58寸大屏打造全新视听盛宴！</dd>
 				</dl>
@@ -477,7 +477,7 @@
 						<li><a href=""><b>.</b>网卡</a></li>
 						<li><a href=""><b>.</b>交换机</a></li>
 					</ul>
-					<p><a href=""><img src="/Public/Home/images/notebook.jpg" alt="" /></a></p>
+					<p><a href=""><img src="/E-Cshop/Public/Home/images/notebook.jpg" alt="" /></a></p>
 				</div>
 				
 
@@ -498,7 +498,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/hpG4.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/hpG4.jpg" alt="" /></a></dt>
 									<dd><a href="">惠普G4-1332TX 14英寸笔</a></dd>
 									<dd><span>售价：</span> <strong>￥2999.00</strong></dd>
 								</dl>
@@ -506,7 +506,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/thinkpad e420.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/thinkpad e420.jpg" alt="" /></a></dt>
 									<dd><a href="">ThinkPad E42014英寸笔..</a></dd>
 									<dd><span>售价：</span> <strong>￥4199.00</strong></dd>
 								</dl>
@@ -514,7 +514,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/acer4739.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/acer4739.jpg" alt="" /></a></dt>
 									<dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
 									<dd><span>售价：</span> <strong>￥2799.00</strong></dd>
 								</dl>
@@ -522,7 +522,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/samsung6800.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/samsung6800.jpg" alt="" /></a></dt>
 									<dd><a href="">三星Galaxy Tab P6800.</a></dd>
 									<dd><span>售价：</span> <strong>￥4699.00</strong></dd>
 								</dl>
@@ -530,7 +530,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/lh531.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/lh531.jpg" alt="" /></a></dt>
 									<dd><a href="">富士通LH531 14.1英寸笔记</a></dd>
 									<dd><span>售价：</span> <strong>￥2189.00</strong></dd>
 								</dl>
@@ -538,7 +538,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/qinghuax2.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/qinghuax2.jpg" alt="" /></a></dt>
 									<dd><a href="">清华同方精锐X2笔记本 </a></dd>
 									<dd><span>售价：</span> <strong>￥2499.00</strong></dd>
 								</dl>
@@ -550,7 +550,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/hpG4.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/hpG4.jpg" alt="" /></a></dt>
 									<dd><a href="">惠普G4-1332TX 14英寸笔</a></dd>
 									<dd><span>售价：</span> <strong>￥2999.00</strong></dd>
 								</dl>
@@ -558,7 +558,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/qinghuax2.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/qinghuax2.jpg" alt="" /></a></dt>
 									<dd><a href="">清华同方精锐X2笔记本 </a></dd>
 									<dd><span>售价：</span> <strong>￥2499.00</strong></dd>
 								</dl>
@@ -571,7 +571,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/thinkpad e420.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/thinkpad e420.jpg" alt="" /></a></dt>
 									<dd><a href="">ThinkPad E42014英寸笔..</a></dd>
 									<dd><span>售价：</span> <strong>￥4199.00</strong></dd>
 								</dl>
@@ -579,7 +579,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/acer4739.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/acer4739.jpg" alt="" /></a></dt>
 									<dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
 									<dd><span>售价：</span> <strong>￥2799.00</strong></dd>
 								</dl>
@@ -591,7 +591,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/acer4739.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/acer4739.jpg" alt="" /></a></dt>
 									<dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
 									<dd><span>售价：</span> <strong>￥2799.00</strong></dd>
 								</dl>
@@ -599,7 +599,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/samsung6800.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/samsung6800.jpg" alt="" /></a></dt>
 									<dd><a href="">三星Galaxy Tab P6800.</a></dd>
 									<dd><span>售价：</span> <strong>￥4699.00</strong></dd>
 								</dl>
@@ -611,7 +611,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/samsung6800.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/samsung6800.jpg" alt="" /></a></dt>
 									<dd><a href="">三星Galaxy Tab P6800.</a></dd>
 									<dd><span>售价：</span> <strong>￥4699.00</strong></dd>
 								</dl>
@@ -619,7 +619,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Public/Home/images/lh531.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/E-Cshop/Public/Home/images/lh531.jpg" alt="" /></a></dt>
 									<dd><a href="">富士通LH531 14.1英寸笔记</a></dd>
 									<dd><span>售价：</span> <strong>￥2189.00</strong></dd>
 								</dl>
@@ -640,15 +640,15 @@
 				<h2><a href="">更多品牌&nbsp;></a><strong>品牌旗舰店</strong></h2>
 				<div class="sidebar_wrap">
 					<ul>
-						<li><a href=""><img src="/Public/Home/images/dell.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/acer.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/fujitsu.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/hp.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/lenove.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/samsung.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/dlink.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/seagate.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Public/Home/images/intel.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/dell.gif" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/acer.gif" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/fujitsu.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/hp.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/lenove.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/samsung.gif" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/dlink.gif" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/seagate.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/E-Cshop/Public/Home/images/intel.jpg" alt="" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -671,7 +671,7 @@
 			
 			<!-- 广告 start -->
 			<div class="ads mt10">
-				<a href=""><img src="/Public/Home/images/canon.jpg" alt="" /></a>
+				<a href=""><img src="/E-Cshop/Public/Home/images/canon.jpg" alt="" /></a>
 			</div>
 			<!-- 广告 end -->
 		</div>
@@ -765,10 +765,10 @@
 			 © 2005-2013 京东网上商城 版权所有，并保留所有权利。  ICP备案证书号:京ICP证070359号 
 		</p>
 		<p class="auth">
-			<a href=""><img src="/Public/Home/images/xin.png" alt="" /></a>
-			<a href=""><img src="/Public/Home/images/kexin.jpg" alt="" /></a>
-			<a href=""><img src="/Public/Home/images/police.jpg" alt="" /></a>
-			<a href=""><img src="/Public/Home/images/beian.gif" alt="" /></a>
+			<a href=""><img src="/E-Cshop/Public/Home/images/xin.png" alt="" /></a>
+			<a href=""><img src="/E-Cshop/Public/Home/images/kexin.jpg" alt="" /></a>
+			<a href=""><img src="/E-Cshop/Public/Home/images/police.jpg" alt="" /></a>
+			<a href=""><img src="/E-Cshop/Public/Home/images/beian.gif" alt="" /></a>
 		</p>
 	</div>
 	<!-- 底部版权 end -->

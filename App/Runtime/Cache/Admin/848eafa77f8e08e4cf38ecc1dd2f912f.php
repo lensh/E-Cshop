@@ -3,7 +3,7 @@
 <head>
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 #header-div {
   background:#278296;
@@ -116,7 +116,7 @@
 <body>
 <div id="header-div">
     <div id="logo-div" style="bgcolor:#000000;">
-        <img src="/Public/Admin/Images/ecshop_logo.gif" alt="ECSHOP - power for e-commerce" />
+        <img src="/E-Cshop/Public/Admin/Images/ecshop_logo.gif" alt="ECSHOP - power for e-commerce" />
     </div>
     <div id="submenu-div">
         <ul>

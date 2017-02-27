@@ -2,7 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 /**
- * 基础控制器，负责验证用户有没有登陆以及显示左侧菜单的权限
+ * 基础控制器，负责验证用户有没有登陆以及检查权限
  */
 class BaseController extends Controller {
 

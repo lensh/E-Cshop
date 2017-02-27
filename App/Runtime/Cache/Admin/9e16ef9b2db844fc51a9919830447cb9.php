@@ -3,16 +3,16 @@
 <head>
 <title>ECSHOP 管理中心</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
-<link href="/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/Public/Admin/Js/jquery.min.js"></script>
+<link href="/E-Cshop/Public/Admin/Styles/general.css" rel="stylesheet" type="text/css" />
+<link href="/E-Cshop/Public/Admin/Styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/E-Cshop/Public/Admin/Js/jquery.min.js"></script>
 </head>
 <body style="background: #278296;color:white">
-<form method="post" action="/Admin/Login/login" onsubmit="return validate()">
+<form method="post" action="/E-Cshop/Admin/Login/login" onsubmit="return validate()">
     <table cellspacing="0" cellpadding="0" style="margin-top:100px" align="center">
         <tr>
             <td>
-                <img src="/Public/Admin/Images/login.png" width="178" height="256" border="0" alt="ECSHOP" />
+                <img src="/E-Cshop/Public/Admin/Images/login.png" width="178" height="256" border="0" alt="ECSHOP" />
             </td>
             <td style="padding-left: 50px">
                 <table>
